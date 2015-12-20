@@ -1,0 +1,56 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name="keywords" content="")
+    meta(name="description" content="")
+    title= title
+    link(rel='stylesheet', href='/stylesheets/main.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body.body-img
+    .container
+      .row.pos-a.top52
+        .col14.offset5.border.border-purple.ht850.bg-white.pos-r
+          .pos-a.top0.left0.bg-main.ht110.z-index2.w-110
+            pos-r.w-110.ht110
+              p.font-white.tc.font16.mt4 Migo健身
+              p.line.border-b-1.w-35.transform45.mb0.pos-a.bottom40.right10
+              p.mb0.pos-a.bottom40.right10.font16.font-white.top84 注册
+          .row.font14.l-ht30.mt110.ml80
+            .col2.mt52
+              .justify 头像
+            .col5.pt10
+              span.mr10.vertical-a-m :
+              label(for="head-logo").bg-gray.tc.display-ib.pos-r.img-circle.w2.ht90.border.border-purple.vertical-a-m.ml70.mb20.cursor-p.overflow-h.hover-shadow
+                input(type="file" id="head-logo" accept="image/*").top-200.pos-a 
+                img(src="images/upload.png" width="90px" height="90px").z-index2.pos-a.top0.left0
+          .row.font14.l-ht30.ml80
+            .col2
+              .justify 用户名
+            .col5
+              span.mr10 :
+              input.per90.border-special.pl5.ht24.form-control
+          .row.font14.l-ht30.ml80
+            .col2
+              .justify 密码
+            .col5
+              span.mr10 :
+              input.per90.border-special.pl5.ht24.form-control(type="password")
+          .row.font14.l-ht30.ml80
+            .col2
+              .justify 确认密码
+            .col5
+              span.mr10 :
+              input.per90.border-special.pl5.ht24.form-control(type="password")
+          .row.font14.l-ht30.ml80
+            .col2
+              .justify 验证码
+            .col5
+              span.mr10 :
+              input.per30.border-special.pl5.ht24.vertical-a-m.form-control
+              img(src="images/code.jpg").vertical-a-m.ml10
+              a(href="change_code").ml10.font-9.font12 换一张
+          .row.font14.l-ht30
+            .col7.tc.ht60
+              button.w3.ht30.cursor-p.font-white.btn.btn-purple  注册
+    

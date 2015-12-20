@@ -1,0 +1,45 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name="keywords" content="")
+    meta(name="description" content="")
+    title= title
+    link(rel='stylesheet', href='/stylesheets/main.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body.body-img
+    .container
+      .row.pos-a.top52
+        .col14.offset5.border.border-purple.ht450.bg-white.pos-r
+          .row
+            .col6.mt100.mr0.tc
+              img(src="images/favo.png" width="200px" height="200px")
+            .col7.mt80
+              .row.font14.l-ht30
+                .col2
+                  .justify 用户名
+                .col5
+                  span.mr10 :
+                  input.per90.border-special.pl5.ht24.form-control
+              .row.font14.l-ht30
+                .col2
+                  .justify 密码
+                .col5
+                  span.mr10 :
+                  input.per90.border-special.pl5.ht24.form-control
+              .row.font14.l-ht30
+                .col2
+                  .justify 验证码
+                .col5
+                  span.mr10 :
+                  input.per30.border-special.pl5.ht24.vertical-a-m.form-control
+                  img(src="images/code.jpg").vertical-a-m.ml10
+                  a(href="change_code").ml10.font-9.font12 换一张
+              .row.font14.l-ht30
+                .col7.tc.ht60
+                  .display-ib.w3.ht30.bg-main.cursor-p.font-white 登 录
+              .row
+                .col7.tc
+                  a(href="reg").font-9.font12 还没有帐号，马上去注册
+              
+    

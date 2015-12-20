@@ -1,0 +1,28 @@
+.row.ht60.per100.bg-main
+  .w19.ml-auto.mr-auto
+    ul.list-unstyled.migo-nav.overflow-h.ht80.mb0
+      li.fl.mt8
+        img(src="images/logo1.png")
+      li.fl.nav-border.tc.ht30.mt18.ml80
+        a(href="/").font16.font-white 首页
+      li.fl.nav-border.tc.ht30.mt18.ml50
+        a(href="index").font16.font-white 健身计划
+      li.fl.nav-border.tc.ht30.mt18.ml50
+        a(href="index").font16.font-white 健身动态
+      li.fl.nav-border.tc.ht30.mt18.ml50
+        a(href="index").font16.font-white 健身日记
+      li.fl.nav-border.tc.ht30.mt18.ml50
+        a(href="index").font16.font-white 个人中心
+      -if(!user)
+        li.fr.mt14
+          a(href="login").font-white
+            i.vicons.font20 &#xe75f;
+            span.font12 登录    
+      -else
+        li.fr.mt6.tans
+          a(href="user")
+            img(src="images/user.jpg").img-circle.vertical-a-m.mr10
+            span.font12.vertical-a-m 刘星海
+
+  
+    
