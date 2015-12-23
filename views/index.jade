@@ -3,8 +3,100 @@ extends layout
 block content
   .container-fluid
     include nav.jade
-    -if(user)
-      
-    -else
-    
-    
+    .w19.ml-auto.mr-auto
+      -if(!user)
+        .ht500.pos-r.w-1000.ml-auto.mr-auto.overflow-h
+          img(src="images/index1.fw.png").carousel
+          span.pos-a.display-ib.w-40.ht80.left0.bg-t-0.top168.cursor-p.tc.l-ht80
+            i.vicons.font30.font-white &#xe61e;
+          span.pos-a.display-ib.w-40.ht80.right0.bg-t-0.top168.cursor-p.tc.l-ht80
+            i.vicons.font30.font-white &#xe612;
+      -else
+        .w-1000.ml-auto.mr-auto.ht500.kChart.overflow-h
+      .row.mt20
+        .col7.padding
+          //提交训练人数
+          .border.padding.radius5.box-s-4d
+            .overflow-h
+              span.fl.font30.font-c-4d 56
+              span.fr.vicons.font26.font-c-4d &#xe79a;
+            .mt6
+              span.font14 提交训练人数
+            .mt16.ht8.bg-c.radius5.overflow-h
+              .ht8.bg-green-4d.per40.radius5
+            .mt10
+              span 有30%人提交了训练
+          //健身动态
+          .border.padding.radius5.mt10
+            .border-b.l-ht30.font16 会员动态
+            -for(var i= 0;i < 5; i ++){
+              .border-b.padding
+                img(src="images/p1.jpg" width="35" height="35").img-circle.vertical-a-m
+                span.font-blue.vertical-a-m.ml10 刘星海
+                span.font-9.ml10 1小时前
+                .mt10.font-6.p-indent 参加了腹肌撕裂者训练计划
+            -}
+        .col10.padding
+          .border.padding.radius5
+            .tc.font16.border-b-1.ht30 健身排行榜(日)
+              span.vicons.font16 &#xe71a;
+            //排行榜中一个人
+            -var length = 7
+            -for(var i = 0; i < length; i ++){
+              .pl10.pr10
+                .ht70.padding.overflow-h.border-b-1
+                  img(src="images/p1.jpg" width="45" height="45").img-circle.vertical-a-m
+                  span.font-blue.vertical-a-m.ml10 刘星海
+                  span.ml20 消耗热量：
+                  span.font16.font-red 1000卡路里
+                  span.font16.fr No #{i+1}
+              -}
+        .col7.padding
+          //会员数
+          .border.padding.radius5.box-s-58
+              .overflow-h
+                  span.fl.font30.font-c-purple 88
+                  span.fr.vicons.font26.font-c-purple &#xe79a;
+              .mt6
+                  span.font14 现有会员数
+              .mt16.ht8.bg-c.radius5.overflow-h
+                  .ht8.bg-main.per100.radius5
+              .mt10
+                  span 准备提交训练
+          //健身日记
+          .border.padding.radius5.mt10
+            .border-b.font16.font-6.l-ht30 健身日记
+            -for(var i = 0; i < 5; i ++){
+              .border-b.padding
+                img(src="images/p1.jpg" width="35" height="35").img-circle.vertical-a-m
+                span.font-blue.ml10 刘星海
+                span 发表了健身日记：
+                .font-6.mt10.p-indent 我的第一篇健身日记
+            -}
+      -if(!user)
+        .row.mt10
+          p.font16.pl10.border-l-p.ml10 我参加的训练计划
+          ul.list-unstyled
+            -for(var i = 0;i < 4;i ++){
+            a(href="#")
+              li.padding.col6.li-scale.box-s-c5
+                div.overflow-h.ht140
+                  img(src="images/temp/jihua-title.jpg").per100
+                .tc.border-b.border-l.border-r
+                  p.font14.l-ht30  肩部训练计划
+                  p.font-9 23人正在训练
+              -}
+      .row.mt10
+        p.font16.pl10.border-l-p.ml10 热门健身计划
+        ul.list-unstyled
+          -for(var i = 0;i < 4;i ++){
+          a(href="#")
+            li.padding.col6.li-scale.box-s-c5
+              div.overflow-h.ht140
+                img(src="images/temp/jihua-title.jpg").per100
+              .tc.border-b.border-l.border-r
+                p.font14.l-ht30  肩部训练计划
+                p.font-9 23人正在训练
+          -}
+
+    include footer.jade

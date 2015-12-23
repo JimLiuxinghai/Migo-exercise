@@ -14,7 +14,6 @@ body,button{font-family: hou; overflow-x: hidden;}
 }
 .justify {
     text-align:justify;
-    text-justify:distribute-all-lines;/*ie6-8*/
     text-align-last:justify;/* ie9*/
     -moz-text-align-last:justify;/*ff*/
     -webkit-text-align-last:justify;/*chrome 20+*/
@@ -108,9 +107,15 @@ body,button{font-family: hou; overflow-x: hidden;}
 }
 .body-img{background: url('../images/1600x1000.jpg') no-repeat;background-size: 2000px;}
 .border-purple{border-color: #584f60;}
+.bg-t-0{background: rgba(0,0,0,0.3);}
+.bg-t-0:hover{background: rgba(0,0,0,0.6);}
+.bg-green-4d{background: #4DB3A2;}
 .w-35{width: 35px;}
+.w-40{width: 40px;}
+.w-80{width: 80px;}
 .w-270{width:270px;}
 .w-110{width: 110px;}
+.w-1000{width: 1000px;}
 .border-n{border:none;}
 .cursor-p{cursor: pointer;}
 .mt110{margin-top: 110px;}
@@ -118,3 +123,10 @@ body,button{font-family: hou; overflow-x: hidden;}
 .hover-shadow:hover{box-shadow: 0 0 10px #584f60;}
 .btn-purple { color: #fff; background-color: #584f60; border-color: #584f60; border-width: 1px; border-style: solid; }
 .btn-purple:hover { background-image: -moz-linear-gradient(top, white, #7C6A8C); background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #7C6A8C), color-stop(1, #7C6A8C)); }
+.font-c-4d{color: #4DB3A2;}
+.font-c-purple{color: #584f60;}
+.box-s-4d:hover{box-shadow: 0 0 10px #4DB3A2;}
+.box-s-58:hover{box-shadow: 0 0 10px #584f60;}
+.box-s-c5:hover div{box-shadow: 0 1px 5px #c5c5c5;}
+.li-scale:hover img{ transform: scale(1.1, 1.1); -moz-transform: scale(1.1, 1.1); -webkit-transform: scale(1.1, 1.1); transition: 1s; -moz-transition: 1s; -webkit-transition: 1s; }
+.border-l-p{border-left: 3px solid #584f60; }
