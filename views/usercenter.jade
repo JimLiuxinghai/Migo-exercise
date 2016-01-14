@@ -1,0 +1,80 @@
+extends layout
+block content
+    .container-fluid
+        include nav.jade
+        .w19.ml-auto.mr-auto
+            .row.mt20
+                .col6.ht600
+                    ul.list-unstyled
+                        li.ht100.border-b.padding.pos-r
+                            img(src="images/user.jpg" width="80" height="80").img-circle.fl
+                            p.font16.pt20.ml120 刘星海
+                            p.ml120
+                                a(href="setprofile")
+                                    span.vicons &#xe76c;
+                                    span 设置资料
+                        li.ht60.border-b.padding.pos-r.l-ht40.font14.cursor-p.pl50.font-h-4d
+                            span.vicons.mr10 &#xe657;
+                            span 健身报表
+                        li.ht60.border-b.padding.pos-r.l-ht40.font14.cursor-p.pl50.font-h-4d
+                            span.vicons.mr10 &#xe66e;
+                            span.mr10 健身计划
+                            span.font12 20
+                        li.ht60.border-b.padding.pos-r.l-ht40.font14.cursor-p.pl50.font-h-4d
+                            span.vicons.mr10 &#xe72b;
+                            span.mr10 健身动态
+                            span.font12 20
+                        li.ht60.border-b.padding.pos-r.l-ht40.font14.cursor-p.pl50.font-h-4d
+                            span.vicons.mr10 &#xe7a1;
+                            span.mr10 健身日记
+                            span.font12 20
+                //健身报表
+                .col18.pl30.display-n
+                    .border-b-1.font16.l-ht30.ht40 我的健身报表
+                //健身计划
+                .col18.pl30.display-n
+                    .border-b-1.font16.l-ht30.ht40 我的健身计划
+                    .mt10.overflow-h
+                        -for(var i = 0;i < 5; i++){
+                            .ht140.mt10.row
+                                .col6.overflow-h
+                                    img(src="images/temp/jihua-title.jpg").per100
+                                .col18.ht140.pl20
+                                    p.font14.mt10  腹肌撕裂者
+                                        span.ml30.font-9.font12 添加时间：2015-12-12
+                                    p 分类：腹肌
+                                        span.font-9.ml30 最后训练时间：2016-1-10
+                                    p
+                                        a.display-ib.btn-purple.pl10.pr10.cursor-p.pt4.pb4 开始训练
+                        -}
+                //健身动态
+                .col18.pl30.display-n
+                    .border-b-1.font16.l-ht30.ht40 我的健身动态
+                //健身日记
+                .col18.pl30
+                    .border-b-1.font16.l-ht30.ht40 我的健身日记
+                    //日记列表
+                    .row.mt10.display-n
+                        -for(var i = 0;i < 4; i ++){
+                            .col12.padding.mt10.pos-r
+                                .border.ht160.box-s-2
+                                    a(href="#").pos-a.display-ib.per100.ht150
+                                    p.font14.tc.pt10 我的第一篇日记
+                                    p.p-indent.padding.font-6 这是我的第一篇健身日记，这是我的第一篇健身日记，这是我的第一篇健身日记，这是我的第一篇健身日记，这是我的第一篇健身日记，这是我的第一篇健身日记，
+                                    p.pr10.tr.font-c-4d 2015-1-1 15:30
+                        -}
+                    //日记详细
+                    .row.mt10
+                        .col2.pos-r
+                            .bg-9.font-white.img-circle.vicons.ht40.pos-f.w-40.tc.l-ht40.font20.cursor-p &#xe61e;
+                        .col22
+                            p.font14.tc.mt20
+                                span 我的第一篇日记
+                            p.tr.font-9 发表时间：2015年12月10日
+                            p.p-indent.per80.offset2.
+                                我的第一篇日记,我的第一篇日记,我的第一篇日记,我的第一篇日记,我的第一篇日记,
+                                我的第一篇日记,我的第一篇日记,我的第一篇日记,我的第一篇日记,我的第一篇日记,
+
+
+
+        include footer.jade
