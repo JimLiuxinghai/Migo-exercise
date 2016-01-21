@@ -20,6 +20,10 @@ router.get('/plane',function(req,res,next){
 router.get('/dplane',function(req,res,next){
     res.render('dplane',{title:"Migo个人健身系统--训练计划"});
 });
+/*训练计划详情*/
+router.get('/train',function(req,res,next){
+    res.render('train',{title:"Migo个人健身系统--训练计划"});
+});
 /*健身动态*/
 router.get('/dynamic',function(req,res,next){
     res.render('dynamic',{title:"Migo个人健身系统--健身动态"});
