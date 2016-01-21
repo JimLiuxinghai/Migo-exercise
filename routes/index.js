@@ -12,6 +12,27 @@ router.get('/login',function(req,res,next){
 router.get('/reg',function(req,res,next){
   res.render('reg',{title:"Migo个人健身系统--注册"});
 });
+/*训练计划*/
+router.get('/plane',function(req,res,next){
+    res.render('plane',{title:"Migo个人健身系统--训练计划"});
+});
+/*训练计划详情*/
+router.get('/dplane',function(req,res,next){
+    res.render('dplane',{title:"Migo个人健身系统--训练计划"});
+});
+/*健身动态*/
+router.get('/dynamic',function(req,res,next){
+    res.render('dynamic',{title:"Migo个人健身系统--健身动态"});
+});
+/*健身日记*/
+router.get('/diary',function(req,res,next){
+    res.render('diary',{title:"Migo个人健身系统--健身日记"});
+});
+
+/*发表健身日记*/
+router.get('/publish',function(req,res,next){
+    res.render('publish',{title:"Migo个人健身系统--发表健身日记"});
+});
 /*个人中心*/
 router.get('/usercenter',function(req,res,next){
   res.render('usercenter',{title:"Migo个人健身系统--个人中心"});

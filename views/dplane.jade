@@ -1,0 +1,36 @@
+//
+   Created by jimliu on 2016/1/21.
+extends layout
+block content
+    .container-fluid
+        include nav.jade
+        .w19.ml-auto.mr-auto
+            .border-b-2.font16.l-ht50 全部训练计划
+            .border-b-1.l-ht50.pl30
+                span.font-9 器械 ：
+                span.ml30.bg-green-4d.pl10.pr10.pt4.pb4.cursor-p 全部
+            .border-b-1.l-ht50.pl30
+                span.font-9 部位 ：
+                span.ml30.bg-green-4d.pl10.pr10.pt4.pb4.cursor-p 全部
+            .border-b-1.l-ht50.pl30
+                span.font-9 难度 ：
+                span.ml30.bg-green-4d.pl10.pr10.pt4.pb4.cursor-p 全部
+            .row.mt10
+                -for(var i=0;i<10;i++){
+                    a(href="dplane")
+                        .col6.pl20.pr20.pt20
+                            div.box-s-2
+                                .pos-r
+                                    img(src="images/temp/jihua-title.jpg").per100
+                                .border-b.border-l.border-r
+                                    p.font14.tc  肩部训练计划
+                                        span.vicons.font-red &#xe65f;
+                                    p.font-6.tc
+                                        span.mr10 无器械
+                                        span.mr10 初级
+                                        span.mr10 23人正在训练
+                -}
+            .row.tc.mt20
+                .display-ib.bg-c.padding.cursor-p
+                    a 加载更多
+        include footer.jade

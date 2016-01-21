@@ -1,0 +1,41 @@
+//
+   Created by jimliu on 2016/1/17.
+extends layout
+block content
+    .container-fluid
+        include nav.jade
+        .w19.ml-auto.mr-auto
+            .row.mt20
+                .col16.pr30
+                    .border-t-1.bg-f6.l-ht40.pl30
+                        a(href="").font-c-4d 最新
+                        a(href="").ml30 热门
+                    -for(var i=0;i<5;i++){
+                        .row.ht160.mt20.pb10.border-b-1
+                            .col19.pr20
+                                a(href="#").font14 我的第一篇健身日记
+                                p.mt10.font-6.p-indent(style="line-height:30px;") 身日记我我的第一篇健身日记我的第一篇健身日记我的第一篇健身日记我的第一篇健身日记我的第一篇健身日记我的第一篇健身日记我的第一篇健身日记我的第一篇健身日记我的第一我的第一篇健身日记我的第一我的第一篇健身日记我的第一我的第一篇健身日记我的第一
+                                    a ......[查看原文]
+                                p.mt16
+                                    img(src="images/user.jpg" width="20" height="20").img-circle.vertical-a-m
+                                    span.ml20.vertical-a-m 刘星海
+                                    span.font-9.ml20.vertical-a-m 2015年10月11日 15:30
+                                    span.font-9.fr.ml5 点赞 26
+                                    span.vicons.font14.fr &#xe6e0;
+                            .col5
+                                img(src="images/temp/diary.jpg").per100
+
+
+                    -}
+                    .tc.mt20
+                        .display-ib.bg-c.padding.cursor-p
+                            a 加载更多
+                .col8
+                    a(href="publish")
+                        .l-ht40.bg-green-4d.tc.font16.font-white 写 日 记
+                    .ht50.mt20
+                        img(src="images/user.jpg" width="80" height="80").img-circle.fl.mr20
+                        p.font14.font-9.pt30 你在我记忆里
+
+
+        include footer.jade
