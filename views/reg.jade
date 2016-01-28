@@ -22,35 +22,37 @@ html
             .col5.pt10
               span.mr10.vertical-a-m :
               label(for="head-logo").bg-gray.tc.display-ib.pos-r.img-circle.w2.ht90.border.border-purple.vertical-a-m.ml70.mb20.cursor-p.overflow-h.hover-shadow
-                input(type="file" id="head-logo" accept="image/*").top-200.pos-a 
-                img(src="images/upload.png" width="90px" height="90px").z-index2.pos-a.top0.left0
+                  input(type="file" id="head-logo" accept="image/*").top-200.pos-a
+                  img(src="images/upload.png" width="90px" height="90px").z-index2.pos-a.top0.left0
           .row.font14.l-ht30.ml80
             .col2
               .justify 用户名
             .col5
               span.mr10 :
-              input.per90.border-special.pl5.ht24.form-control
+              input.per90.border-special.pl5.ht24.form-control(name="username")
           .row.font14.l-ht30.ml80
             .col2
               .justify 密码
             .col5
               span.mr10 :
-              input.per90.border-special.pl5.ht24.form-control(type="password")
+              input.per90.border-special.pl5.ht24.form-control(type="password" name="password")
           .row.font14.l-ht30.ml80
             .col2
               .justify 确认密码
             .col5
               span.mr10 :
-              input.per90.border-special.pl5.ht24.form-control(type="password")
-          .row.font14.l-ht30.ml80
-            .col2
-              .justify 验证码
-            .col5
-              span.mr10 :
-              input.per30.border-special.pl5.ht24.vertical-a-m.form-control
-              img(src="images/code.jpg").vertical-a-m.ml10
-              a(href="change_code").ml10.font-9.font12 换一张
+              input.per90.border-special.pl5.ht24.form-control(type="password" name="passwordAgain")
+              span.font-red.errorMsg.pl30
+          //.row.font14.l-ht30.ml80
+          //  .col2
+          //    .justify 验证码
+          //  .col5
+          //    span.mr10 :
+          //    input.per30.border-special.pl5.ht24.vertical-a-m.form-control
+          //    img(src="images/code.jpg").vertical-a-m.ml10
+          //    a(href="change_code").ml10.font-9.font12 换一张
           .row.font14.l-ht30
             .col7.tc.ht60
-              button.w3.ht30.cursor-p.font-white.btn.btn-purple  注册
-    
+              button.w3.ht30.cursor-p.font-white.btn.btn-purple.register  注册
+    script(src="javascripts/plugin/require.js" data-main="javascripts/plugin/main.js")
+    script(src="javascripts/model/reg.js")

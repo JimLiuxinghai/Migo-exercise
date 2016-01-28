@@ -3,15 +3,16 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Migo个人健身系统' });
+  var user = req.session.user;
+  if(user){
+      res.render('index', { title: 'Migo个人健身系统' ,user : user});
+  }
+  else{
+      res.render('index', { title: 'Migo个人健身系统'});
+  }
+
 });
-/*登录注册*/
-router.get('/login',function(req,res,next){
-  res.render('login',{title:"Migo个人健身系统--登录"});
-});
-router.get('/reg',function(req,res,next){
-  res.render('reg',{title:"Migo个人健身系统--注册"});
-});
+
 /*训练计划*/
 router.get('/plane',function(req,res,next){
     res.render('plane',{title:"Migo个人健身系统--训练计划"});

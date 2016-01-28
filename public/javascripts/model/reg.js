@@ -1,0 +1,70 @@
+/**
+ * Created by jim on 2016/1/23.
+ */
+require(['jquery','util','domReady','cookie'],function($,util,domReady){
+    domReady(function(){
+        //清除错误信息
+        var clearErr = function(){
+            $("input").focus(function(){
+                $(".errorMsg").html("");
+            })
+        }();
+        //展示图片
+        var displayImg = function(){
+            var file = document.getElementById('head-logo');
+            util.displayImg(file,$("label"));
+        }();
+        //表单验证
+        var validate = function(){
+            var errorMsg;
+            if($("input").val()==""){
+                return errorMsg = "请将注册信息填写完整。"
+            }
+            else if($("input[name='password']").val() !=$("input[name='passwordAgain']").val()){
+                return errorMsg = "请保证两次密码输入一致。"
+            }
+
+        }
+        //注册
+        var register = function(){
+            $(".register").click(function(){
+                var errorMsg = validate();
+                if(!errorMsg){
+                    // //上传图片
+                    // var uploadImg = new FormData($("#frmUploadFile")[0]);
+                    // $.ajax({
+                    //     url: '/uploadUser',
+                    //     type: 'POST',
+                    //     data: uploadImg,
+                    //     async: false,
+                    //     cache: false,
+                    //     contentType: false,
+                    //     processData: false,
+                    //     success: function(data){
+
+                    //     }
+                    // });
+                    //注册信息
+                    var regData = {
+                        username : $("input[name='username']").val(),
+                        password : $("input[name='password']").val()
+                    };
+                    
+                     
+                    var data = util.getData('/reg',"POST",regData);
+                    if(data = "success"){
+                        $.cookie('user', $("input[name='username']").val());
+                        window.location.href = 'login';
+                    }
+                    else{
+                        $(".errorMsg").html(data);
+                    }
+
+                }
+                else{
+                    $(".errorMsg").html(errorMsg);
+                }
+            })
+        }()
+    })
+})

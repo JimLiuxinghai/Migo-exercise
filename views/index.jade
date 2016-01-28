@@ -7,9 +7,9 @@ block content
       -if(!user)
         .ht500.pos-r.w-1000.ml-auto.mr-auto.overflow-h
           img(src="images/index1.fw.png").carousel
-          span.pos-a.display-ib.w-40.ht80.left0.bg-t-0.top168.cursor-p.tc.l-ht80
+          span.pos-a.display-ib.w-40.ht80.left0.bg-t-0.top168.cursor-p.tc.l-ht80.prev
             i.vicons.font30.font-white &#xe61e;
-          span.pos-a.display-ib.w-40.ht80.right0.bg-t-0.top168.cursor-p.tc.l-ht80
+          span.pos-a.display-ib.w-40.ht80.right0.bg-t-0.top168.cursor-p.tc.l-ht80.next
             i.vicons.font30.font-white &#xe612;
       -else
         .w-1000.ml-auto.mr-auto.ht500.kChart.overflow-h
@@ -100,3 +100,5 @@ block content
           -}
 
     include footer.jade
+    script(src="javascripts/plugin/require.js" data-main="javascripts/plugin/main.js")
+    script(src="javascripts/model/index.js")
