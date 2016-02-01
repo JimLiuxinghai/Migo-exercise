@@ -11,7 +11,7 @@ var connect = require('connect');
 var SessionStore = require("session-mongoose")(connect);
 var store = new SessionStore({
     url:"mongodb://localhost/Migo/session",
-    interval: 6000000
+    interval: 60000000000
 });
 var app = express();
 
@@ -23,13 +23,13 @@ app.set('view engine', 'jade');
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false ,'limit':'10000000kb'}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: 'jimliu',
     store: store,
-    cookie:{maxAge:60*1000} //expire session in 60 seconds
+    cookie:{maxAge:60*100000} //expire session in 60 seconds
 }));
 
 //路由
@@ -40,7 +40,8 @@ app.get("/logout",users);
 app.post('/login',users);
 app.post("/reg",users);
 app.post("/uploadUser",users);
-
+/*首页路由 */
+app.post('/chart',routes);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

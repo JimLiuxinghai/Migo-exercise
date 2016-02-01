@@ -42,7 +42,8 @@ var  util =
             var reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = function(e){
-                result.html('<img class="per100" id="imgsrc" src="'+this.result+'" alt=""/>');
+                $("#img-src").val(this.result);
+                result.find("img").attr("src",this.result);
             }
         }
     },

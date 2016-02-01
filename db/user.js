@@ -6,7 +6,6 @@ db.on('error', console.error);
 db.once('open', function() {
 	console.log('连接成功')
 });
-exports.mongoDB = db;
 var Schema1 = mongoose.Schema;
 var userSchema = new Schema1({
 	name : String,

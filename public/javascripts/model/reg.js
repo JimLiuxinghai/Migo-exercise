@@ -30,27 +30,14 @@ require(['jquery','util','domReady','cookie'],function($,util,domReady){
             $(".register").click(function(){
                 var errorMsg = validate();
                 if(!errorMsg){
-                    // //上传图片
-                    // var uploadImg = new FormData($("#frmUploadFile")[0]);
-                    // $.ajax({
-                    //     url: '/uploadUser',
-                    //     type: 'POST',
-                    //     data: uploadImg,
-                    //     async: false,
-                    //     cache: false,
-                    //     contentType: false,
-                    //     processData: false,
-                    //     success: function(data){
-
-                    //     }
-                    // });
+                    debugger;
+                    console.log($("#img-src").val().replace(/^data:image\/\w+;base64,/, ""))
                     //注册信息
                     var regData = {
                         username : $("input[name='username']").val(),
-                        password : $("input[name='password']").val()
+                        password : $("input[name='password']").val(),
+                        userlogo : $("#img-src").val().replace(/^data:image\/\w+;base64,/, "")
                     };
-                    
-                     
                     var data = util.getData('/reg',"POST",regData);
                     if(data = "success"){
                         $.cookie('user', $("input[name='username']").val());

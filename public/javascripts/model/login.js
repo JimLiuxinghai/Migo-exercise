@@ -10,7 +10,7 @@ require(['jquery','util','domReady','cookie'],function($,util,domReady){
         var hasReg = function(){
             if($.cookie("user")){
                 $('input[name="username"]').val($.cookie("user"));
-                $.cookie('user',{ expires: 7})
+                $.cookie('user',{ expires: -1})
             }
         }();
         //表单验证

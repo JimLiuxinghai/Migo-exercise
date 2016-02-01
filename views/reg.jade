@@ -16,7 +16,7 @@ html
               p.font-white.tc.font16.mt4 Migo健身
               p.line.border-b-1.w-35.transform45.mb0.pos-a.bottom40.right10
               p.mb0.pos-a.bottom40.right10.font16.font-white.top84 注册
-          .row.font14.l-ht30.mt110.ml80
+          .row.font14.l-ht30.mt110.ml80.pos-r
             .col2.mt52
               .justify 头像
             .col5.pt10
@@ -24,6 +24,7 @@ html
               label(for="head-logo").bg-gray.tc.display-ib.pos-r.img-circle.w2.ht90.border.border-purple.vertical-a-m.ml70.mb20.cursor-p.overflow-h.hover-shadow
                   input(type="file" id="head-logo" accept="image/*").top-200.pos-a
                   img(src="images/upload.png" width="90px" height="90px").z-index2.pos-a.top0.left0
+                  input(type="hidden")#img-src
           .row.font14.l-ht30.ml80
             .col2
               .justify 用户名
