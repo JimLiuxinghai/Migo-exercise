@@ -37,6 +37,7 @@ require(['jquery','util','domReady','cookie'],function($,util,domReady){
                     success : function(data){
                         console.log(data);
                         if(data == 'success'){
+                            $.cookie('username',userinfo.username);
                             window.location.href = '/';
                         }
                         else{

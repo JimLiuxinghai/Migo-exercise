@@ -24,7 +24,7 @@ block content
           //提交训练人数
           .border.padding.radius5.box-s-4d
             .overflow-h
-              span.fl.font30.font-c-4d 56
+              span.fl.font30.font-c-4d #{indexUser.userTrianNum}
               span.fr.vicons.font26.font-c-4d &#xe79a;
             .mt6
               span.font14 提交训练人数
@@ -61,7 +61,7 @@ block content
           //会员数
           .border.padding.radius5.box-s-58
               .overflow-h
-                  span.fl.font30.font-c-purple 88
+                  span.fl.font30.font-c-purple #{indexUser.userNum}
                   span.fr.vicons.font26.font-c-purple &#xe79a;
               .mt6
                   span.font14 现有会员数
@@ -107,4 +107,4 @@ block content
 
     include footer.jade
     script(src="javascripts/plugin/require.js" data-main="javascripts/plugin/main.js")
-    script(src="javascripts/model/index.js")
+    script(src="javascripts/model/index.js" defer="defer")

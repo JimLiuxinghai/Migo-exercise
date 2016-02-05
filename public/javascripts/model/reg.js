@@ -12,7 +12,7 @@ require(['jquery','util','domReady','cookie'],function($,util,domReady){
         //展示图片
         var displayImg = function(){
             var file = document.getElementById('head-logo');
-            util.displayImg(file,$("label"));
+            util.displayImg(file,$("label"),$("#img-src"));
         }();
         //表单验证
         var validate = function(){
@@ -30,8 +30,7 @@ require(['jquery','util','domReady','cookie'],function($,util,domReady){
             $(".register").click(function(){
                 var errorMsg = validate();
                 if(!errorMsg){
-                    debugger;
-                    console.log($("#img-src").val().replace(/^data:image\/\w+;base64,/, ""))
+                    //console.log($("#img-src").val().replace(/^data:image\/\w+;base64,/, ""))
                     //注册信息
                     var regData = {
                         username : $("input[name='username']").val(),

@@ -26,7 +26,7 @@ var  util =
         });
     },
     //表单上传显示
-    displayImg : function(file,result){
+    displayImg : function(file,result,hidden){
         if(typeof FileReader==='undefined'){
             //result.innerHTML = "抱歉，你的浏览器不支持 FileReader";
             input.setAttribute('disabled','disabled');
@@ -42,7 +42,7 @@ var  util =
             var reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = function(e){
-                $("#img-src").val(this.result);
+                hidden.val(this.result);
                 result.find("img").attr("src",this.result);
             }
         }
@@ -103,5 +103,10 @@ var  util =
 
         })
         return resdata;
+    },
+    getScreen : function(container){
+        var scHeight = $(window).height();
+        var minHeight = scHeight - 186 + 'px';
+        container.css("min-height",minHeight);
     }
 }

@@ -1,16 +1,47 @@
 var express = require('express');
 var flash = require('../util/flash.js');
+var User = require('../db/user');
+var hash = require('../util/pass').hash;
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+
   var user = req.session.user;
-  if(user){
-      res.render('index', { title: 'Migo个人健身系统' ,user : user});
-  }
-  else{
-      res.render('index', { title: 'Migo个人健身系统'});
-  }
+  //获取总人数
+  User.find(function(err,content){
+      var indexUser = {
+          userNum : null,
+          userTrianNum : 0,
+          train : null
+      };
+      indexUser.userNum = content.length;
+      //获取提交训练人数
+      User.find(function(err,content){
+          for(var i = 0; i < content.length; i ++){
+              console.log(content[i].mytrain[0]);
+              if(content[i].mytrain[0] != undefined){
+                  indexUser.userTrianNum += 1;
+              }
+          }
+          if(user){
+              User.findOne({name : user},function(err,content){
+                  var userlogo = content.userlogo;
+                  var navuser = {
+                      user : user,
+                      userlogo : 'images/user/'+userlogo
+                  }
+                  res.render('index', { title: 'Migo个人健身系统' ,user : navuser,indexUser:indexUser});
+              });
+
+          }
+          else{
+              res.render('index', { title: 'Migo个人健身系统',indexUser:indexUser});
+          }
+      });
+
+  })
+
 
 });
 /*首页表格 */
@@ -34,7 +65,7 @@ router.post('/chart',function(req,res,next){
     else if(type == "month"){
         x = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
         series = {
-            name : "周健身数据",
+            name : "月健身数据",
             data: [499, 715, 1064, 300, 200, 358]
         };
     }

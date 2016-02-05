@@ -5,26 +5,26 @@ extends layout
 block content
     .container-fluid
         include nav.jade
-        .w19.ml-auto.mr-auto
+        .w19.ml-auto.mr-auto.artical
             .row.mt20
                 .col6.ht600
-                    ul.list-unstyled
-                        li.ht60.border-b.padding.pos-r.l-ht40.font14.cursor-p.pl50.font-h-4d.border-l-p
+                    ul.list-unstyled.left-nav
+                        li(data="data").ht60.border-b.padding.pos-r.l-ht40.font14.cursor-p.pl50.font-h-4d.border-l-p
                             span.vicons.mr10 &#xe657;
                             span 个人资料
-                        li.ht60.border-b.padding.pos-r.l-ht40.font14.cursor-p.pl50.font-h-4d
+                        li(data="head").ht60.border-b.padding.pos-r.l-ht40.font14.cursor-p.pl50.font-h-4d
                             span.vicons.mr10 &#xe6d9;
                             span.mr10 头像设置
                         //li.ht60.border-b.padding.pos-r.l-ht40.font14.cursor-p.pl50.font-h-4d
                         //    span.vicons.mr10 &#xe645;
                         //    span.mr10 邮箱设置
-                        li.ht60.border-b.padding.pos-r.l-ht40.font14.cursor-p.pl50.font-h-4d
+                        li(data="pass").ht60.border-b.padding.pos-r.l-ht40.font14.cursor-p.pl50.font-h-4d
                             span.vicons.mr10 &#xe645;
                             span.mr10 修改密码
                 //个人资料
-                .col18.pl30.display-n
+                .col18.pl30.data
                     .row.mt30.font14
-                        .col2.offset6
+                        .col2.offset3
                             .justify.pt6 性别
                         .col8.pt6
                             span.mr10  :
@@ -33,31 +33,34 @@ block content
                             input(type="radio" value="woman" name="sex").vertical-a-m.ml10
                             span.ml10 女
                     .row.mt30.font14
-                        .col2.offset6
+                        .col2.offset3
                             .justify.pt6 年龄
                         .col8
                             span.mr10  :
-                            input.per90.border-special.pl5.ht24.form-control
+                            input.per90.border-special.pl5.ht24.form-control(name="age")
                     .row.mt30.font14
-                        .col2.offset6
+                        .col2.offset3
                             .justify.pt6 身高
                         .col8
                             span.mr10  :
-                            input.per90.border-special.pl5.ht24.form-control
+                            input.per90.border-special.pl5.ht24.form-control(name="height" placeholder="cm")
                     .row.mt30.font14
-                        .col2.offset6
+                        .col2.offset3
                             .justify.pt6 体重
                         .col8
                             span.mr10  :
-                            input.per90.border-special.pl5.ht24.form-control
+                            input.per90.border-special.pl5.ht24.form-control(name="weight" placeholder="kg")
                     .row.mt30.font14
-                        .col2.offset6
+                        .col2.offset3
                             .justify.pt16 个性签名
                         .col8
                             span.mr10.vertical-a-m  :
-                            textarea.per90.border-special.pl5.ht24.form-control.vertical-a-m
+                            textarea.per90.border-special.pl5.ht24.form-control.vertical-a-m(name="signature")
+                    .row.mt30
+                        .col8.offset5.tc
+                            button.ht30.font-white.btn.btn-purple.saveData  保存设置
                 //头像设置
-                .col18.pl30.display-n
+                .col18.pl30.head.display-n
                     .row
                         .col6.offset3.ht190.border.overflow-h
                             img(src="images/user.jpg").per100
@@ -67,7 +70,7 @@ block content
                             span.display-b.per100.tc.bg-green-4d.font-white.cursor-p.per100.l-ht30 上传图片
 
                 //修改密码
-                .col18.pl30
+                .col18.pl30.pass.display-n
                     .row.mt30
                         .col2.offset4
                             .justify.pt10 当前密码
@@ -86,4 +89,8 @@ block content
                         .col10
                             span.mr10.ml10  :
                             input.per80.border-special.pl5.ht30.form-control
+                    .row.mt30
+                        
         include footer.jade
+        script(src="javascripts/plugin/require.js" data-main="javascripts/plugin/main.js")
+        script(src="javascripts/model/setprofile.js")

@@ -3,6 +3,7 @@ var express = require('express');
 var User = require('../db/user');
 var router = express.Router();
 var fs = require('fs');
+var hash = require('../util/pass').hash;
 /*登录注册*/
 router.get('/login',function(req,res,next){
     res.render('login',{title:"Migo个人健身系统--登录"});
