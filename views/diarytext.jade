@@ -1,0 +1,31 @@
+//
+   Created by jimliu on 2016/1/17.
+extends layout
+block content
+    .container-fluid
+        include nav.jade
+        .w19.ml-auto.mr-auto.artical
+            .row.mt20
+                .col2.pos-r
+                    a(href="diary")
+                        .bg-9.font-white.img-circle.vicons.ht40.pos-f.w-40.tc.l-ht40.font20.cursor-p.back &#xe61e;
+                .col14.pr30
+                    .tc.font16.title asf
+                    .font-6.tr.name adsf
+                    .p-indent.mt30.l-ht30.pl50.text adsf
+                    .font-6.tr.mt10.time adf
+                .col6.offset2
+                    -if(user)
+                        a(href="publish")
+                            .l-ht40.bg-green-4d.tc.font16.font-white 写 日 记
+                        .ht50.mt20
+                            img(src="#{user.userlogo}" width="80" height="80").img-circle.fl.mr20
+                            p.font14.font-9.pt30 #{user.user}
+                    -else
+                        a(href="login")
+                            .l-ht40.bg-green-4d.tc.font16.font-white 写 日 记
+
+
+        include footer.jade
+        script(src="javascripts/plugin/require.js" data-main="javascripts/plugin/main.js")
+        script(src="javascripts/model/diarytext.js")

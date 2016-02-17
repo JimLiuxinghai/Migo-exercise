@@ -39,6 +39,7 @@ router.post('/reg',function(req,res,next){
     var user = req.body.username;
     var pass = req.body.password;
     var userhead = req.body.userlogo;
+    userhead = userhead.replace(/^data:image\/\w+;base64,/, "");
     var dataBuffer = new Buffer(userhead, 'base64');
     var filepath = 'public/images/user/'+user+'.png';
     fs.writeFile(filepath, dataBuffer, function(err) {

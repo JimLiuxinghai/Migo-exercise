@@ -1,7 +1,7 @@
 /**
  * Created by jimliu on 2016/1/22.
  */
-require(['jquery','util','domReady','highcharts'],function($,util,domReady,highcharts){
+require(['jquery','util','highcharts','domReady'],function($,util,highcharts,domReady){
     domReady(function(){
         //渲染图表
         var complateCharts = function(data){

@@ -42,7 +42,7 @@ var  util =
             var reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = function(e){
-                hidden.val(this.result);
+                hidden.val(this.result.replace(/^data:image\/\w+;base64,/, ""));
                 result.find("img").attr("src",this.result);
             }
         }
@@ -86,6 +86,7 @@ var  util =
         }
     },
     getData : function(url,type,data){
+
         var resdata;
         $.ajax({
             url : url,

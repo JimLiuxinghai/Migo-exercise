@@ -10,10 +10,10 @@ require.config(
             "cookie" : "cookie.js",
             "domReady" : 'domReady',
             "highcharts" : "highcharts",
-            "simditor" : "simditor/simditor",
-            "module" : "simditor/module",
-            "hotkeys" : "simditor/hotkeys",
-            "uploader" : "simditor/uploader"
+            "simditor" : "simditor",
+            "module" : "module",
+            "hotkeys" : "hotkeys",
+            "uploader" : "uploader"
         },
         shim : {
             "jquery": {
@@ -27,7 +27,8 @@ require.config(
                 deps : ['jquery'],
                 exports :"cookie"
             },
-            "highcharts" : ['jquery']
+            "highcharts" : ['jquery'],
+            'simditor' : ['jquery']
         }
     }
 )

@@ -56,18 +56,21 @@ block content
                         .col8
                             span.mr10.vertical-a-m  :
                             textarea.per90.border-special.pl5.ht24.form-control.vertical-a-m(name="signature")
+                    .row.mt10
+                        .col10.offset8.errorMsg.font-red.display-n 错误信息
                     .row.mt30
                         .col8.offset5.tc
                             button.ht30.font-white.btn.btn-purple.saveData  保存设置
                 //头像设置
                 .col18.pl30.head.display-n
                     .row
-                        .col6.offset3.ht190.border.overflow-h
+                        .col6.offset3.ht190.border.overflow-h#user-logo
                             img(src="images/user.jpg").per100
                         .col4.pl30.pt50
+                            input(type="hidden")#head-logo
                             label(for="choosePic").pos-r.display-b.per100.l-ht30.bg-main.tc.font-white.cursor-p 选择图片
                                 input(type="file")#choosePic.pos-a.top-200
-                            span.display-b.per100.tc.bg-green-4d.font-white.cursor-p.per100.l-ht30 上传图片
+                            span.display-b.per100.tc.bg-green-4d.font-white.cursor-p.per100.l-ht30.upload 上传图片
 
                 //修改密码
                 .col18.pl30.pass.display-n
@@ -76,20 +79,24 @@ block content
                             .justify.pt10 当前密码
                         .col10
                             span.mr10.ml10  :
-                            input.per80.border-special.pl5.ht30.form-control
+                            input.per80.border-special.pl5.ht30.form-control.nowPass
                     .row.mt30
                         .col2.offset4
                             .justify.pt10 新密码
                         .col10
                             span.mr10.ml10  :
-                            input.per80.border-special.pl5.ht30.form-control
+                            input.per80.border-special.pl5.ht30.form-control.newPass
                     .row.mt30
                         .col2.offset4
                             .justify.pt10 确认新密码
                         .col10
                             span.mr10.ml10  :
-                            input.per80.border-special.pl5.ht30.form-control
+                            input.per80.border-special.pl5.ht30.form-control.cnewPass
+                    .row
+                        .col10.offset8.errorMsg.font-red.display-n 错误信息
                     .row.mt30
+                        .col8.offset5.tc
+                            button.ht30.font-white.btn.btn-purple.update  修改密码
                         
         include footer.jade
         script(src="javascripts/plugin/require.js" data-main="javascripts/plugin/main.js")

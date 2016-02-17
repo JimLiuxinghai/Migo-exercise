@@ -4,27 +4,33 @@ extends layout
 block content
     .container-fluid
         include nav.jade
-        .w19.ml-auto.mr-auto
+        .w19.ml-auto.mr-auto.artical
             .row.mt20
                 .col16.pr50
                    .l-ht50.font16.border-b-1 发表日记
                    .row.pl10.mt30
                         .col2.font14.pt10 标题 :
                         .col22
-                            input(type="text").form-control
+                            input(type="text" placeholder="请输入标题").form-control.title
                    .row.pl10.mt20
                         .col2.font14.pt10 封面 :
                         .col22
                             label(for="uphead").fl.font14.pos-r.overflow-h.l-ht30.pl40.pr40.tc.bg-green-4d.font-white.cursor-p 上 传 封 面
                                 input(type="file")#uphead.pos-a.top-200
-                            span.fl.font-9.pt10.ml30 封面为500*500像素的图片
+                   .row
+                        input(type="hidden")#img-src
+                        .col22.offset2.result
+                            img(width='150' height='150' src="images/uploadtitle.jpg").ml10
                    .row.pl10.mt20
                         .col2.font14.pt10 内容 :
                         .col22
+                            textarea(placeholder="请在这里输入日记内容" rows="14")#editor.l-ht30.font14.form-control.p-indent
+                   .row
+                        .col22.offset2.errorMsg.font-red.pl10.mt10.display-n 错误信息
                    .row.pl10.mt20
                        .col2.font14.pt10
                        .col22
-                            .l-ht30.font-white.font14.w-110.bg-green-4d.tc.cursor-p 提交
+                            .l-ht30.font-white.font14.w-110.bg-green-4d.tc.cursor-p.submit 提交
                 .col8.ht600.pl30
                     .l-ht50.font16.border-b-1 日记须知
                     .font-9.mt30
@@ -32,3 +38,8 @@ block content
                         p 2.审核时间：您发布的文章均需经工作人员审核；审核通过后可在健身日记栏目中展示，审核进程请在“我的健身日记”栏目查看。
 
         include footer.jade
+        //遮罩层
+        .per100.pos-f.ht2000.bg-rgba6.top0.tc.display-n.mask
+            .bg-white.w-270.display-ib.radius10.pt50.pb50.mt100.font20 发表成功，等待审核！
+        script(src="javascripts/plugin/require.js" data-main="javascripts/plugin/main.js")
+        script(src="javascripts/model/publish.js")

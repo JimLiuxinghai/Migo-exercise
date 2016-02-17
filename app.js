@@ -4,10 +4,13 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var routes = require('./routes/index');
-var users = require('./routes/users');
 var session = require('express-session');
 var connect = require('connect');
+var routes = require('./routes/index');
+var users = require('./routes/users');
+var dynamic = require('./routes/dynamic');
+var diary = require('./routes/diary');
+var setprofile = require('./routes/setprofile');
 var SessionStore = require("session-mongoose")(connect);
 var store = new SessionStore({
     url:"mongodb://localhost/Migo/session",
@@ -42,6 +45,18 @@ app.post("/reg",users);
 app.post("/uploadUser",users);
 /*首页路由 */
 app.post('/chart',routes);
+/*动态*/
+app.get('/dynamic',dynamic);
+app.post('/pdynamic',dynamic);
+/*健身日记*/
+app.get("/diary",diary);
+app.get("/diarytext",diary);
+app.post("/diaryid",diary);
+app.get("/publish",diary);
+app.post('/dpub',diary);
+/*设置资料*/
+app.get('/setprofile',setprofile);
+app.post('/saveData',setprofile);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

@@ -35,7 +35,7 @@ require(['jquery','util','domReady','cookie'],function($,util,domReady){
                     var regData = {
                         username : $("input[name='username']").val(),
                         password : $("input[name='password']").val(),
-                        userlogo : $("#img-src").val().replace(/^data:image\/\w+;base64,/, "")
+                        userlogo : $("#img-src").val()
                     };
                     var data = util.getData('/reg',"POST",regData);
                     if(data = "success"){

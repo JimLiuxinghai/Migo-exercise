@@ -15,6 +15,9 @@ require(['jquery','util','domReady'],function($,util,domReady){
                 $(".col18").hide();
                 $("."+data).fadeIn();
             });
+            //添加表单信息
+
+
         }();
         //清除错误信息
         var clearErr = function(){
@@ -22,9 +25,8 @@ require(['jquery','util','domReady'],function($,util,domReady){
                 $(".errorMsg").html("");
             })
         }();
-        //验证表单
+        //验证个人资料表单
         function validate(){
-            debugger;
             var errorMsg;
             var age = $("input[name='age']").val();
             var height = $("input[name='height']").val();
@@ -39,11 +41,11 @@ require(['jquery','util','domReady'],function($,util,domReady){
                 var errorMsg = validate();
                 if(!errorMsg){
                     var data = {
-                        sex : $("input[name='age']").val(),
+                        sex : $("input[name='sex']").val(),
                         age : $("input[name='age']").val(),
                         height : $("input[name='height']").val(),
                         weight : $("input[name='weight']").val(),
-                        signature : $("input[name='signature']").val()
+                        signature : $("textarea[name='signature']").val()
                     }
                     var returnData = util.getData('/saveData',"POST",data);
                     if(returnData.status.code == '200'){
@@ -59,5 +61,49 @@ require(['jquery','util','domReady'],function($,util,domReady){
             })
 
         }();
+        //展示上传图片
+        var logo = function(){
+            var displayImg = function(){
+                var file = document.getElementById('choosePic');
+                util.displayImg(file,$("#user-logo"),$("#head-logo"));
+            }();
+            $(".upload").click(function(){
+                if($("#head-logo").val() != ""){
+                    var uploadData = util.getData('/updateLogo','POST',$("#head-logo").val());
+                    //成功后的执行函数
+                }
+            })
+        }();
+        //修改密码
+        var updatePass = function(){
+            $(".update").click(function(){
+                var passData = util.getData('/vPass','POST',$(".nowPass").val());
+                if(passData.code == '200'){
+                    if($(".newPass").val() != (".cnewPass$").val()){
+                        $(".errorMsg").html("两次密码输入请一致。");
+                        $(".errorMsg").removeClass('display-n');
+                        return false;
+
+                    }
+                    else{
+                        var newPassData = util.getData('/updatePass',"POST",$(".cnewPass$").val());
+                        if(newPassData.status.code == "200"){
+                            //修改成功
+                        }
+                        else{
+                            //修改不成功
+
+                        }
+
+                    }
+                }
+                else{
+                    $(".errorMsg").html("当前密码输入不正确。");
+                    $(".errorMsg").removeClass('display-n');
+                    return false;
+                }
+            })
+        }();
+
     })
 })

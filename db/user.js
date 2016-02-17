@@ -5,9 +5,9 @@ var userSchema = new Schema1({
 	pass : String,
     userlogo : String,
     sex : String,
-    age : Number,
-    height : Number,
-    wight : Number,
+    age : String,
+    height : String,
+    weight : String,
     BMI : String,
     signature : String,
 	mytrain:[]

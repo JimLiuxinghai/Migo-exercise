@@ -9,8 +9,7 @@ require(['jquery','util','domReady','cookie'],function($,util,domReady){
         //是否刚刚注册
         var hasReg = function(){
             if($.cookie("user")){
-                $('input[name="username"]').val($.cookie("user"));
-                $.cookie('user',{ expires: -1})
+                $('input[name="username"]').val($.cookie("username"));
             }
         }();
         //表单验证
