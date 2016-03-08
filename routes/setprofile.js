@@ -45,4 +45,12 @@ router.post('/saveData',function(req,res,next){
 //router.post('/updateLogo',function(req,res,next){
 //
 //})
+//修改密码
+router.post('/vPass',function(req,res,next){
+    var user = req.session.user;
+    var pass = req.body.nowpass;
+    User.findOne({name:user},function(error,content){
+        
+    })
+})
 module.exports = router;

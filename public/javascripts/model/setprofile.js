@@ -69,7 +69,7 @@ require(['jquery','util','domReady'],function($,util,domReady){
             }();
             $(".upload").click(function(){
                 if($("#head-logo").val() != ""){
-                    var uploadData = util.getData('/updateLogo','POST',$("#head-logo").val());
+                    var uploadData = util.getData('/updateLogo','POST',{head : $("#head-logo").val()});
                     //成功后的执行函数
                 }
             })
@@ -77,9 +77,9 @@ require(['jquery','util','domReady'],function($,util,domReady){
         //修改密码
         var updatePass = function(){
             $(".update").click(function(){
-                var passData = util.getData('/vPass','POST',$(".nowPass").val());
+                var passData = util.getData('/vPass','POST',{nowpass:$(".nowPass").val()});
                 if(passData.code == '200'){
-                    if($(".newPass").val() != (".cnewPass$").val()){
+                    if($(".newPass").val() != $(".cnewPass").val()){
                         $(".errorMsg").html("两次密码输入请一致。");
                         $(".errorMsg").removeClass('display-n');
                         return false;

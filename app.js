@@ -57,6 +57,7 @@ app.post('/dpub',diary);
 /*设置资料*/
 app.get('/setprofile',setprofile);
 app.post('/saveData',setprofile);
+//app.post('/vPass',setprofile);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
