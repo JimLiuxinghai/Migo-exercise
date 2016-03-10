@@ -78,7 +78,7 @@ require(['jquery','util','domReady'],function($,util,domReady){
         var updatePass = function(){
             $(".update").click(function(){
                 var passData = util.getData('/vPass','POST',{nowpass:$(".nowPass").val()});
-                if(passData.code == '200'){
+                if(passData.status.code == '200'){
                     if($(".newPass").val() != $(".cnewPass").val()){
                         $(".errorMsg").html("两次密码输入请一致。");
                         $(".errorMsg").removeClass('display-n');

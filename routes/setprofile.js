@@ -50,7 +50,31 @@ router.post('/vPass',function(req,res,next){
     var user = req.session.user;
     var pass = req.body.nowpass;
     User.findOne({name:user},function(error,content){
-        
+        if(err){
+            res.send(flash(500,'fail',{
+                msg : "保存失败"
+            }));
+        }
+        else{
+            if(content.pass == pass){
+                res.send(flash(200,'success',{
+                    msg : "成功"
+                }));
+            }
+            else{
+                res.send(flash(500,'success',{
+                    msg : "原密码错误"
+                }));
+            }
+        }
     })
+})
+router.post('/updatePass',function(req,res,next){
+    var user = req.session.user;
+    var pass = req.body.nowpass;
+    User.update({name : user, pass : pass},function (err,content){
+        console.log(content)
+    })
+
 })
 module.exports = router;
