@@ -14,8 +14,11 @@ require(['jquery','util','domReady'],function($,util,domReady){
                 var data = $(this).attr("data");
                 $(".col18").hide();
                 $("."+data).fadeIn();
+                $(".errorMsg").html("");
+                $(".errorMsg").addClass("display-n");
             });
             //添加表单信息
+
 
 
         }();
@@ -52,11 +55,13 @@ require(['jquery','util','domReady'],function($,util,domReady){
                         window.location.href = "/usercenter";
                     }
                     else{
-                        $(".errorMsg").html(returnData.status.message);
+                        $(".errorMsg").html(returnData.status.msg);
+                        $(".errorMsg").removeClass('display-n');
                     }
                 }
                 else{
                     $(".errorMsg").html(errorMsg);
+                    $(".errorMsg").removeClass('display-n');
                 }
             })
 
@@ -70,7 +75,16 @@ require(['jquery','util','domReady'],function($,util,domReady){
             $(".upload").click(function(){
                 if($("#head-logo").val() != ""){
                     var uploadData = util.getData('/updateLogo','POST',{head : $("#head-logo").val()});
-                    //成功后的执行函数
+                    if(uploadData.status.code == '200'){
+                        $("#user-logo").find('img').attr('src',uploadData.status.imgUrl)
+
+                    }
+                    else{
+                        debugger;
+                        $(".errorMsg").html(uploadData.status.msg);
+                        $(".errorMsg").removeClass('display-n');
+                    }
+
                 }
             })
         }();
@@ -86,12 +100,12 @@ require(['jquery','util','domReady'],function($,util,domReady){
 
                     }
                     else{
-                        var newPassData = util.getData('/updatePass',"POST",$(".cnewPass$").val());
+                        var newPassData = util.getData('/updatePass',"POST",{nowpass :$(".cnewPass").val()});
                         if(newPassData.status.code == "200"){
-                            //修改成功
+                            window.location.href='usercenter'
                         }
                         else{
-                            //修改不成功
+                            $(".errorMsg").html(newPassData.status.msg);
 
                         }
 

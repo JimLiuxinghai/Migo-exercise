@@ -1,8 +1,9 @@
 /**
  * Created by jimliu on 2016/1/22.
  */
-require(['jquery','util','highcharts','domReady'],function($,util,highcharts,domReady){
+require(['jquery','highcharts','util','domReady'],function($,highcharts,util,domReady){
     domReady(function(){
+        console.log($('.kChart'))
         //渲染图表
         var complateCharts = function(data){
             //highcharts配置文件
@@ -41,6 +42,7 @@ require(['jquery','util','highcharts','domReady'],function($,util,highcharts,dom
             //图表展示
             console.log(highOption);
             $('.kChart').highcharts(highOption);
+
 
         };
         //加载页面表格

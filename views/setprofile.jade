@@ -65,12 +65,15 @@ block content
                 .col18.pl30.head.display-n
                     .row
                         .col6.offset3.ht190.border.overflow-h#user-logo
-                            img(src="images/user.jpg").per100
+                            img(src="#{user.userlogo}").per100
+
                         .col4.pl30.pt50
                             input(type="hidden")#head-logo
                             label(for="choosePic").pos-r.display-b.per100.l-ht30.bg-main.tc.font-white.cursor-p 选择图片
-                                input(type="file")#choosePic.pos-a.top-200
+                                input(type="file" accept='image/*')#choosePic.pos-a.top-200
                             span.display-b.per100.tc.bg-green-4d.font-white.cursor-p.per100.l-ht30.upload 上传图片
+                    .row
+                        .offset3.col10.mt20.errorMsg.font-red.display-n 错误信息
 
                 //修改密码
                 .col18.pl30.pass.display-n

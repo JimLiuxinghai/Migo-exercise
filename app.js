@@ -58,6 +58,8 @@ app.post('/dpub',diary);
 app.get('/setprofile',setprofile);
 app.post('/saveData',setprofile);
 app.post('/vPass',setprofile);
+app.post('/updatePass',setprofile);
+app.post('/updateLogo',setprofile);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

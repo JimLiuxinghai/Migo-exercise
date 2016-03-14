@@ -27,7 +27,10 @@ require.config(
                 deps : ['jquery'],
                 exports :"cookie"
             },
-            "highcharts" : ['jquery'],
+            'highcharts': {
+                exports: "Highcharts",
+                deps: ["jquery"]
+            },
             'simditor' : ['jquery']
         }
     }
