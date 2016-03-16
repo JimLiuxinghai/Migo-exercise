@@ -9,6 +9,7 @@ var connect = require('connect');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var dynamic = require('./routes/dynamic');
+var usercenter = require('./routes/center');
 var diary = require('./routes/diary');
 var setprofile = require('./routes/setprofile');
 var SessionStore = require("session-mongoose")(connect);
@@ -60,6 +61,8 @@ app.post('/saveData',setprofile);
 app.post('/vPass',setprofile);
 app.post('/updatePass',setprofile);
 app.post('/updateLogo',setprofile);
+/*个人中心*/
+app.get('/usercenter',usercenter)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

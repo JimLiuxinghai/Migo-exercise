@@ -15,19 +15,7 @@ router.get('/setprofile',function(req,res,next){
     }
     if(user){
         res.render('setprofile', {title: "Migo个人健身系统--个人中心", user: navuser});
-        var dynamin = [];
-        Dynamic.find().sort({ 'time' : -1 }).exec(function(err,content) {
-            if (err) {
-                dynamin = [];
-            }
-            else {
-                for (var i = 0; i < content.length; i++) {
-                    content[i].newtime = moment(content[i].time).format("YYYY-MM-DD HH时mm分");
-                    dynamin.push(content[i]);
 
-                }
-            }
-        })
 
     }
     else{

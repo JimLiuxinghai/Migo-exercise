@@ -88,9 +88,4 @@ router.get('/train',function(req,res,next){
 });
 
 
-/*个人中心*/
-router.get('/usercenter',function(req,res,next){
-  res.render('usercenter',{title:"Migo个人健身系统--个人中心"});
-});
-
 module.exports = router;
