@@ -62,7 +62,8 @@ app.post('/vPass',setprofile);
 app.post('/updatePass',setprofile);
 app.post('/updateLogo',setprofile);
 /*个人中心*/
-app.get('/usercenter',usercenter)
+app.get('/usercenter',usercenter);
+app.post('/deletDiary',usercenter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

@@ -18,7 +18,7 @@ router.get('/usercenter',function(req,res,next){
         userlogo : 'images/user/'+user+'.png'
     }
 
-    Diary.find({state : '1'}).sort({ 'time' : -1 }).exec(function(err,content){
+    Diary.find({state : '1',username : user}).sort({ 'time' : -1 }).exec(function(err,content){
         if(err){
             res.send(flash(500,'fail',{
                 msg : "获取失败"
@@ -28,7 +28,7 @@ router.get('/usercenter',function(req,res,next){
             var diary = content;
             for(var i = 0; i < diary.length;i ++){
                 diary[i].newtime = moment(content[i].time).format("YYYY-MM-DD HH时mm分");
-                diary[i].text = diary[i].diaryText.substr(0,120);
+                diary[i].text = diary[i].diaryText.substr(0,80);
             }
             var dynamic = [];
             Dynamic.find().sort({ 'time' : -1 }).exec(function(err,content) {
@@ -53,5 +53,16 @@ router.get('/usercenter',function(req,res,next){
 
 
 });
+/*删除日记*/
+router.post('/deletDiary',function(req,res,next){
+    var id = req.body.diaryId;
+    console.log(id);
+    Diary.remove({_id : id},function(err,content){
+        console.log(content);
+        res.send(flash(200,'success',{
+            msg : "删除成功"
+        }));
+    })
+})
 
 module.exports = router;

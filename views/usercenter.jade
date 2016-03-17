@@ -50,10 +50,11 @@ block content
                 //健身动态
                 .col18.pl30.display-n.dynamic
                     .border-b-1.font16.l-ht30.ht40 我的健身动态
-                    -for(var dt in dynamic){
-                        .pt20.pb20.border-b #{dt.trend}
-                        .ml30 #{dt.newtime}
-                        span.vicons.font-red.fr.font20.cursor-p &#xe649;
+                    -for(var i = 0;i < dynamic.length; i++){
+                        .pt20.pb20.border-b #{dynamic[i].trend}
+                            span.vicons.font-red.fr.font20.cursor-p.ml10 &#xe649;
+                                input(type="hidden" value="#{dynamic[i].id}")
+                            .ml30.fr.pt4 #{dynamic[i].newtime}
                     -}
 
 
@@ -63,13 +64,17 @@ block content
                     .border-b-1.font16.l-ht30.ht40 我的健身日记
                     //日记列表
                     .row.mt10.diary-list
-                        -for(var i = 0;i < 4; i ++){
+                        -for(var i = 0;i < diaryData.length; i ++){
                             .col12.padding.mt10.pos-r.list-container
-                                .border.ht160.box-s-2
-                                    a(href="#").pos-a.display-ib.per100.ht150
-                                    p.font14.tc.pt10 我的第一篇日记
-                                    p.p-indent.padding.font-6 这是我的第一篇健身日记，这是我的第一篇健身日记，这是我的第一篇健身日记，这是我的第一篇健身日记，这是我的第一篇健身日记，这是我的第一篇健身日记，
-                                    p.pr10.tr.font-c-4d 2015-1-1 15:30
+                                .border.ht160.box-s-2.cursor-p
+                                    input(type="hidden" name="diaryTitle" value="#{diaryData[i].diaryTitle}")
+                                    input(type="hidden" name="diaryText" value="#{diaryData[i].diaryText}")
+                                    input(type="hidden" name="diaryTime" value="#{diaryData[i].newtime}")
+                                    span.vicons.cursor-p.fr.mt10.font-red.font18.mr10.deletDiary &#xe649
+                                        input(type='hidden' value="#{diaryData[i]._id}")
+                                    p.font14.tc.pt10 #{diaryData[i].diaryTitle}
+                                    p.p-indent.padding.font-6 #{diaryData[i].text}.....
+                                    p.pr10.tr.font-c-4d #{diaryData[i].newtime}
                         -}
                     //日记详细
                     .row.mt10.diary-container.display-n
@@ -77,14 +82,16 @@ block content
                             .bg-9.font-white.img-circle.vicons.ht40.pos-f.w-40.tc.l-ht40.font20.cursor-p.back &#xe61c;
                         .col22
                             p.font14.tc.mt20
-                                span 我的第一篇日记
-                            p.tr.font-9 发表时间：2015年12月10日
-                            p.p-indent.per80.offset2.
-                                我的第一篇日记,我的第一篇日记,我的第一篇日记,我的第一篇日记,我的第一篇日记,
-                                我的第一篇日记,我的第一篇日记,我的第一篇日记,我的第一篇日记,我的第一篇日记,
+                                span.diaryTitle
+                            p.tr.font-9 发表时间：
+                                span.diaryTime
+                            p.p-indent.per80.offset2.diaryText
 
 
 
         include footer.jade
+        //遮罩层
+        .per100.pos-f.ht2000.bg-rgba6.top0.tc.display-n.mask
+            .bg-white.w-270.display-ib.radius10.pt50.pb50.mt100.font20 删除成功
         script(src="javascripts/plugin/require.js" data-main="javascripts/plugin/main.js")
         script(src="javascripts/model/usercenter.js")

@@ -54,7 +54,7 @@ require(['jquery','util','domReady'],function($,util,domReady){
                 var resData = util.getData('/dpub',"POST",data);
                 if(resData.status.code == "200"){
                     $(".mask").fadeIn();
-                    setTimeout(window.location.href='/diary',1000);
+                    setTimeout(window.location.href='/diary',2000);
                 }
                 else{
                     $(".errorMsg").html(resData.status.message).removeClass('display-n');

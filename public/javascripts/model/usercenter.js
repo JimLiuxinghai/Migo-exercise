@@ -20,6 +20,9 @@ require(['jquery','util','domReady'],function($,util,domReady){
             $(".list-container").click(function(){
                 $(".diary-list").hide();
                 $(".diary-container").fadeIn();
+                var _self = this;
+                getDiary(_self);
+
 
             });
             $(".back").click(function(){
@@ -30,4 +33,35 @@ require(['jquery','util','domReady'],function($,util,domReady){
         }();
 
     })
+
+    //进入日记详情
+    function getDiary(dom){
+        $(".diaryTitle").html($(dom).find('input[name="diaryTitle"]').val());
+        $(".diaryTime").html($(dom).find('input[name="diaryTime"]').val());
+        $(".diaryText").html($(dom).find('input[name="diaryText"]').val());
+
+    }
+
+    //日记删除
+    $(".deletDiary").click(function(e){
+        e.stopPropagation();
+        var id = $(this).find('input').val();
+        $.ajax({
+            url : '/deletDiary',
+            type : 'POST',
+            data : {diaryId : id},
+            success : function(msg){
+                if(msg.status.code == '200'){
+                    $(".mask").fadeIn();
+                    setTimeout(window.location.href='/usercenter',2000);
+                }
+            }
+
+
+        })
+
+    })
 })
+
+
+
