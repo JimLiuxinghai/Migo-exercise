@@ -1,6 +1,7 @@
 var express = require('express');
 var flash = require('../util/flash.js');
 var User = require('../db/user');
+var Diary = require('../db/diary');
 var hash = require('../util/pass').hash;
 var router = express.Router();
 
@@ -30,7 +31,15 @@ router.get('/', function(req, res, next) {
                       user : user,
                       userlogo : 'images/user/'+userlogo
                   }
-                  res.render('index', { title: 'Migo个人健身系统' ,user : navuser,indexUser:indexUser});
+                  /*首页日记发表*/
+                  Diary.find({state : '1'}).sort({ 'time' : -1 }).limit(7) .exec(function(err,content){
+                      if(err){
+                          return;
+                      }
+                      var diarySort = content;
+                      res.render('index', { title: 'Migo个人健身系统' ,user : navuser,indexUser:indexUser,diarySort:diarySort});
+                  })
+
               });
 
           }
@@ -74,6 +83,8 @@ router.post('/chart',function(req,res,next){
     }));
     
 })
+
+
 /*训练计划*/
 router.get('/plane',function(req,res,next){
     res.render('plane',{title:"Migo个人健身系统--训练计划"});

@@ -72,12 +72,12 @@ block content
           //健身日记
           .border.padding.radius5.mt10
             .border-b.font16.font-6.l-ht30 健身日记
-            -for(var i = 0; i < 5; i ++){
+            -for(var i = 0; i < diarySort.length; i ++){
               .border-b.padding
-                img(src="images/p1.jpg" width="35" height="35").img-circle.vertical-a-m
-                span.font-blue.ml10 刘星海
+                img(src="images/user/#{diarySort[i].username}.png" width="35" height="35").img-circle.vertical-a-m
+                span.font-blue.ml10 #{diarySort[i].username}
                 span 发表了健身日记：
-                .font-6.mt10.p-indent 我的第一篇健身日记
+                .font-6.mt10.p-indent #{diarySort[i].diaryTitle}
             -}
       -if(user)
         .row.mt10

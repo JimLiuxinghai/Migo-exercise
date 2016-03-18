@@ -9,7 +9,7 @@ var userSchema = new Schema1({
     height : String,
     weight : String,
     BMI : String,
-    calorie : String,
+    calorie : Number,
     signature : String,
 	mytrain:[]
 });
