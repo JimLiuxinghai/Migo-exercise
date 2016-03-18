@@ -7,13 +7,13 @@ require.config(
         path:{
             "jquery" :"jquery.js",
             "util" : "util",
-            "cookie" : "cookie.js",
             "domReady" : 'domReady',
-            "highcharts" : "highcharts",
             "simditor" : "simditor",
             "module" : "module",
             "hotkeys" : "hotkeys",
-            "uploader" : "uploader"
+            "uploader" : "uploader",
+            "jquery.cookie" : "jquery.cookie.js",
+            "highcharts" : "highcharts"
         },
         shim : {
             "jquery": {
@@ -23,9 +23,12 @@ require.config(
                 deps : ['jquery'],
                 exports :"util"
             },
-            "cookie" : {
+            "jquery.cookie" : {
                 deps : ['jquery'],
-                exports :"cookie"
+                init: function (jquery) {
+                    exports :"cookie"
+                }
+
             },
             'highcharts': {
                 exports: "Highcharts",

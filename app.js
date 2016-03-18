@@ -15,7 +15,7 @@ var setprofile = require('./routes/setprofile');
 var SessionStore = require("session-mongoose")(connect);
 var store = new SessionStore({
     url:"mongodb://localhost/Migo/session",
-    interval: 60000000000
+    ttl: 604800  //session 存储一周
 });
 var app = express();
 
@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: 'jimliu',
     store: store,
-    cookie:{maxAge:60*100000} //expire session in 60 seconds
+    cookie:{maxAge:604800}
 }));
 
 //路由
@@ -64,6 +64,7 @@ app.post('/updateLogo',setprofile);
 /*个人中心*/
 app.get('/usercenter',usercenter);
 app.post('/deletDiary',usercenter);
+app.post('/deletDynamic',usercenter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

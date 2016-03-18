@@ -56,10 +56,23 @@ require(['jquery','util','domReady'],function($,util,domReady){
                     setTimeout(window.location.href='/usercenter',2000);
                 }
             }
-
+        })
+    })
+    //动态删除
+    $('.deletDynamic').click(function(){
+        var dID = $(this).find('input').val();
+        $.ajax({
+            url : 'deletDynamic',
+            type : "POST",
+            data : {dID : dID},
+            success : function(msg){
+                if(msg.status.code == '200'){
+                    $(".mask").fadeIn();
+                    setTimeout(window.location.href='/usercenter',2000);
+                }
+            }
 
         })
-
     })
 })
 

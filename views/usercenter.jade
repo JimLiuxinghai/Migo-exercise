@@ -52,7 +52,7 @@ block content
                     .border-b-1.font16.l-ht30.ht40 我的健身动态
                     -for(var i = 0;i < dynamic.length; i++){
                         .pt20.pb20.border-b #{dynamic[i].trend}
-                            span.vicons.font-red.fr.font20.cursor-p.ml10 &#xe649;
+                            span.vicons.font-red.fr.font20.cursor-p.ml10.deletDynamic &#xe649;
                                 input(type="hidden" value="#{dynamic[i].id}")
                             .ml30.fr.pt4 #{dynamic[i].newtime}
                     -}
@@ -66,15 +66,22 @@ block content
                     .row.mt10.diary-list
                         -for(var i = 0;i < diaryData.length; i ++){
                             .col12.padding.mt10.pos-r.list-container
-                                .border.ht160.box-s-2.cursor-p
+                                .border.ht170.box-s-2.cursor-p.pt10
                                     input(type="hidden" name="diaryTitle" value="#{diaryData[i].diaryTitle}")
                                     input(type="hidden" name="diaryText" value="#{diaryData[i].diaryText}")
                                     input(type="hidden" name="diaryTime" value="#{diaryData[i].newtime}")
                                     span.vicons.cursor-p.fr.mt10.font-red.font18.mr10.deletDiary &#xe649
                                         input(type='hidden' value="#{diaryData[i]._id}")
-                                    p.font14.tc.pt10 #{diaryData[i].diaryTitle}
-                                    p.p-indent.padding.font-6 #{diaryData[i].text}.....
-                                    p.pr10.tr.font-c-4d #{diaryData[i].newtime}
+                                    p.font14.tc #{diaryData[i].diaryTitle}
+                                    p.p-indent.padding.font-6.mb4 #{diaryData[i].text}.....
+                                    p.pr10.pl10.tr.font-c-4d
+                                        -if(diaryData[i].state == '0')
+                                            span.fl.font-blue 正在审核
+                                        -else if(diaryData[i].state == '1')
+                                            span.fl.font-green 审核通过
+                                        -else if(diaryData[i].state == '2')
+                                            span.fl.font-red 审核不通过
+                                        span.fr #{diaryData[i].newtime}
                         -}
                     //日记详细
                     .row.mt10.diary-container.display-n
@@ -86,9 +93,6 @@ block content
                             p.tr.font-9 发表时间：
                                 span.diaryTime
                             p.p-indent.per80.offset2.diaryText
-
-
-
         include footer.jade
         //遮罩层
         .per100.pos-f.ht2000.bg-rgba6.top0.tc.display-n.mask

@@ -18,7 +18,7 @@ router.get('/usercenter',function(req,res,next){
         userlogo : 'images/user/'+user+'.png'
     }
 
-    Diary.find({state : '1',username : user}).sort({ 'time' : -1 }).exec(function(err,content){
+    Diary.find({username : user}).sort({ 'time' : -1 }).exec(function(err,content){
         if(err){
             res.send(flash(500,'fail',{
                 msg : "获取失败"
@@ -64,5 +64,15 @@ router.post('/deletDiary',function(req,res,next){
         }));
     })
 })
-
+/*删除动态*/
+router.post('/deletDynamic',function(req,res,next){
+    var id = req.body.dID;
+    console.log(id);
+    Dynamic.remove({_id : id},function(err,content){
+        console.log(content);
+        res.send(flash(200,'success',{
+            msg : "删除成功"
+        }));
+    })
+})
 module.exports = router;

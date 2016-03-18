@@ -5,7 +5,7 @@ var dSchema = new Schema1({
     diaryTitle : String,
     username  : String,
     time : Date,
-    trendAssist : Number,
+    trendAssist : String,
     state : String,
     img : String
 
