@@ -13,12 +13,16 @@
         a(href="diary").font16.font-white 健身日记
       li.fl.nav-border.tc.ht30.mt18.ml50
         a(href="usercenter").font16.font-white 个人中心
+
       -if(!user)
         li.fr.mt14
           a(href="login").font-white
             i.vicons.font20 &#xe75f;
             span.font12 登录
       -else
+        -if(user.user == 'admin')
+          li.fl.nav-border.tc.ht30.mt18.ml50
+            a(href="admin").font16.font-white 系统管理
         li.fr.mt6.tans
           a(href="usercenter")
             img(src="#{user.userlogo}" width="40" height="40").img-circle.vertical-a-m.mr10

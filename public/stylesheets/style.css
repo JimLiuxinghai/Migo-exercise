@@ -68,6 +68,7 @@ body,button{font-family: hou; overflow-x: hidden;}
 .w-35{width: 35px;}
 .w-40{width: 40px;}
 .w-80{width: 80px;}
+.w-190{width: 190px;}
 .w-270{width:270px;}
 .w-110{width: 110px;}
 .w-1000{width: 1000px;}
@@ -96,3 +97,6 @@ body,button{font-family: hou; overflow-x: hidden;}
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 .bg-f6{background: #f6f6f6;}
+.left{position: relative;margin-right: -190px;float:left;width:190px;}
+.right{width: 100%;float: right;}
+.right-con{margin-left: 190px;}

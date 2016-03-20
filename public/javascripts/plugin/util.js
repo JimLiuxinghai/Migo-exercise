@@ -105,9 +105,9 @@ var  util =
         })
         return resdata;
     },
-    getScreen : function(container){
+    getScreen : function(container,height){
         var scHeight = $(window).height();
-        var minHeight = scHeight - 186 + 'px';
+        var minHeight = scHeight - height + 'px';
         container.css("min-height",minHeight);
     }
 }
