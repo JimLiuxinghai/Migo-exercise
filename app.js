@@ -14,8 +14,10 @@ var diary = require('./routes/diary');
 var setprofile = require('./routes/setprofile');
 var admin = require('./routes/admin');
 var SessionStore = require("session-mongoose")(connect);
+var config = require('config');
+var dbConfig = config.get('Customer.dbConfig');
 var store = new SessionStore({
-    url:"mongodb://localhost/Migo/session",
+    url:dbConfig,
     ttl: 604800  //session 存储一周
 });
 var app = express();
