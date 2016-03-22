@@ -31,7 +31,7 @@ router.get('/usercenter',function(req,res,next){
                 diary[i].text = diary[i].diaryText.substr(0,80);
             }
             var dynamic = [];
-            Dynamic.find().sort({ 'time' : -1 }).exec(function(err,content) {
+            Dynamic.find({username:user}).sort({ 'time' : -1 }).exec(function(err,content) {
                 if (err) {
                     dynamic = [];
                 }

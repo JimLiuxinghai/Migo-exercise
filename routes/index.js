@@ -2,6 +2,8 @@ var express = require('express');
 var flash = require('../util/flash.js');
 var User = require('../db/user');
 var Diary = require('../db/diary');
+var Dynamic = require('../db/dynamic');
+var moment = require('moment');
 var hash = require('../util/pass').hash;
 var router = express.Router();
 
@@ -24,28 +26,47 @@ router.get('/', function(req, res, next) {
                   indexUser.userTrianNum += 1;
               }
           }
-          if(user){
-              User.findOne({name : user},function(err,content){
-                  var userlogo = content.userlogo;
-                  var navuser = {
-                      user : user,
-                      userlogo : 'images/user/'+userlogo
-                  }
-                  /*首页日记发表*/
-                  Diary.find({state : '1'}).sort({ 'time' : -1 }).limit(7) .exec(function(err,content){
-                      if(err){
-                          return;
-                      }
-                      var diarySort = content;
-                      res.render('index', { title: 'Migo个人健身系统' ,user : navuser,indexUser:indexUser,diarySort:diarySort});
-                  })
+          /*首页日记发表*/
+            Diary.find({state : '1'}).sort({ 'time' : -1 }).limit(5) .exec(function(err,content){
+                var diary = [];
+                if(err){
+                    return;
+                    console.log()
+                }
+                diarySort = content;
+                /*会员动态*/
+                Dynamic.find().sort({ 'time' : -1 }).limit(5).exec(function(err,content){
+                    var dynamic = [];
+                    if(err){
+                        return;
+                    }
+                    else{
+                        content.map(function(result){
+                            result.newtime = moment(result.time).format("YYYY-MM-DD HH时mm分");
+                            console.log(result.newtime)
+                            dynamic.push(result);
+                        })
+                        console.log(dynamic)
+                    }
+                    if(user){
+                        User.findOne({name : user},function(err,content){
+                            var userlogo = content.userlogo;
+                            var navuser = {
+                                user : user,
+                                userlogo : 'images/user/'+userlogo
+                            }
 
-              });
+                            res.render('index', { title: 'Migo个人健身系统' ,user : navuser,indexUser:indexUser,diarySort:diarySort,dynamic:dynamic});
+                        });
 
-          }
-          else{
-              res.render('index', { title: 'Migo个人健身系统',indexUser:indexUser});
-          }
+                    }
+                    else{
+                        res.render('index', { title: 'Migo个人健身系统',indexUser:indexUser,diarySort:diarySort,dynamic:dynamic});
+                    }
+                })
+
+            })
+
       });
 
   })

@@ -6,7 +6,7 @@ require(['jquery','util','domReady'],function($,util,domReady){
         //页面初始化
         var ready = function(){
             //获取屏幕高度
-            util.getScreen($(".artical"));
+            util.getScreen($(".artical"),186);
         }();
         var id = util.getUrlParam('id');
         var resData = util.getData('/diaryid',"POST",{id : id});

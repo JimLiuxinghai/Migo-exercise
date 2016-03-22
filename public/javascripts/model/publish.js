@@ -53,8 +53,8 @@ require(['jquery','util','domReady'],function($,util,domReady){
                 //上传
                 var resData = util.getData('/dpub',"POST",data);
                 if(resData.status.code == "200"){
-                    $(".mask").fadeIn();
-                    setTimeout(window.location.href='/diary',2000);
+                    $(".mask").show();
+                    setTimeout(window.location.href='/diary',7000);
                 }
                 else{
                     $(".errorMsg").html(resData.status.message).removeClass('display-n');

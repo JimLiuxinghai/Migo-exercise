@@ -1,7 +1,7 @@
 /**
  * Created by jim on 2016/1/23.
  */
-require(['jquery','util','domReady','cookie'],function($,util,domReady){
+require(['jquery','util','domReady','jquery.cookie'],function($,util,domReady){
     domReady(function(){
         //清除错误信息
         var clearErr = function(){

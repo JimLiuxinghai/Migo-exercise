@@ -1,0 +1,27 @@
+//
+   Created by jimliu on 2016/3/19.
+extends layout
+block content
+    .container-fluid
+        .ht80.overflow-h.migo-nav.bg-main
+            .fl.mt20.w-270.tc
+                img(src="images/logo1.png").vertical-a-m
+                span.font20.vertical-a-m.font-white.ml20 管理平台
+            .fr.mt36.mr30
+                span.font-white 欢迎您，管理员
+                a(href="logout").ml10
+                    span 退出
+                    span.vicons &#xe641;
+        .left.border-r-1
+            ul.list-unstyled.w-190
+                li.tc.l-ht60.cursor-p.border-b
+                   a(href='admin/overview').font14 系统概览
+                li.tc.l-ht60.cursor-p.border-b
+                    a(href='admin/plane').font14 健身计划
+                li.tc.l-ht60.cursor-p.border-b
+                    a(href='admin/people').font14 会员管理
+                li.tc.l-ht60.cursor-p.border-b
+                    a(href='admin/diary').font14 日记管理
+                li.tc.l-ht60.cursor-p.border-b
+                    a(href='admin/plane').font14 动态管理
+

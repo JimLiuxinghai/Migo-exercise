@@ -29,18 +29,18 @@ block content
             .mt6
               span.font14 提交训练人数
             .mt16.ht8.bg-c.radius5.overflow-h
-              .ht8.bg-green-4d.per40.radius5
+              .ht8.bg-green-4d.radius5(style="width:#{indexUser.userTrianNum/indexUser.userNum}%")
             .mt10
-              span 有30%人提交了训练
+              span 有#{indexUser.userTrianNum/indexUser.userNum*100}%人提交了训练
           //健身动态
           .border.padding.radius5.mt10
             .border-b.l-ht30.font16 会员动态
-            -for(var i= 0;i < 5; i ++){
+            -for(var i= 0;i < dynamic.length; i ++){
               .border-b.padding
-                img(src="images/p1.jpg" width="35" height="35").img-circle.vertical-a-m
-                span.font-blue.vertical-a-m.ml10 刘星海
-                span.font-9.ml10 1小时前
-                .mt10.font-6.p-indent 参加了腹肌撕裂者训练计划
+                img(src="images/user/#{dynamic[i].username}.png" width="35" height="35").img-circle.vertical-a-m
+                span.font-blue.vertical-a-m.ml10 #{dynamic[i].username}
+                span.font-9.ml10 #{dynamic[i].newtime}
+                .mt10.font-6.p-indent #{dynamic[i].trend}
             -}
         .col10.padding
           .border.padding.radius5

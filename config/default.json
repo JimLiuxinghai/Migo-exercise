@@ -1,0 +1,14 @@
+{
+  "Customer": {
+    "dbConfig": {
+      "host": "localhost",
+      "port": 3000,
+      "dbName": "Migo"
+    },
+    "credit": {
+      "initialLimit": 100,
+      // Set low for development
+      "initialDays": 1
+    }
+  }
+}
