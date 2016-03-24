@@ -8,10 +8,6 @@ require.config(
             "jquery" :"jquery.js",
             "util" : "util",
             "domReady" : 'domReady',
-            "simditor" : "simditor",
-            "module" : "module",
-            "hotkeys" : "hotkeys",
-            "uploader" : "uploader",
             "jquery.cookie" : "jquery.cookie.js",
             "highcharts" : "highcharts"
         },

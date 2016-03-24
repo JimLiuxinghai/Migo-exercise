@@ -1,0 +1,62 @@
+//
+   Created by Administrator on 2016/3/24.
+include  adminnav.jade
+.right
+    .right-con
+        .container-fluid
+            .row
+              ul.list-unstyled.col10.offset7.mt20.tc
+                li.display-ib.font16.padding.box-s-2.cursor-p 待审核日记
+                li.display-ib.font16.padding.cursor-p  审核通过日记
+                li.display-ib.font16.padding.cursor-p  审核不通过日记
+            .row.display-n.checking
+              .col18.offset3
+                -for(var i = 0; i < 6; i ++){
+                    .row.border-b.padding
+                      .col4.offset2.l-ht40
+                        span 我的第一篇日记
+                      .col8.l-ht40
+                        span 发布人：
+                        span 刘星海
+                      .col6.l-ht40
+                        span 发表时间
+                        span 2016年1月10日
+                      .col2.l-ht40
+                        span.vicons.font-red.font20.cursor-p &#xe760;
+                          input(type="hidden")
+                -}
+            .row.checkpass
+              .col18.offset3
+                -for(var i = 0; i < 6; i ++){
+                    .row.border-b.padding
+                      .col4.offset2.l-ht40
+                        span 我的第一篇日记
+                      .col8.l-ht40
+                        span 发布人：
+                        span 刘星海
+                      .col6.l-ht40
+                        span 发表时间
+                        span 2016年1月10日
+                      .col2.l-ht40
+                        span.vicons.font-red.font20.cursor-p &#xe760;
+                          input(type="hidden")
+                -}
+            .row.checkpass.display-n
+              .col18.offset3
+                -for(var i = 0; i < 6; i ++){
+                    .row.border-b.padding
+                      .col4.offset2.l-ht40
+                        span 我的第一篇日记
+                      .col8.l-ht40
+                        span 发布人：
+                        span 刘星海
+                      .col6.l-ht40
+                        span 发表时间
+                        span 2016年1月10日
+                      .col2.l-ht40
+                        span.vicons.font-red.font20.cursor-p &#xe760;
+                          input(type="hidden")
+                -}
+                
+script(src="/javascripts/plugin/require.js" data-main="/javascripts/plugin/main.js")
+script(src="/javascripts/model/adminPlane.js")

@@ -8,6 +8,8 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
             //获取屏幕高度
             util.getScreen($(".left"),80);
         }();
+        //导航颜色
+        $('.admin-nav').find('li:eq(0)').find('a').css('color','#4DB3A2');
 
     });
     //渲染图表

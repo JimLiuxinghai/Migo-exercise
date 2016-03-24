@@ -7,7 +7,7 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
         var ready = function(){
             //获取屏幕高度
             util.getScreen($(".left"),80);
-            $('.admin-nav').find('li:eq(1)').find('a').css('color','#4DB3A2');
+            $('.admin-nav').find('li:eq(2)').find('a').css('color','#4DB3A2');
         }();
 
     });

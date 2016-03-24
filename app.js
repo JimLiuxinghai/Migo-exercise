@@ -34,6 +34,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false ,'limit':'10000000kb'}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: 'jimliu',
     store: store,
@@ -71,6 +72,7 @@ app.post('/deletDiary',usercenter);
 app.post('/deletDynamic',usercenter);
 /*管理界面*/
 app.get('/admin',admin);
+app.get('/admin/*',admin);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

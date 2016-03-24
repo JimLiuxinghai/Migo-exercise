@@ -1,0 +1,25 @@
+//
+   Created by Administrator on 2016/3/20.
+include  adminnav.jade
+.right
+    .right-con
+        .container-fluid
+            .row
+              .col18.offset3
+                -for(var i = 0;i < 6;i ++){
+                    .row.border-b.padding.overflow-h
+                      .col6.l-ht40
+                        img(src="/images/user/admin.png" width="30" height="30").img-circle.vertical-a-m
+                        span.ml10.vertical-a-m 刘星海
+                      .col8.l-ht40
+                        span 注册时间 ： 
+                        span.font-6 2015年12月11日
+                      .col6.l-ht40
+                        span 参加训练数量 ： 
+                        span.font-orange 10
+                      .col2.l-ht40
+                        span.vicons.font-red.font20.cursor-p &#xe760;
+                          input(type='hidden' value='')
+                -}
+script(src="/javascripts/plugin/require.js" data-main="/javascripts/plugin/main.js")
+script(src="/javascripts/model/adminPeople.js")

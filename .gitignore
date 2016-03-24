@@ -1,2 +1,4 @@
 node_module/*
 .idea/*
+projectFilesBackup/.idea/workspace.xml
+.DS_Store
