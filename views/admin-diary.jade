@@ -6,56 +6,65 @@ include  adminnav.jade
         .container-fluid
             .row
               ul.list-unstyled.col10.offset7.mt20.tc
-                li.display-ib.font16.padding.box-s-2.cursor-p 待审核日记
-                li.display-ib.font16.padding.cursor-p  审核通过日记
-                li.display-ib.font16.padding.cursor-p  审核不通过日记
-            .row.display-n.checking
-              .col18.offset3
+                li.display-ib.font16.padding.cursor-p.font-blue.border-r 待审核日记
+                li.display-ib.font16.padding.cursor-p.border-r  审核通过日记
+                li.display-ib.font16.padding.cursor-p.font-red  审核不通过日记
+            .row.checking
+              .col18.offset3.display-n
+                h4.padding.font-blue  待审核日记
+                  span 10篇
                 -for(var i = 0; i < 6; i ++){
-                    .row.border-b.padding
-                      .col4.offset2.l-ht40
-                        span 我的第一篇日记
-                      .col8.l-ht40
-                        span 发布人：
-                        span 刘星海
-                      .col6.l-ht40
-                        span 发表时间
-                        span 2016年1月10日
-                      .col2.l-ht40
-                        span.vicons.font-red.font20.cursor-p &#xe760;
-                          input(type="hidden")
-                -}
-            .row.checkpass
-              .col18.offset3
-                -for(var i = 0; i < 6; i ++){
-                    .row.border-b.padding
-                      .col4.offset2.l-ht40
-                        span 我的第一篇日记
-                      .col8.l-ht40
-                        span 发布人：
-                        span 刘星海
-                      .col6.l-ht40
-                        span 发表时间
-                        span 2016年1月10日
-                      .col2.l-ht40
-                        span.vicons.font-red.font20.cursor-p &#xe760;
-                          input(type="hidden")
+                    a(href="/admin/diarydetail:id/")
+                      .row.border-b.padding
+                        .col4.offset2.l-ht40
+                          span 我的第一篇日记
+                        .col8.l-ht40
+                          span 发布人：
+                          span 刘星海
+                        .col6.l-ht40
+                          span 发表时间
+                          span 2016年1月10日
+                        .col2.l-ht40
+                          span.vicons.font-red.font20.cursor-p &#xe760;
+                            input(type="hidden")
                 -}
             .row.checkpass.display-n
               .col18.offset3
+                h4.padding  审核通过
+                  span 10篇
                 -for(var i = 0; i < 6; i ++){
-                    .row.border-b.padding
-                      .col4.offset2.l-ht40
-                        span 我的第一篇日记
-                      .col8.l-ht40
-                        span 发布人：
-                        span 刘星海
-                      .col6.l-ht40
-                        span 发表时间
-                        span 2016年1月10日
-                      .col2.l-ht40
-                        span.vicons.font-red.font20.cursor-p &#xe760;
-                          input(type="hidden")
+                    a(href="/admin/diarydetail:id/")
+                      .row.border-b.padding
+                        .col4.offset2.l-ht40
+                          span 我的第一篇日记
+                        .col8.l-ht40
+                          span 发布人：
+                          span 刘星海
+                        .col6.l-ht40
+                          span 发表时间
+                          span 2016年1月10日
+                        .col2.l-ht40
+                          span.vicons.font-red.font20.cursor-p &#xe760;
+                            input(type="hidden")
+                -}
+            .row.checknopass
+              .col18.offset3
+                h4.padding.font-red  审核不通过
+                  span 10篇
+                -for(var i = 0; i < 6; i ++){
+                    a(href="/admin/diarydetail:id/")
+                      .row.border-b.padding
+                        .col4.offset2.l-ht40
+                          span 我的第一篇日记
+                        .col8.l-ht40
+                          span 发布人：
+                          span 刘星海
+                        .col6.l-ht40
+                          span 发表时间
+                          span 2016年1月10日
+                        .col2.l-ht40
+                          span.vicons.font-red.font20.cursor-p &#xe760;
+                            input(type="hidden")
                 -}
                 
 script(src="/javascripts/plugin/require.js" data-main="/javascripts/plugin/main.js")
