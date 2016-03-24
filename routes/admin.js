@@ -29,4 +29,9 @@ router.get('/admin/diary',function(req,res,next){
     var user = req.session.user;
     res.render('admin-diary',{title:"Migo个人健身系统"})
 })
+/*动态管理*/
+router.get('/admin/dynamic',function(req,res,next){
+    var user = req.session.user;
+    res.render('admin-dynamic',{title:"Migo个人健身系统"})
+})
 module.exports = router;
