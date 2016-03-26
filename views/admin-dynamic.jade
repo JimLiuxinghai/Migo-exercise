@@ -1,28 +1,28 @@
 //
-                            Created by Administrator on 2016/3/20.
+  Created by Administrator on 2016/3/20.
 include  adminnav.jade
 .right
     .right-con
         .container-fluid
             .row
                 .col18.offset3
-                    -for(var i = 0;i < 6;i ++){
+                    -for(var i = 0;i < dynamic.length;i ++){
                         .row.border-b.padding.overflow-h
                             .col6.l-ht40
-                                span.ml10.vertical-a-m 我的第一条动态
+                                span.ml10.vertical-a-m #{dynamic[i].trend}
                             .col4.l-ht40
                                 span 发表人 ：
-                                span.font-6 刘星海
+                                span.font-6 #{dynamic[i].username}
                             .col6.l-ht40
                                 span 发表时间 ：
-                                span.font-6 2015年12月11日
+                                span.font-6 #{dynamic[i].newtime}
                             .col4.l-ht40
                                 span 获得赞数 ：
                                 span.font-orange 10
                             .col2.l-ht40
-                                span.vicons.font-red.font20.cursor-p &#xe760;
-                                    input(type='hidden' value='')
+                                span.vicons.font-red.font20.cursor-p.delete &#xe760;
+                                    input(type='hidden' value='#{dynamic[i]._id}')
                     -}
 script(src="/javascripts/plugin/require.js" data-main="/javascripts/plugin/main.js")
-script(src="/javascripts/model/adminPeople.js")
+script(src="/javascripts/model/adminDynamic.js")
                          

@@ -7,7 +7,7 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
         var ready = function(){
             //获取屏幕高度
             util.getScreen($(".left"),80);
-            $('.admin-nav').find('li:eq(2)').find('a').css('color','#4DB3A2');
+            $('.admin-nav').find('li:eq(4)').find('a').css('color','#4DB3A2');
         }();
         //删除
         $(".delete").click(function(e){
@@ -15,13 +15,13 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
             var id = $(this).find('input').val();
             alert(id);
             $.ajax({
-                url : '/admin/deleteUser',
+                url : '/admin/deleteDynamic',
                 type : 'POST',
-                data : {userId : id},
+                data : {dynamicId : id},
                 success : function(msg){
                     if(msg.status.code == '200'){
                         //$(".mask").fadeIn();
-                        setTimeout(window.location.href='/admin/people',2000);
+                        setTimeout(window.location.href='/admin/dynamic',2000);
                     }
                 }
             })
