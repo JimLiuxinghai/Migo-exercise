@@ -12,7 +12,13 @@ var router = express.Router();
 /*后台管理*/
 router.get('/admin',function(req,res,next){
     var user = req.session.user;
-    res.render('admin',{title:"Migo个人健身系统",pieData:'1'})
+    if(true){
+        res.render('admin',{title:"Migo个人健身系统",pieData:'1'})
+    }
+    else{
+        res.redirect(404)
+    }
+
 })
 /*健身计划管理*/
 router.get('/admin/plane',function(req,res,next){
@@ -34,4 +40,13 @@ router.get('/admin/dynamic',function(req,res,next){
     var user = req.session.user;
     res.render('admin-dynamic',{title:"Migo个人健身系统"})
 })
+/*判断是否为admin*/
+function isAdmin (user){
+    if(user == 'admin'){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 module.exports = router;
