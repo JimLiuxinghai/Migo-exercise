@@ -71,8 +71,7 @@ app.get('/usercenter',usercenter);
 app.post('/deletDiary',usercenter);
 app.post('/deletDynamic',usercenter);
 /*管理界面*/
-app.get('/admin',admin);
-app.get('/admin/*',admin);
+app.use('/admin',admin);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
