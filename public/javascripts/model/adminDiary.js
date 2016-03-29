@@ -21,6 +21,9 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
            if(type == 'checking'){
 
            }
+           $(".diaryTitle").html($(this).find(".title").html())
+           $(".diaryTime").html($(this).find(".time").html())
+           $(".diaryText").html($(this).find("input[name='text']").val())
            $(".diary-content").hide();
            $(".diary-container").fadeIn();
 
