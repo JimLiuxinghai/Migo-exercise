@@ -55,7 +55,30 @@ router.post('/deleteUser',function(req,res,next){
 /*日记管理*/
 router.get('/diary',function(req,res,next){
     var user = req.session.user;
-    res.render('admin-diary',{title:"Migo个人健身系统"})
+    var checking = [],
+        checkpass = [],
+        checknopass = [];
+    Diary.find().sort({ 'time' : -1}).exec(function(err,content) {
+        if(err){
+            return;
+        }
+        else{
+            for(var i in content){
+                content[i].newtime = moment(content[i].time).format("YYYY-MM-DD HH时mm分");
+                if(content[i].state == "0"){
+                    checking.push(content[i])
+                }
+                else if(content[i].state == "1"){
+                    checkpass.push(content[i]);
+                }
+                else if(content[i].state == "2"){
+                    checknopass.push(content[i]);
+                }
+            }
+            res.render('admin-diary',{title:"Migo个人健身系统",checking:checking,checkpass:checkpass,checknopass:checknopass})
+        }
+    })
+
 })
 /*动态管理*/
 router.get('/dynamic',function(req,res,next){

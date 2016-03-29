@@ -17,13 +17,18 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
         })
         //展开日记详情
        $(".diary-list").find('a').click(function(){
-           $(".diary-list").hide();
+           var type = $(this).attr("type");
+           if(type == 'checking'){
+
+           }
+           $(".diary-content").hide();
            $(".diary-container").fadeIn();
 
        })
         $(".back").click(function(){
+
             $(".diary-container").fadeOut();
-            $(".diary-list").slideDown();
+            $(".diary-content").slideDown();
         })
     });
 

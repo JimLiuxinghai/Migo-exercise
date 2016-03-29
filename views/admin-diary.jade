@@ -4,68 +4,69 @@ include  adminnav.jade
 .right
     .right-con
         .container-fluid
-            .row
-              ul.list-unstyled.col10.offset7.mt20.tc
-                li.display-ib.font16.padding.cursor-p.font-blue.border-r.diary-panel(data="checking") 待审核日记
-                li.display-ib.font16.padding.cursor-p.border-r.diary-panel(data="checkpass")  审核通过日记
-                li.display-ib.font16.padding.cursor-p.font-red.diary-panel(data="checknopass")  审核不通过日记
-            .row.checking.diary-list
-              .col18.offset3
-                h4.padding.font-blue  待审核日记
-                  span 10篇
-                -for(var i = 0; i < 6; i ++){
-                    a(href="javascript:0")
-                      .row.border-b.padding
-                        .col4.offset2.l-ht40
-                          span 我的第一篇日记
-                        .col8.l-ht40
-                          span 发布人：
-                          span 刘星海
-                        .col6.l-ht40
-                          span 发表时间
-                          span 2016年1月10日
-                        .col2.l-ht40
-                          span.vicons.font-red.font20.cursor-p &#xe760;
-                            input(type="hidden")
-                -}
-            .row.diary-list.checkpass.display-n
-              .col18.offset3
-                h4.padding  审核通过
-                  span 10篇
-                -for(var i = 0; i < 6; i ++){
-                    a(href="javascript:0")
-                      .row.border-b.padding
-                        .col4.offset2.l-ht40
-                          span 我的第一篇日记
-                        .col8.l-ht40
-                          span 发布人：
-                          span 刘星海
-                        .col6.l-ht40
-                          span 发表时间
-                          span 2016年1月10日
-                        .col2.l-ht40
-                          span.vicons.font-red.font20.cursor-p &#xe760;
-                            input(type="hidden")
-                -}
-            .row.checknopass.diary-list.display-n
-              .col18.offset3
-                h4.padding.font-red  审核不通过
-                  span 10篇
-                -for(var i = 0; i < 6; i ++){
-                    a(href="javascript:0")
-                      .row.border-b.padding
-                        .col4.offset2.l-ht40
-                          span 我的第一篇日记
-                        .col8.l-ht40
-                          span 发布人：
-                          span 刘星海
-                        .col6.l-ht40
-                          span 发表时间
-                          span 2016年1月10日
-                        .col2.l-ht40
-                          span.vicons.font-red.font20.cursor-p &#xe760;
-                            input(type="hidden")
-                -}
+            .diary-content
+                .row
+                  ul.list-unstyled.col10.offset7.mt20.tc
+                    li.display-ib.font16.padding.cursor-p.font-blue.border-r.diary-panel(data="checking") 待审核日记
+                    li.display-ib.font16.padding.cursor-p.border-r.diary-panel(data="checkpass")  审核通过日记
+                    li.display-ib.font16.padding.cursor-p.font-red.diary-panel(data="checknopass")  审核不通过日记
+                .row.checking.diary-list
+                  .col18.offset3
+                    h4.padding.font-blue  待审核日记
+                      span 10篇
+                    -for(var i = 0; i < checking.length; i ++){
+                        a(href="javascript:0" type = 'checking')
+                          .row.border-b.padding
+                            .col4.offset2.l-ht40
+                              span #{checking[i].diaryTitle}
+                            .col8.l-ht40
+                              span 发布人：
+                              span #{checking[i].username}
+                            .col6.l-ht40
+                              span 发表时间
+                              span #{checking[i].newtime}
+                            .col2.l-ht40
+                              span.vicons.font-red.font20.cursor-p &#xe760;
+                                input(type="hidden" value="#{checking[i]._id}")
+                    -}
+                .row.diary-list.checkpass.display-n
+                  .col18.offset3
+                    h4.padding  审核通过
+                      span 10篇
+                    -for(var j = 0; j < checkpass.length; j ++){
+                        a(href="javascript:0")
+                          .row.border-b.padding
+                            .col4.offset2.l-ht40
+                              span #{checkpass[j].diaryTitle}
+                            .col8.l-ht40
+                              span 发布人：
+                              span #{checkpass[j].username}
+                            .col6.l-ht40
+                              span 发表时间
+                              span #{checkpass[j].newtime}
+                            .col2.l-ht40
+                              span.vicons.font-red.font20.cursor-p &#xe760;
+                                input(type="hidden" value="#{checkpass[j]._id}")
+                    -}
+                .row.checknopass.diary-list.display-n
+                  .col18.offset3
+                    h4.padding.font-red  审核不通过
+                      span 10篇
+                    -for(var k = 0; k < checknopass.length; k ++){
+                        a(href="javascript:0")
+                          .row.border-b.padding
+                            .col4.offset2.l-ht40
+                              span #{checknopass[k].diaryTitle}
+                            .col8.l-ht40
+                              span 发布人：
+                              span #{checknopass[k].username}
+                            .col6.l-ht40
+                              span 发表时间
+                              span #{checknopass[k].newtime}
+                            .col2.l-ht40
+                              span.vicons.font-red.font20.cursor-p &#xe760;
+                                input(type="hidden" value="#{checknopass[k]._id}")
+                    -}
             //日记详细
             .row.mt10.diary-container.display-n
                 .col18.offset3
@@ -78,5 +79,10 @@ include  adminnav.jade
                             p.tr.font-9 发表时间：
                                 span.diaryTime
                             p.p-indent.per80.offset2.diaryText
+                    .row.border-t
+                        input(type="hidden")
+                        input(type="radio" name="check" value="1") 通过
+                        input(type="radio" name="check" value="2") 不通过
+                        input(type="button" value="审核提交" class="")
 script(src="/javascripts/plugin/require.js" data-main="/javascripts/plugin/main.js")
 script(src="/javascripts/model/adminDiary.js")
