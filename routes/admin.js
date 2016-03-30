@@ -27,6 +27,10 @@ router.get('/plane',function(req,res,next){
     var user = req.session.user;
     res.render('admin-plane',{title:"Migo个人健身系统"})
 })
+/*添加健身计划*/
+router.post('/addplane',function(req,res,next){
+
+})
 /*会员管理*/
 router.get('/people',function(req,res,next){
     var user = req.session.user;
@@ -113,10 +117,10 @@ router.post('/deleteDynamic',function(req,res,next){
 /*判断是否为admin*/
 function isAdmin (user){
     if(user == 'admin'){
-        return true;
+        return;
     }
     else{
-        return false;
+        res.redirect(404);
     }
 }
 module.exports = router;
