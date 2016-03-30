@@ -6,94 +6,88 @@ include  adminnav.jade
         .container-fluid
             .row
               ul.list-unstyled.col6.offset9.mt20.tc
-                li.display-ib.font16.padding.cursor-p.border-r 健身计划管理
-                li.display-ib.font16.padding.cursor-p.font-blue  添加健身计划
-                .row.manage
-              ul.list-unstyled.col18.offset3
-                .row
-                  //-for(var i = 0; i < 6; i++){
-                  //  li.padding.col6.pos-r.cursor-p.big-delete
-                  //    .overflow-h.ht126
-                  //      span.vicons.pos-a.top10.delete.font-red.font20.z-index99.cursor-p &#xe760;
-                  //      img(src="/images/temp/jihua-title.jpg").per100
-                  //    .tc.border-b.border-l.border-r
-                  //      p.font14.l-ht30  肩部训练计划
-                  //      p.font-9 23人正在训练
-                  //-}
-                -for(var i=0;i<10;i++){
-                    .col6.pl20.pr20.pt20.big-delete
-                        div.box-s-2
-                            .pos-r
-                                i.vicons.pos-a.top10.delete.font-red.font20.z-index99.cursor-p &#xe760;
-                                img(src="/images/temp/jihua-title.jpg").per100
-                            .border-b.border-l.border-r
-                                p.font14.tc  肩部训练计划
-                                    span.vicons.font-red &#xe65f;
-                                p.font-6.tc
-                                    span.mr10 无器械
-                                    span.mr10 初级
-                                    span.mr10 23人正在训练
-                -}
-            .row.add
-                .col18.offset3
-                    .font16.ml10.mt20 添加训练计划
-                        .row.font14.l-ht30.ml80.ht60.mt20
-                            .col3
-                                .justify 训练名称
-                            .col20
-                                span.mr10 :
-                                input.per90.border-special.pl5.ht24.form-control(name="trainName")
-                        .row.font14.l-ht30.ml80.ht60.mt20
-                            .col3
-                                .justify 训练等级
-                            .col20
-                                span.mr10 :
-                                select.per90.border-special.pl5.ht24.form-control(name="trainLevel")
-                                    option(value = 'primary').l-ht30 初级
-                                    option(value = 'middle').l-ht30 中级
-                                    option(value = 'high').l-ht30 高级
-                        .row.font14.l-ht30.ml80.ht60.mt20
-                            .col3
-                                .justify 训练时长
-                            .col20
-                                span.mr10 :
-                                select.per90.border-special.pl5.ht24.form-control(name="trainTime")
-                                    option(value = '10').l-ht30 10分钟
-                                    option(value = '20').l-ht30 20分钟
-                                    option(value = '30').l-ht30 30分钟
-                        .row.font14.l-ht30.ml80.ht60.mt20
-                            .col3
-                                .justify 训练器材
-                            .col20
-                                span.mr10 :
-                                input.per90.border-special.pl5.ht24.form-control(name="trainEq")
-                        .row.font14.l-ht30.ml80.ht60.mt20
-                            .col3
-                                .justify 训练部位
-                            .col20
-                                span.mr10 :
-                                select.per90.border-special.pl5.ht24.form-control(name="trainPosition")
-                                    option(value = '10').l-ht30 全身
-                                    option(value = '20').l-ht30 胸部
-                                    option(value = '30').l-ht30 肩部
-                                    option(value = '30').l-ht30 背部
-                                    option(value = '30').l-ht30 手臂
-                                    option(value = '30').l-ht30 颈部
-                                    option(value = '30').l-ht30 腿部
-                                    option(value = '30').l-ht30 腰腹
-                        .row.font14.l-ht30.ml80.ht60.mt20
-                            .col3
-                                .justify 训练热量
-                            .col20
-                                span.mr10 :
-                                input.per90.border-special.pl5.ht24.form-control(name="trainCalorie")
-                                span (千焦)
-                        .row.font14.l-ht30.ml80.ht60.mt20
-                            .col3
-                                .justify.pt8 训练简介
-                            .col20
-                                span.mr10 :
-                                textarea.per90.border-special.pl5.ht24.form-control.vertical-a-m(name="trainText")
-                        .row
+                li.display-ib.font16.padding.cursor-p.border-r.plane-type(data = "plane-list") 健身计划管理
+                li.display-ib.font16.padding.cursor-p.font-blue.plane-type(data = "plane-add")  添加健身计划
+              .col18.offset3
+                .row.plane.plane-list
+                    -for(var i=0;i<10;i++){
+                        .col6.pl20.pr20.pt20.big-delete
+                            div.box-s-2
+                                .pos-r
+                                    i.vicons.pos-a.top10.delete.font-red.font20.z-index99.cursor-p &#xe760;
+                                    img(src="/images/temp/jihua-title.jpg").per100
+                                .border-b.border-l.border-r
+                                    p.font14.tc  肩部训练计划
+                                        span.vicons.font-red &#xe65f;
+                                    p.font-6.tc
+                                        span.mr10 无器械
+                                        span.mr10 初级
+                                        span.mr10 23人正在训练
+                    -}
+                .row.plane-add.display-n.plane
+                    .col18.offset3
+                        .font16.ml10.mt20 添加训练计划
+                            .row.font14.l-ht30.ml80.ht60.mt20
+                                .col3
+                                    .justify 训练名称
+                                .col20
+                                    span.mr10 :
+                                    input.per90.border-special.pl5.ht24.form-control(name="trainName")
+                            .row.font14.l-ht30.ml80.ht60.mt20
+                                .col3
+                                    .justify 训练等级
+                                .col20
+                                    span.mr10 :
+                                    select.per90.border-special.pl5.ht24.form-control(name="trainLevel")
+                                        option(value = 'primary').l-ht30 初级
+                                        option(value = 'middle').l-ht30 中级
+                                        option(value = 'high').l-ht30 高级
+                            .row.font14.l-ht30.ml80.ht60.mt20
+                                .col3
+                                    .justify 训练时长
+                                .col20
+                                    span.mr10 :
+                                    select.per90.border-special.pl5.ht24.form-control(name="trainTime")
+                                        option(value = '10').l-ht30 10分钟
+                                        option(value = '20').l-ht30 20分钟
+                                        option(value = '30').l-ht30 30分钟
+                            .row.font14.l-ht30.ml80.ht60.mt20
+                                .col3
+                                    .justify 训练器材
+                                .col20
+                                    span.mr10 :
+                                    input.per90.border-special.pl5.ht24.form-control(name="trainEq")
+                            .row.font14.l-ht30.ml80.ht60.mt20
+                                .col3
+                                    .justify 训练部位
+                                .col20
+                                    span.mr10 :
+                                    select.per90.border-special.pl5.ht24.form-control(name="trainPosition")
+                                        option(value = '10').l-ht30 全身
+                                        option(value = '20').l-ht30 胸部
+                                        option(value = '30').l-ht30 肩部
+                                        option(value = '30').l-ht30 背部
+                                        option(value = '30').l-ht30 手臂
+                                        option(value = '30').l-ht30 颈部
+                                        option(value = '30').l-ht30 腿部
+                                        option(value = '30').l-ht30 腰腹
+                            .row.font14.l-ht30.ml80.ht60.mt20
+                                .col3
+                                    .justify 训练热量
+                                .col20
+                                    span.mr10 :
+                                    input.per90.border-special.pl5.ht24.form-control(name="trainCalorie")
+                                    span (千焦)
+                            .row.font14.l-ht30.ml80.ht60.mt20
+                                .col3
+                                    .justify.pt8 训练简介
+                                .col20
+                                    span.mr10 :
+                                    textarea.per90.border-special.pl5.ht24.form-control.vertical-a-m(name="trainText")
+                            .row
+                                a(href="#") 添加图片
+                                .onepic
+                                    input(type="file" accept="image/*")
+                                    input(type="text" placeholder="图片描述")
 script(src="/javascripts/plugin/require.js" data-main="/javascripts/plugin/main.js")
 script(src="/javascripts/model/adminPlane.js")
