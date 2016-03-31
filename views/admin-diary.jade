@@ -81,8 +81,10 @@ include  adminnav.jade
                             p.p-indent.per80.offset2.diaryText
                     .row.border-t
                         input(type="hidden")
-                        input(type="radio" name="check" value="1") 通过
-                        input(type="radio" name="check" value="2") 不通过
+                        input(type="radio" name="check" value="1")
+                        span 通过
+                        input(type="radio" name="check" value="2")
+                        span 不通过
                         input(type="button" value="审核提交" class="")
 script(src="/javascripts/plugin/require.js" data-main="/javascripts/plugin/main.js")
 script(src="/javascripts/model/adminDiary.js")

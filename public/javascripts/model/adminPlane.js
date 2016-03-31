@@ -15,6 +15,27 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
             console.log($("."+data))
             $("."+data).fadeIn();
         })
+        //添加图片
+        var i = 1;
+        var picdom = '<div class="row">'+
+                        '<div class="col6 offset3">'+
+                            '<input type="file" accept="image/*" name="plane'+i+'" />'+
+                        '</div>'+
+                        '<div class="col12">'+
+                            '<input class="form-control" type="text" placeholder="图片描述" name="plane'+i+'" />'+
+                        '</div>'+
+                        '<div class="col2">'+
+                            '<input type="button" value="上传" class="btn btn-info ml20">'+
+                        '</div>'+
+                    '</div>';
+        $(".addpic").click(function(){
+            $(".onepic").append(picdom);
+            i++;
+        })
+        //上传图片
+        $('.btn').click(function(){
+
+        })
     });
 
 })
