@@ -61,6 +61,7 @@ app.get("/diarytext",diary);
 app.post("/diaryid",diary);
 app.get("/publish",diary);
 app.post('/dpub',diary);
+app.post('/diaryAssist',diary);
 /*设置资料*/
 app.get('/setprofile',setprofile);
 app.post('/saveData',setprofile);

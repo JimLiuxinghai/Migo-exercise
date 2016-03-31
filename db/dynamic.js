@@ -3,7 +3,7 @@ var Schema1 = mongoose.Schema;
 var dSchema = new Schema1({
     trend : String,
     username : String,
-    trendAssist : Number,
+    trendAssist : String,
     time : Date
 
 });

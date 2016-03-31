@@ -39,11 +39,23 @@ router.get('/dynamic',function(req,res,next){
 /*动态点赞*/
 router.post('/dynamicAssist',function(req,res,next){
     var id = req.body.id;
-    Dynamic.find({_id : id}).exec(function(err,content){
-        content.trendAssist = parseInt(content.trendAssist)+1;
-        console.log(content.trendAssist)
-        res.json({num : content.trendAssist})
+    var num = req.body.num;
+
+    Dynamic.update({'_id' : id},{ 'trendAssist' : num},function(err,content){
+        if(err){
+            console.log(err)
+            res.send(flash(500,'error',{
+                msg : "点赞失败"
+            }));
+        }
+        else{
+            res.send(flash(200,'success',{
+                msg : "点赞成功"
+            }));
+        }
     })
+
+
 
 });
 /*发表健身动态*/
@@ -55,6 +67,7 @@ router.post('/pdynamic',function(req,res,next){
     newd.trend = trend;
     newd.username = user;
     newd.time = time;
+    newd.trendAssist = 0;
     newd.save(function(err) {
         if (err) {
             res.send(flash(500,'error',{

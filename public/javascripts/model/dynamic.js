@@ -22,12 +22,16 @@ require(['jquery','util','domReady'],function($,util,domReady){
         $(".assist").click(function(){
             var _self = $(this);
             var id = _self.find('input').val();
+            var num = parseInt(_self.find('span').html())+1;
             $.ajax({
                 url : '/dynamicAssist',
                 type : 'POST',
-                data : {id : id},
+                data : {id : id,num:num},
                 success : function (msg){
-                    _self.find('span').html(msg.num);
+                    if(msg.data.msg == '点赞成功'){
+                        _self.find('span').html(num);
+                    }
+
                 }
             })
         })

@@ -84,6 +84,23 @@ router.get('/publish',function(req,res,next){
     }
 
 });
+/*点赞*/
+router.post('/diaryAssist',function(req,res,next){
+    var id = req.body.id;
+    var num = req.body.num;
+    Diary.update({'_id' : id},{ 'trendAssist' : num},function(err,content){
+        if(err){
+            res.send(flash(500,'error',{
+                msg : "点赞失败"
+            }));
+        }
+        else{
+            res.send(flash(200,'success',{
+                msg : "点赞成功"
+            }));
+        }
+    })
+});
 /*发表日记*/
 router.post('/dpub',function(req,res,next){
     var user = req.session.user;
