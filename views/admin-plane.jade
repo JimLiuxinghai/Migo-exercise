@@ -38,7 +38,7 @@ include  adminnav.jade
                                     .justify 训练等级
                                 .col20
                                     span.mr10 :
-                                    select.per90.border-special.pl5.ht24.form-control(name="trainLevel")
+                                    select.per90.border-special.pl5.ht24.form-control(name="trainLevel" style="height:24px;")
                                         option(value = 'primary').l-ht30 初级
                                         option(value = 'middle').l-ht30 中级
                                         option(value = 'high').l-ht30 高级
@@ -47,7 +47,7 @@ include  adminnav.jade
                                     .justify 训练时长
                                 .col20
                                     span.mr10 :
-                                    select.per90.border-special.pl5.ht24.form-control(name="trainTime")
+                                    select.per90.border-special.pl5.ht24.form-control(name="trainTime" style="height:24px;")
                                         option(value = '10').l-ht30 10分钟
                                         option(value = '20').l-ht30 20分钟
                                         option(value = '30').l-ht30 30分钟
@@ -62,7 +62,7 @@ include  adminnav.jade
                                     .justify 训练部位
                                 .col20
                                     span.mr10 :
-                                    select.per90.border-special.pl5.ht24.form-control(name="trainPosition")
+                                    select.per90.border-special.pl5.ht24.form-control(name="trainPosition" style="height:24px;")
                                         option(value = '10').l-ht30 全身
                                         option(value = '20').l-ht30 胸部
                                         option(value = '30').l-ht30 肩部
@@ -85,9 +85,17 @@ include  adminnav.jade
                                     span.mr10 :
                                     textarea.per90.border-special.pl5.ht24.form-control.vertical-a-m(name="trainText")
                             .row
-                                a(href="#") 添加图片
-                                .onepic
-                                    input(type="file" accept="image/*")
-                                    input(type="text" placeholder="图片描述")
+                                .font16.ml10.mt20 健身计划图片
+                                .onepic.mt10
+                                    .row
+                                        .col6.offset3
+                                            input(type="file" accept="image/*" name="plane0")
+                                        .col12
+                                            input(type="text" placeholder="图片描述" name="plane0").form-control
+                                        .col2
+                                            input(type="button" value="上传").btn-info.btn.ml20
+                                .font-blue.ml10.cursor-p.addpic
+                                    span.vicons &#xe618;
+                                    span.ml10 添加图片
 script(src="/javascripts/plugin/require.js" data-main="/javascripts/plugin/main.js")
 script(src="/javascripts/model/adminPlane.js")

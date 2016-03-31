@@ -54,6 +54,7 @@ app.post('/chart',routes);
 /*动态*/
 app.get('/dynamic',dynamic);
 app.post('/pdynamic',dynamic);
+app.post('/dynamicAssist',dynamic);
 /*健身日记*/
 app.get("/diary",diary);
 app.get("/diarytext",diary);

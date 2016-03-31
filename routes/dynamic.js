@@ -36,6 +36,16 @@ router.get('/dynamic',function(req,res,next){
     })
     
 });
+/*动态点赞*/
+router.post('/dynamicAssist',function(req,res,next){
+    var id = req.body.id;
+    Dynamic.find({_id : id}).exec(function(err,content){
+        content.trendAssist = parseInt(content.trendAssist)+1;
+        console.log(content.trendAssist)
+        res.json({num : content.trendAssist})
+    })
+
+});
 /*发表健身动态*/
 router.post('/pdynamic',function(req,res,next){
     var user = req.session.user;

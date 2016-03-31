@@ -6,8 +6,9 @@ require(['jquery','util','domReady'],function($,util,domReady){
         //页面初始化
         var ready = function(){
             //获取屏幕高度
-            util.getScreen($(".artical"));
+            util.getScreen($(".artical"),0);
         }();
+        //发表动态
         $(".publish").click(function(){
             if($(".dynamic").val() != ""){
                 var dData = {dynamic : $(".dynamic").val()};
@@ -16,6 +17,19 @@ require(['jquery','util','domReady'],function($,util,domReady){
                     window.location.href = "/dynamic";
                 }
             }
+        })
+        //点赞
+        $(".assist").click(function(){
+            var _self = $(this);
+            var id = _self.find('input').val();
+            $.ajax({
+                url : '/dynamicAssist',
+                type : 'POST',
+                data : {id : id},
+                success : function (msg){
+                    _self.find('span').html(msg.num);
+                }
+            })
         })
     })
 })

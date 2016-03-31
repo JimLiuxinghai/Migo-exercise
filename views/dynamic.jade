@@ -22,8 +22,9 @@ block content
                                 .font14.pt10 #{dynamins[i].username}
                                 .mt10.l-ht30 #{dynamins[i].trend}
                                 .font-9.fl #{dynamins[i].newtime}
-                                .vicons.fr.font18.cursor-p.mr20 &#xe6e0;
-                                    span.font12.ml5.font-6 1
+                                .vicons.fr.font18.cursor-p.mr20.assist &#xe6e0;
+                                    input(type='hidden' value="#{dynamins[i]._id}")
+                                    span.font12.ml5.font-6 0
 
                 .col8.ht500
                     .ht50.mt20
