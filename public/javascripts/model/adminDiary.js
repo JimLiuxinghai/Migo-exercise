@@ -19,17 +19,35 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
        $(".diary-list").find('a').click(function(){
            var type = $(this).attr("type");
            if(type == 'checking'){
-
+               $(".diaryTitle").html($(this).find(".title").html())
+               $(".diaryTime").html($(this).find(".time").html())
+               $(".diaryText").html($(this).find("input[name='text']").val())
+               $(".diary-id").val($(this).find("input[name='id']"));
+               $(".diary-content").hide();
+               $(".diary-container").fadeIn();
            }
-           $(".diaryTitle").html($(this).find(".title").html())
-           $(".diaryTime").html($(this).find(".time").html())
-           $(".diaryText").html($(this).find("input[name='text']").val())
-           $(".diary-content").hide();
-           $(".diary-container").fadeIn();
 
-       })
+       });
+        //日记审核
+        $('.check-diary').click(function () {
+            var id = $('.diary-id').val();
+            $.ajax({
+                url : '/admin/checkDiary',
+                type : "POST",
+                data : {id : id},
+                success : function (msg) {
+                    if(msg.status.code == "200"){
+                        
+                    }
+                }
+            })
+        });
+        //返回日记列表
         $(".back").click(function(){
-
+            $(".diaryTitle").html("");
+            $(".diaryTime").html("");
+            $(".diaryText").html("");
+            $(".diary-id").val("");
             $(".diary-container").fadeOut();
             $(".diary-content").slideDown();
         })

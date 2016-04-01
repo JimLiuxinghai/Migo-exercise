@@ -13,6 +13,9 @@ var router = express.Router();
 router.get('/usercenter',function(req,res,next){
     //获取用户
     var user = req.session.user;
+    if(!user){
+        res.redirect('/login');
+    }
     var navuser = {
         user : user,
         userlogo : 'images/user/'+user+'.png'

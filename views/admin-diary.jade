@@ -77,6 +77,7 @@ include  adminnav.jade
                         .col2.pos-r
                             .bg-9.font-white.img-circle.vicons.ht40.pos-f.w-40.tc.l-ht40.font20.cursor-p.back &#xe61c;
                         .col22
+                            input(type="hidden").diary-id
                             p.font14.tc.mt20
                                 span.diaryTitle
                             p.tr.font-9 发表时间：
@@ -88,6 +89,10 @@ include  adminnav.jade
                         span 通过
                         input(type="radio" name="check" value="2")
                         span 不通过
-                        input(type="button" value="审核提交" class="")
+                        input(type="button" value="审核提交" class="check-diary")
+
+//遮罩层
+.per100.pos-f.ht2000.bg-rgba6.top0.tc.display-n.mask
+    .bg-white.w-270.display-ib.radius10.pt50.pb50.mt100.font20 审核成功！
 script(src="/javascripts/plugin/require.js" data-main="/javascripts/plugin/main.js")
 script(src="/javascripts/model/adminDiary.js")
