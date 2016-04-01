@@ -28,7 +28,6 @@ var  util =
     //表单上传显示
     displayImg : function(file,result,hidden){
         if(typeof FileReader==='undefined'){
-            //result.innerHTML = "抱歉，你的浏览器不支持 FileReader";
             input.setAttribute('disabled','disabled');
         }else{
             file.addEventListener('change',readFile,false);

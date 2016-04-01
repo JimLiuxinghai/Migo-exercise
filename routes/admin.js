@@ -29,6 +29,40 @@ router.get('/plane',function(req,res,next){
 })
 /*添加健身计划*/
 router.post('/addplane',function(req,res,next){
+    Plane.findOne({trainName : req.body.trainName},function (err,content){
+        if(content != null){
+            res.send(flash(500,'fail',{
+                msg : "训练计划已存在"
+            }));
+        }
+        else{
+            var newplane = new Plane(Plane);
+            newplane.trainName = req.body.trainName;
+            newplane.trainLevel = req.body.trainLevel;
+            newplane.trainTime = req.body.trainTime;
+            newplane.trainEq = req.body.trainEq;
+            newplane.trainPosition = req.body.trainPosition;
+            newplane.trainCalorie = req.body.trainCalorie;
+            newplane.trainText = req.body.trainText;
+            newplane.save(function (err) {
+                if(err){
+                    res.send(flash(500,'fail',{
+                        msg : "提交训练失败"
+                    }));
+                }
+                else{
+                    res.send(flash(200,'fail',{
+                        msg : "提交训练成功"
+                    }));
+                }
+            })
+        }
+    })
+
+})
+/*添加训练图片*/
+router.post('/addPlanePic',function (req,res,next) {
+    var name = req.body.id;
 
 })
 /*会员管理*/
