@@ -25,7 +25,10 @@ router.get('/',function(req,res,next){
 /*健身计划管理*/
 router.get('/plane',function(req,res,next){
     var user = req.session.user;
-    res.render('admin-plane',{title:"Migo个人健身系统"})
+    Plane.find(function(err,content){
+
+        res.render('admin-plane',{title:"Migo个人健身系统",planeData : content});
+    })
 })
 /*添加健身计划*/
 router.post('/addplane',function(req,res,next){
@@ -62,7 +65,32 @@ router.post('/addplane',function(req,res,next){
 })
 /*添加训练图片*/
 router.post('/addPlanePic',function (req,res,next) {
-    var name = req.body.id;
+    var id = req.body.id;
+    var name = req.body.name;
+    var picDes = req.body.picDes;
+    var pichref = req.body.pichref;
+    var dataBuffer = new Buffer(pichref, 'base64');
+    var filepath = 'public/images/plane/'+id+name+'.png';
+    fs.writeFile(filepath, dataBuffer, function(err) {
+        if(err){
+            console.log(err);
+            res.send(flash(500,'fail',{
+                msg : "上传图片失败"
+            }));
+        }
+        else{
+            Plane.findOne({trainName : id},function (err,content){
+                content.trainPic.push({
+                    picDes : picDes,
+                    pichref : 'images/plane/'+id+name+'.png'
+                })
+                content.save();
+                res.send(flash(200,'fail',{
+                    msg : "上传图片成功"
+                }));
+            })
+        }
+    })
 
 })
 /*会员管理*/
@@ -73,13 +101,16 @@ router.get('/people',function(req,res,next){
             return;
         }
         else {
-            console.log(content)
+            console.log(content);
+            for(var i = 0;i < content.length; i ++ ){
+                content[i].newtime = moment(content[i].regTime).format("YYYY-MM-DD");
+            }
+
             res.render('admin-people',{title:"Migo个人健身系统",userContent : content})
         }
     })
 })
 /*会员删除*/
-/*动态删除*/
 router.post('/deleteUser',function(req,res,next){
     var id = req.body.userId;
     console.log(id);
@@ -117,6 +148,25 @@ router.get('/diary',function(req,res,next){
         }
     })
 
+})
+/*日记审核*/
+router.post('/checkDiary',function (req,res,next) {
+    var id = req.body.id;
+    var status = req.body.status;
+    console.log(id,status)
+    Diary.update({_id : id},{state:status},function (err,content) {
+        if(err){
+            console.log(err);
+            res.send(flash(500,'error',{
+                msg : "审核失败"
+            }));
+        }
+        else{
+            res.send(flash(200,'success',{
+                msg : "审核成功"
+            }));
+        }
+    })
 })
 /*动态管理*/
 router.get('/dynamic',function(req,res,next){

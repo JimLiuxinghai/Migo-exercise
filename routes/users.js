@@ -58,14 +58,13 @@ router.post('/reg',function(req,res,next){
                     newuser.name = user;
                     newuser.pass = pass;
                     newuser.userlogo = userlogo;
+                    newuser.regTime = Date.now();
                     newuser.save(function(err) {
                         if (err) {
                             res.write("注册失败!");
                             res.end();
                         }
                         req.session.user = user;
-                        //console.log(regname);
-                        console.log('数据保存成功');
 
                         res.write("success");
                         res.end();

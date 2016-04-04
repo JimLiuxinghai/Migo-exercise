@@ -31,7 +31,6 @@ router.get('/', function(req, res, next) {
                 var diary = [];
                 if(err){
                     return;
-                    console.log()
                 }
                 diarySort = content;
                 /*会员动态*/
@@ -106,18 +105,7 @@ router.post('/chart',function(req,res,next){
 })
 
 
-/*训练计划*/
-router.get('/plane',function(req,res,next){
-    res.render('plane',{title:"Migo个人健身系统--训练计划"});
-});
-/*训练计划详情*/
-router.get('/dplane',function(req,res,next){
-    res.render('dplane',{title:"Migo个人健身系统--训练计划"});
-});
-/*训练计划详情*/
-router.get('/train',function(req,res,next){
-    res.render('train',{title:"Migo个人健身系统--训练计划"});
-});
+
 
 
 module.exports = router;

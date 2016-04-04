@@ -24,7 +24,7 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
                 data : planeData,
                 success : function (msg) {
                     if(msg.status.code == '200'){
-                        $("#planeId").val($('input[name="trainName"]'));
+                        $("#planeId").val($('input[name="trainName"]').val());
                         $(".plane").hide();
                         $(".add-pic").fadeIn();
                     }
@@ -38,7 +38,7 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
             var i = 1;
             var picdom = '<div class="row">'+
                 '<div class="col6 offset3">'+
-                '<input type="file" accept="image/*" name="plane'+i+'" />'+
+                '<input type="file" accept="image/*" id="plane'+i+'" name="plane'+i+'" />'+
                 '<input type="hidden" name="plane'+i+'">'+
                 '</div>'+
                 '<div class="col12">'+
@@ -52,26 +52,32 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
                 $(".onepic").append(picdom);
                 i++;
             });
-            //上传图片
-            $('.btn').click(function(){
+            //上传图片 使用事件代理为btn绑定事件
+            $(".onepic").delegate('.btn','click',function(){
+                debugger;
                 var id = $("#planeId").val();
                 var name = $(this).attr('name');
                 var file = document.getElementById(name).files[0];
-                var desc = $('input[type="text"][name="'+name+'"]')
+                var desc = $('input[type="text"][name="'+name+'"]').val();
                 readAsDataURL(file,$('input[type="hidden"][name="'+name+'"]'));
                 //解决读取图片异步的问题
                 setTimeout(function(){
+                    debugger;
                     var pic = $('input[type="hidden"][name="'+name+'"]').val();
                     $.ajax({
                         url : '/admin/addPlanePic',
                         type : 'POST',
                         data : {
                             id : id,
+                            name : name,
                             picDes : desc,
                             pichref : pic
                         },
+                        success : function (msg) {
+                            alert("上传成功")
+                        }
                     })
-                },0)
+                },100)
             })
         }();
         //读取图片

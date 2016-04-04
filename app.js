@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var connect = require('connect');
 var routes = require('./routes/index');
+var plane = require('./routes/plane');
 var users = require('./routes/users');
 var dynamic = require('./routes/dynamic');
 var usercenter = require('./routes/center');
@@ -51,6 +52,11 @@ app.post("/reg",users);
 app.post("/uploadUser",users);
 /*首页路由 */
 app.post('/chart',routes);
+/*健身计划*/
+app.get('/plane',plane);
+app.get('/dplane',plane);
+app.get('/train',plane);
+
 /*动态*/
 app.get('/dynamic',dynamic);
 app.post('/pdynamic',dynamic);

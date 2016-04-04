@@ -10,19 +10,19 @@ include  adminnav.jade
                 li.display-ib.font16.padding.cursor-p.font-blue.plane-type(data = "plane-add")  添加健身计划
               .col18.offset3
                 .row.plane.plane-list
-                    -for(var i=0;i<10;i++){
+                    -for(var i=0;i<planeData.length;i++){
                         .col6.pl20.pr20.pt20.big-delete
                             div.box-s-2
-                                .pos-r
+                                .pos-r.ht120.overflow-h
                                     i.vicons.pos-a.top10.delete.font-red.font20.z-index99.cursor-p &#xe760;
-                                    img(src="/images/temp/jihua-title.jpg").per100
+                                    img(src="/#{planeData[i].trainPic[0].pichref}").per100
                                 .border-b.border-l.border-r
-                                    p.font14.tc  肩部训练计划
+                                    p.font14.tc  #{planeData[i].trainName}
                                         span.vicons.font-red &#xe65f;
                                     p.font-6.tc
-                                        span.mr10 无器械
-                                        span.mr10 初级
-                                        span.mr10 23人正在训练
+                                        span.mr10 #{planeData[i].trainEq}
+                                        span.mr10 #{planeData[i].trainLevel}
+                                        span.mr10 #{planeData[i].trainUser.length}人参加训练
                     -}
                 .row.plane-add.display-n.plane
                     .col18.offset3
@@ -39,16 +39,16 @@ include  adminnav.jade
                                         .justify 训练等级
                                     .col20
                                         span.mr10 :
-                                        select.per90.border-special.pl5.ht24.form-control(name="trainLevel" style="height:24px;")
-                                            option(value = 'primary').l-ht30 初级
-                                            option(value = 'middle').l-ht30 中级
-                                            option(value = 'high').l-ht30 高级
+                                        select.per90.border-special.pl5.ht24.form-control(name="trainLevel" style="height:30px;")
+                                            option(value = '初级').l-ht30 初级
+                                            option(value = '中级').l-ht30 中级
+                                            option(value = '高级').l-ht30 高级
                                 .row.font14.l-ht30.ml80.ht60.mt20
                                     .col3
                                         .justify 训练时长
                                     .col20
                                         span.mr10 :
-                                        select.per90.border-special.pl5.ht24.form-control(name="trainTime" style="height:24px;")
+                                        select.per90.border-special.pl5.ht24.form-control(name="trainTime" style="height:30px;")
                                             option(value = '10').l-ht30 10分钟
                                             option(value = '20').l-ht30 20分钟
                                             option(value = '30').l-ht30 30分钟
@@ -63,15 +63,14 @@ include  adminnav.jade
                                         .justify 训练部位
                                     .col20
                                         span.mr10 :
-                                        select.per90.border-special.pl5.ht24.form-control(name="trainPosition" style="height:24px;")
-                                            option(value = '10').l-ht30 全身
-                                            option(value = '20').l-ht30 胸部
-                                            option(value = '30').l-ht30 肩部
-                                            option(value = '30').l-ht30 背部
-                                            option(value = '30').l-ht30 手臂
-                                            option(value = '30').l-ht30 颈部
-                                            option(value = '30').l-ht30 腿部
-                                            option(value = '30').l-ht30 腰腹
+                                        select.per90.border-special.pl5.ht24.form-control(name="trainPosition" style="height:30px;")
+                                            option(value = '全身').l-ht30 全身
+                                            option(value = '胸部').l-ht30 胸部
+                                            option(value = '肩部').l-ht30 肩部
+                                            option(value = '背部').l-ht30 背部
+                                            option(value = '手臂').l-ht30 手臂
+                                            option(value = '腿部').l-ht30 腿部
+                                            option(value = '腰腹').l-ht30 腰腹
                                 .row.font14.l-ht30.ml80.ht60.mt20
                                     .col3
                                         .justify 训练热量

@@ -19,25 +19,29 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
        $(".diary-list").find('a').click(function(){
            var type = $(this).attr("type");
            if(type == 'checking'){
-               $(".diaryTitle").html($(this).find(".title").html())
-               $(".diaryTime").html($(this).find(".time").html())
-               $(".diaryText").html($(this).find("input[name='text']").val())
-               $(".diary-id").val($(this).find("input[name='id']"));
-               $(".diary-content").hide();
-               $(".diary-container").fadeIn();
+                $(".check-btn").show();
            }
+           $(".diaryTitle").html($(this).find(".title").html())
+           $(".diaryTime").html($(this).find(".time").html())
+           $(".diaryText").html($(this).find("input[name='text']").val())
+           $(".diary-id").val($(this).find("input[name='id']").val());
+           $(".diary-content").hide();
+           $(".diary-container").fadeIn();
 
        });
         //日记审核
         $('.check-diary').click(function () {
             var id = $('.diary-id').val();
+            var status = $("input[name='check']:checked").val();
+            debugger;
             $.ajax({
                 url : '/admin/checkDiary',
                 type : "POST",
-                data : {id : id},
+                data : {id : id,status:status},
                 success : function (msg) {
                     if(msg.status.code == "200"){
-                        
+                        $('.mask').fadeIn();
+                        window.location.href = "/admin/diary";
                     }
                 }
             })

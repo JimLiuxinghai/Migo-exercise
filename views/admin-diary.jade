@@ -28,7 +28,7 @@ include  adminnav.jade
                               span.time #{checking[i].newtime}
                             .col2.l-ht40
                               span.vicons.font-red.font20.cursor-p &#xe760;
-                                input(type="hidden" value="#{checking[i]._id}")
+                                input(type="hidden" value="#{checking[i]._id}" name="id")
                     -}
                 .row.diary-list.checkpass.display-n
                   .col18.offset3
@@ -37,7 +37,7 @@ include  adminnav.jade
                     -for(var j = 0; j < checkpass.length; j ++){
                         a(href="javascript:0")
                           .row.border-b.padding
-                            input(type="hidden" name="text" value="#{checkpass[i].diaryText}")
+                            input(type="hidden" name="text" value="#{checkpass[j].diaryText}")
                             .col4.offset2.l-ht40
                               span.title #{checkpass[j].diaryTitle}
                             .col8.l-ht40
@@ -57,7 +57,7 @@ include  adminnav.jade
                     -for(var k = 0; k < checknopass.length; k ++){
                         a(href="javascript:0")
                           .row.border-b.padding
-                            input(type="hidden" name="text" value="#{checknopass[i].diaryText}")
+                            input(type="hidden" name="text" value="#{checknopass[k].diaryText}")
                             .col4.offset2.l-ht40
                               span.title #{checknopass[k].diaryTitle}
                             .col8.l-ht40
@@ -68,7 +68,7 @@ include  adminnav.jade
                               span.time #{checknopass[k].newtime}
                             .col2.l-ht40
                               span.vicons.font-red.font20.cursor-p &#xe760;
-                                input(type="hidden" value="#{checknopass[k]._id}" name="id")
+                                input(type="hidden" value="#{checknopass[k]._id}")
                     -}
             //日记详细
             .row.mt10.diary-container.display-n
@@ -83,13 +83,13 @@ include  adminnav.jade
                             p.tr.font-9 发表时间：
                                 span.diaryTime
                             p.p-indent.per80.offset2.diaryText
-                    .row.border-t.pos-f.bottom0.l-ht80
+                    .row.border-t.pos-f.bottom0.l-ht80.display-n.check-btn.bg-white
                         input(type="hidden")
-                        input(type="radio" name="check" value="1")
+                        input(type="radio" name="check" value="1").ml80.cursor-p
                         span 通过
-                        input(type="radio" name="check" value="2")
+                        input(type="radio" name="check" value="2").ml80.cursor-p
                         span 不通过
-                        input(type="button" value="审核提交" class="check-diary")
+                        input(type="button" value="审核提交" class="check-diary").btn.btn-info.ml80
 
 //遮罩层
 .per100.pos-f.ht2000.bg-rgba6.top0.tc.display-n.mask

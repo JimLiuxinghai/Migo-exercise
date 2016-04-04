@@ -2,19 +2,19 @@
    Created by jimliu on 2016/1/17
 
 div
-    -for(var i=0;i<10;i++){
+    -for(var i=0;i<planeData.length;i++){
         a(href="dplane")
             .col6.pl20.pr20.pt20
                 div.box-s-2
-                    .pos-r
-                        img(src="images/temp/jihua-title.jpg").per100
+                    .pos-r.ht120.overflow-h
+                        img(src="/#{planeData[i].trainPic[0].pichref}").per100
                     .border-b.border-l.border-r
-                        p.font14.tc  肩部训练计划
+                        p.font14.tc  #{planeData[i].trainName}
                             span.vicons.font-red &#xe65f;
                         p.font-6.tc
-                            span.mr10 无器械
-                            span.mr10 初级
-                            span.mr10 23人正在训练
+                            span.mr10 #{planeData[i].trainEq}
+                            span.mr10 #{planeData[i].trainLevel}
+                            span.mr10 #{planeData[i].trainUser.length}人参加训练
     -}
 
 

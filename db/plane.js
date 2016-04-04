@@ -8,15 +8,8 @@ var planeSchema = new Schema1({
     trainPosition  : String,
     trainCalorie   : String,
     trainLevel    : String, //训练难度
-    trainUser    : [{
-        username : String
-    }],
-    trainPic : [
-        {
-            picDes : String,  //图片描述
-            pichref : String  //图片链接
-        }
-    ]
+    trainUser    : [],
+    trainPic : []
 });
 var Plane = mongoose.model('Plane', planeSchema);
 //倒出模型
