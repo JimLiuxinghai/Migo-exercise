@@ -63,7 +63,7 @@ router.get('/', function(req, res, next) {
                                 var userlogo = content.userlogo;
                                 var navuser = {
                                     user : user,
-                                    userlogo : 'images/user/'+userlogo
+                                    userlogo : 'images/user/'+user+'.png'
                                 }
                                 res.render('index', { title: 'Migo个人健身系统' ,user : navuser,indexUser:indexUser,diarySort:diarySort,dynamic:dynamic,myplane : myplane});
                             });

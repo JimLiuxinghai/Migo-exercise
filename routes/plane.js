@@ -44,10 +44,15 @@ router.post('/choosePlane', function(req, res, next){
 });
 /*训练计划详情*/
 router.get('/dplane/:id',function(req,res,next){
+    var user = req.session.user;
+    var navuser = {
+        user : user,
+        userlogo : 'images/user/'+user+'.png'
+    }
     var id = req.params.id.substr(1);
     Plane.findOne({_id : id},function (err,content){
         console.log(content)
-        res.render('dplane',{title:"Migo个人健身系统--训练计划", plane : content});
+        res.render('dplane',{title:"Migo个人健身系统--训练计划", user: navuser, plane : content});
     })
 
 });
@@ -57,13 +62,21 @@ router.get('/train/:id',function(req,res,next){
     var user = req.session.user;
     var planeData;
 
-    console.log(navuser)
+    //console.log(navuser)
     Plane.findOne({_id : id},function (err,content){
         planeData = content;
-        content.trainUser.push({
-            name : user
-        })
-        content.save();
+        for(var i = 0; i < content.trainUser.length; i ++){
+            if(content.trainuser[i].name == user){
+                res.redirect('/dplane')
+            }
+            else{
+                content.trainUser.push({
+                    name : user
+                })
+                content.save();
+            }
+        }
+
         User.findOne({name : user}, function (err,content){
             content.mytrain.push({
                 plane : id
