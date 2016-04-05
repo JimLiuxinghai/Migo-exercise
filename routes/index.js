@@ -51,11 +51,7 @@ router.get('/', function(req, res, next) {
                         for(var i = 0; i < content.length; i ++){
                             for(var j = 0; j < content[i].trainUser.length; j ++){
                                 if(content[i].trainUser[j].name == user){
-                                    if(myplane.length > 3){
-                                        return;
-                                    }
                                     myplane.push(content[i]);
-
                                 }
                                 else{
                                     return;

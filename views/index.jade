@@ -83,6 +83,7 @@ block content
         .row.mt10
           p.font16.pl10.border-l-p.ml10 我参加的训练计划
           ul.list-unstyled
+            -(myplane.length > 4) ? myplane.length=4 : myplane.length=myplane.length;
             -for(var i = 0;i < myplane.length;i ++){
             a(href="#")
               li.padding.col6.li-scale.box-s-c5
