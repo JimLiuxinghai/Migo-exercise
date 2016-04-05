@@ -26,7 +26,7 @@ router.get('/',function(req,res,next){
 router.get('/plane',function(req,res,next){
     var user = req.session.user;
     Plane.find(function(err,content){
-
+        console.log(content)
         res.render('admin-plane',{title:"Migo个人健身系统",planeData : content});
     })
 })

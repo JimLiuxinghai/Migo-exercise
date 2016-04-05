@@ -5,6 +5,7 @@ var express = require('express');
 var Diary = require('../db/diary');
 var Dynamic = require('../db/dynamic');
 var moment = require('moment');
+var Plane = require('../db/plane');
 var fs = require('fs');
 var flash = require('../util/flash.js');
 var router = express.Router();
@@ -13,6 +14,7 @@ var router = express.Router();
 router.get('/usercenter',function(req,res,next){
     //获取用户
     var user = req.session.user;
+    var myplane = [];
     if(!user){
         res.redirect('/login');
     }
@@ -43,10 +45,24 @@ router.get('/usercenter',function(req,res,next){
                         content[i].newtime = moment(content[i].time).format("YYYY-MM-DD HH时mm分");
                         dynamic.push(content[i])
                     }
-                    if(user){
-                        console.log(dynamic)
-                        res.render('usercenter',{title:"Migo个人健身系统--健身日记",user : navuser,diaryData : diary,dynamic:dynamic});
-                    }
+                    Plane.find().exec(function(err,content){
+                        for(var i = 0; i < content.length; i ++){
+                            for(var j = 0; j < content[i].trainUser.length; j ++){
+                                if(content[i].trainUser[j].name == user){
+                                    myplane.push(content[i]);
+
+                                }
+                                else{
+                                    return;
+                                }
+                            }
+                        }
+                        if(user){
+                            console.log(myplane)
+                            res.render('usercenter',{title:"Migo个人健身系统--健身日记",user : navuser,diaryData : diary,dynamic:dynamic, myplane : myplane});
+                        }
+                    })
+
                 }
             })
 

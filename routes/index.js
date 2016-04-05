@@ -3,6 +3,7 @@ var flash = require('../util/flash.js');
 var User = require('../db/user');
 var Diary = require('../db/diary');
 var Dynamic = require('../db/dynamic');
+var Plane = require('../db/plane');
 var moment = require('moment');
 var hash = require('../util/pass').hash;
 var router = express.Router();
@@ -11,6 +12,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
 
   var user = req.session.user;
+  var myplane = [];
   //获取总人数
   User.find(function(err,content){
       var indexUser = {
@@ -42,26 +44,41 @@ router.get('/', function(req, res, next) {
                     else{
                         content.map(function(result){
                             result.newtime = moment(result.time).format("YYYY-MM-DD HH时mm分");
-                            console.log(result.newtime)
                             dynamic.push(result);
                         })
-                        console.log(dynamic)
                     }
-                    if(user){
-                        User.findOne({name : user},function(err,content){
-                            var userlogo = content.userlogo;
-                            var navuser = {
-                                user : user,
-                                userlogo : 'images/user/'+userlogo
+                    Plane.find().exec(function(err,content){
+                        for(var i = 0; i < content.length; i ++){
+                            for(var j = 0; j < content[i].trainUser.length; j ++){
+                                if(content[i].trainUser[j].name == user){
+                                    if(myplane.length >= 4){
+                                        return;
+                                    }
+                                    myplane.push(content[i]);
+
+                                }
+                                else{
+                                    return;
+                                }
                             }
+                        }
+                        if(user){
+                            User.findOne({name : user},function(err,content){
+                                var userlogo = content.userlogo;
+                                var navuser = {
+                                    user : user,
+                                    userlogo : 'images/user/'+userlogo
+                                }
+                                res.render('index', { title: 'Migo个人健身系统' ,user : navuser,indexUser:indexUser,diarySort:diarySort,dynamic:dynamic,myplane : myplane});
+                            });
 
-                            res.render('index', { title: 'Migo个人健身系统' ,user : navuser,indexUser:indexUser,diarySort:diarySort,dynamic:dynamic});
-                        });
+                        }
+                        else{
+                            res.render('index', { title: 'Migo个人健身系统',indexUser:indexUser,diarySort:diarySort,dynamic:dynamic});
+                        }
 
-                    }
-                    else{
-                        res.render('index', { title: 'Migo个人健身系统',indexUser:indexUser,diarySort:diarySort,dynamic:dynamic});
-                    }
+                    })
+
                 })
 
             })

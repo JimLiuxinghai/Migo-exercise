@@ -1,13 +1,14 @@
 //
    Created by jimliu on 2016/1/17
 
-div
+div.plane-list
     -for(var i=0;i<planeData.length;i++){
-        a(href="dplane")
+        a(href="dplane/:#{planeData[i]._id}")
             .col6.pl20.pr20.pt20
                 div.box-s-2
                     .pos-r.ht120.overflow-h
-                        img(src="/#{planeData[i].trainPic[0].pichref}").per100
+                        //img(src="/#{planeData[i].trainPic[0].pichref}").per100
+                        img(src="/images/temp/jihua-title.jpg").per100
                     .border-b.border-l.border-r
                         p.font14.tc  #{planeData[i].trainName}
                             span.vicons.font-red &#xe65f;
