@@ -55,8 +55,9 @@ app.post('/chart',routes);
 /*健身计划*/
 app.get('/plane',plane);
 app.get('/dplane/:id',plane);
-app.get('/train/:id',plane);
+app.post('/getTrain',plane);
 app.post('/choosePlane',plane);
+app.get('/train/:id',plane);
 
 /*动态*/
 app.get('/dynamic',dynamic);

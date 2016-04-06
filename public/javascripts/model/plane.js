@@ -33,8 +33,19 @@ require(['jquery','util','domReady'],function($,util,domReady){
                 data : planeData,
                 type : 'POST',
                 success : function (msg) {
-                    for(var i = 0;i < msg.length; i ++){
-                        var plane = '<div class="">'
+                    var result;
+                    for(var i = 0;i < msg.plane.length; i ++){
+                        var plane = '<a href="dplane/:'+msg.plane[i]._id+'">'+
+                                        '<div class="col6 pl20 pr20 pt20">'+
+                                            '<div class="box-s-2">'+
+                                                '<div class="pos-r ht120 overflow-h">'+
+                                                    '<img src="/msg.plane[i].trainPic[0].pichref" class="per100">'+
+                                                '</div>'+
+                                                '<div class="border-b border-l border-r">'+
+                                                    '<p class="font14 tc">'+
+                                                        msg.plane[i].trainName+
+                                                        '<span class="vicons font-red">&#xe65f;</span>'
+                                                    '</p>'
                     }
                 }
             })

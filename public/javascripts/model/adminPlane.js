@@ -15,6 +15,20 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
             var data = $(this).attr("data");
             $("."+data).show();
         })
+        //删除健身计划
+        $('.delete').click(function(){
+            var id = $(this).find('input[type="hidden"]').val();
+            $.ajax({
+                url : '/admin/deletePlane',
+                type : 'POST',
+                data : {id : id},
+                success : function (msg) {
+                    if(msg.status.code == '200'){
+                        setTimeout(window.location.href='/admin/plane',2000);
+                    }
+                }
+            })
+        })
         //保存训练名称等
         $(".con-add").click(function () {
             var planeData = $('form[name="plane"]').serializeObject();

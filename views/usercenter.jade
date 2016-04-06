@@ -38,12 +38,12 @@ block content
                         -for(var i = 0;i < myplane.length; i++){
                             .ht140.mt10.row
                                 .col7.overflow-h.ht140
-                                    img(src="images/temp/jihua-title.jpg").per100
+                                    img(src="/#{myplane[i].trainPic[0].pichref}").per100
                                 .col17.ht140.pl20
                                     p.font14.mt10  #{myplane[i].trainName}
                                     p 分类：#{myplane[i].trainPosition}
                                     p
-                                        a.display-ib.btn-purple.pl10.pr10.cursor-p.pt4.pb4 开始训练
+                                        a.display-ib.btn-purple.pl10.pr10.cursor-p.pt4.pb4(href="/train/:#{myplane[i]._id}") 开始训练
                         -}
                 //健身动态
                 .col18.pl30.display-n.dynamic

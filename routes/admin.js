@@ -24,9 +24,9 @@ router.get('/',function(req,res,next){
 })
 /*健身计划管理*/
 router.get('/plane',function(req,res,next){
-    var user = req.session.user;
+    //var user = req.session.user;
     Plane.find(function(err,content){
-        console.log(content)
+
         res.render('admin-plane',{title:"Migo个人健身系统",planeData : content});
     })
 })
@@ -73,7 +73,7 @@ router.post('/addPlanePic',function (req,res,next) {
     var filepath = 'public/images/plane/'+id+name+'.png';
     fs.writeFile(filepath, dataBuffer, function(err) {
         if(err){
-            console.log(err);
+
             res.send(flash(500,'fail',{
                 msg : "上传图片失败"
             }));
@@ -92,6 +92,16 @@ router.post('/addPlanePic',function (req,res,next) {
         }
     })
 
+})
+/*健身计划删除*/
+router.post('/deletePlane', function (req, res, next) {
+    var id = req.body.id;
+    console.log(id)
+    Plane.remove({_id : id},function(err,content){
+        res.send(flash(200,'success',{
+            msg : "删除成功"
+        }));
+    })
 })
 /*会员管理*/
 router.get('/people',function(req,res,next){
@@ -156,7 +166,7 @@ router.post('/checkDiary',function (req,res,next) {
     console.log(id,status)
     Diary.update({_id : id},{state:status},function (err,content) {
         if(err){
-            console.log(err);
+
             res.send(flash(500,'error',{
                 msg : "审核失败"
             }));
@@ -190,7 +200,6 @@ router.get('/dynamic',function(req,res,next){
 /*动态删除*/
 router.post('/deleteDynamic',function(req,res,next){
     var id = req.body.dynamicId;
-    console.log(id);
     Dynamic.remove({_id : id},function(err,content){
         console.log(content);
         res.send(flash(200,'success',{

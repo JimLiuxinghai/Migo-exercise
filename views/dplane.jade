@@ -22,9 +22,8 @@ block content
             .mt40.border-l-p.l-ht30.font16.pl30 训练计划介绍
             .p-indent.font-6.l-ht30 #{plane.trainText}
             .mt30.tc.mb100
-                a(href="/train/:#{plane._id}")
-                    .l-ht40.bg-green-4d.tc.font16.font-white.display-ib.pl30.pr30.cursor-p 参加本训练
-
+                .l-ht40.bg-green-4d.tc.font16.font-white.display-ib.pl30.pr30.cursor-p.get-train 参加该训练计划
+                    input(type="hidden" value="#{plane._id}")
         include footer.jade
         script(src="/javascripts/plugin/require.js" data-main="/javascripts/plugin/main.js")
         script(src="/javascripts/model/dplane.js")
