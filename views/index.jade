@@ -85,7 +85,7 @@ block content
           ul.list-unstyled
             -(myplane.length > 4) ? myplane.length=4 : myplane.length=myplane.length;
             -for(var i = 0;i < myplane.length;i ++){
-            a(href="#")
+            a(href="/dplane/:#{myplane[i]._id}")
               li.padding.col6.li-scale.box-s-c5
                 div.overflow-h.ht140
                   img(src="/#{myplane[i].trainPic[0].pichref}").per100
@@ -96,14 +96,14 @@ block content
       .row.mt10
         p.font16.pl10.border-l-p.ml10 热门健身计划
         ul.list-unstyled
-          -for(var i = 0;i < 4;i ++){
-          a(href="#")
-            li.padding.col6.li-scale.box-s-c5
-              div.overflow-h.ht140
-                img(src="images/temp/jihua-title.jpg").per100
-              .tc.border-b.border-l.border-r
-                p.font14.l-ht30 肩部训练计划
-                p.font-9 23人正在训练
+          -for(var i = 0;i < hotplane.length;i ++){
+          a(href="/dplane/:#{hotplane[i]._id}")
+                li.padding.col6.li-scale.box-s-c5
+                    div.overflow-h.ht140
+                        img(src="/#{hotplane[i].trainPic[0].pichref}").per100
+                    .tc.border-b.border-l.border-r
+                        p.font14.l-ht30  #{hotplane[i].trainName}
+                        p.font-9 #{hotplane[i].trainUser.length}人正在训练
           -}
 
     include footer.jade

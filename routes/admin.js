@@ -14,13 +14,42 @@ var router = express.Router();
 /*后台管理*/
 router.get('/',function(req,res,next){
     var user = req.session.user;
+    var pieData = {};
     if(true){
-        res.render('admin',{title:"Migo个人健身系统",pieData:'1'})
+        console.log(pieData);
+        res.render('admin',{title:"Migo个人健身系统",pieData: JSON.stringify(pieData)})
     }
     else{
         res.redirect(404)
     }
-
+})
+/*admin数据*/
+router.post('/getPie', function (res, req, next){
+    //var title,series;
+    //title = '人员管理';
+    //series = {
+    //    type: 'pie',
+    //    name: 'Browser share',
+    //    data: [
+    //        ['Firefox',   45.0],
+    //        ['IE',       26.8],
+    //        {
+    //            name: 'Chrome',
+    //            y: 12.8,
+    //            sliced: true,
+    //            selected: true
+    //        },
+    //        ['Safari',    8.5],
+    //        ['Opera',     6.2],
+    //        ['Others',   0.7]
+    //    ]
+    //};
+    //res.send(flash(200,'success',{
+    //    title:'aaa',
+    //    series:'gggg'
+    //}));
+    res.send('11111')
+    //console.log(1111)
 })
 /*健身计划管理*/
 router.get('/plane',function(req,res,next){

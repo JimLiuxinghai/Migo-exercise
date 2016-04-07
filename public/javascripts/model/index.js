@@ -65,7 +65,6 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
             var carousel = function(){
                 var index = 0;
                 $(".next").click(function(){
-                    debugger;
                     index += 1;
                     if(index > 2){
                         index = 0;

@@ -14,7 +14,7 @@ var router = express.Router();
 router.get('/usercenter',function(req,res,next){
     //获取用户
     var user = req.session.user;
-    var myplane = [];
+
     if(!user){
         res.redirect('/login');
     }
@@ -45,23 +45,24 @@ router.get('/usercenter',function(req,res,next){
                         content[i].newtime = moment(content[i].time).format("YYYY-MM-DD HH时mm分");
                         dynamic.push(content[i])
                     }
-                    Plane.find().exec(function(err,content){
-                        for(var i = 0; i < content.length; i ++){
-                            for(var j = 0; j < content[i].trainUser.length; j ++){
-                                if(content[i].trainUser[j].name == user){
-                                    myplane.push(content[i]);
-
-                                }
-                                else{
-                                    return;
+                    if(user){
+                        Plane.find().exec(function(err,content){
+                            var myplane = [];
+                            for(var i = 0; i < content.length; i ++){
+                                for(var j = 0; j < content[i].trainUser.length; j ++){
+                                    if(content[i].trainUser[j].name == user){
+                                        myplane.push(content[i]);
+                                    }
+                                    else{
+                                        continue;
+                                    }
                                 }
                             }
-                        }
-                        if(user){
-                            console.log(myplane)
                             res.render('usercenter',{title:"Migo个人健身系统--健身日记",user : navuser,diaryData : diary,dynamic:dynamic, myplane : myplane});
-                        }
-                    })
+                        })
+
+                    }
+
 
                 }
             })

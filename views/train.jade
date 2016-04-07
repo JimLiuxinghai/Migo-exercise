@@ -4,7 +4,7 @@ extends layout
 block content
     .container-fluid
         include nav.jade
-        .w19.ml-auto.mr-auto
+        .w19.ml-auto.mr-auto.artical
             .pos-r.overflow-h.ht200
                 img(src="/#{plane.trainPic[0].pichref}").per100.blur25
                 .pos-a.ht200.per100.bg-rgba6.top0.font-white
@@ -28,5 +28,12 @@ block content
                                 img(src="/#{plane.trainPic[i].pichref}").per100
                         -}
                     .col8
-                        span.btn-huge.btn-info.cursor-p.begin 开始训练
+                        button.btn-huge.btn-info.cursor-p.begin 开始训练
+                        button.btn-huge.btn-info.cursor-p.over.display-n 结束训练
+                            input(type="hidden" value="#{plane.trainCalorie}")
         include footer.jade
+
+        script(type='text/javascript').
+            var trainTime = #{plane.trainTime};
+        script(src="/javascripts/plugin/require.js" data-main="/javascripts/plugin/main.js")
+        script(src="/javascripts/model/train.js")

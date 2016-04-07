@@ -58,6 +58,7 @@ app.get('/dplane/:id',plane);
 app.post('/getTrain',plane);
 app.post('/choosePlane',plane);
 app.get('/train/:id',plane);
+app.post('/overTrain',plane);
 
 /*动态*/
 app.get('/dynamic',dynamic);

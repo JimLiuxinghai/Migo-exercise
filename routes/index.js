@@ -10,78 +10,76 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-
-  var user = req.session.user;
-  var myplane = [];
-  //获取总人数
-  User.find(function(err,content){
-      var indexUser = {
-          userNum : null,
-          userTrianNum : 0,
-          train : null
-      };
-      indexUser.userNum = content.length;
-      //获取提交训练人数
-      User.find(function(err,content){
-          for(var i = 0; i < content.length; i ++){
-              if(content[i].mytrain[0] != undefined){
-                  indexUser.userTrianNum += 1;
-              }
-          }
-          /*首页日记发表*/
-            Diary.find({state : '1'}).sort({ 'time' : -1 }).limit(5) .exec(function(err,content){
-                var diary = [];
+    var user = req.session.user;
+    var myplane = [];
+    //获取提交训练人数
+    User.find(function(err,content){
+        var indexUser = {
+            userNum : null,
+            userTrianNum : 0,
+            train : null
+        };
+        indexUser.userNum = content.length;
+        for(var i = 0; i < content.length; i ++){
+            if(content[i].mytrain[0] != undefined){
+                indexUser.userTrianNum += 1;
+            }
+        }
+        /*首页日记发表*/
+        Diary.find({state : '1'}).sort({ 'time' : -1 }).limit(5) .exec(function(err,content){
+            var diary = [];
+            if(err){
+                return;
+            }
+            diarySort = content;
+            /*会员动态*/
+            Dynamic.find().sort({ 'time' : -1 }).limit(5).exec(function(err,content){
+                var dynamic = [];
                 if(err){
                     return;
                 }
-                diarySort = content;
-                /*会员动态*/
-                Dynamic.find().sort({ 'time' : -1 }).limit(5).exec(function(err,content){
-                    var dynamic = [];
-                    if(err){
-                        return;
-                    }
-                    else{
-                        content.map(function(result){
-                            result.newtime = moment(result.time).format("YYYY-MM-DD HH时mm分");
-                            dynamic.push(result);
-                        })
-                    }
-                    Plane.find().exec(function(err,content){
-                        for(var i = 0; i < content.length; i ++){
-                            for(var j = 0; j < content[i].trainUser.length; j ++){
-                                if(content[i].trainUser[j].name == user){
-                                    myplane.push(content[i]);
-                                }
-                                else{
-                                    return;
-                                }
-                            }
-                        }
+                else{
+                    content.map(function(result){
+                        result.newtime = moment(result.time).format("YYYY-MM-DD HH时mm分");
+                        dynamic.push(result);
+                    })
+                    Plane.find().sort({'trainUser.length' : -1}).limit(4).exec(function(err,content){
+                        var hotplane = content;
                         if(user){
-                            User.findOne({name : user},function(err,content){
-                                var userlogo = content.userlogo;
-                                var navuser = {
-                                    user : user,
-                                    userlogo : 'images/user/'+user+'.png'
-                                }
-                                res.render('index', { title: 'Migo个人健身系统' ,user : navuser,indexUser:indexUser,diarySort:diarySort,dynamic:dynamic,myplane : myplane});
-                            });
 
+                            var navuser = {
+                                user : user,
+                                userlogo : 'images/user/'+user+'.png'
+                            }
+                            Plane.find(function(err,content){
+                                if(err){
+                                    console.log(err);
+                                }
+                                for(var i = 0; i < content.length; i ++){
+                                    for(var j = 0; j < content[i].trainUser.length; j ++){
+                                        if(content[i].trainUser[j].name == user){
+                                            myplane.push(content[i]);
+                                        }
+                                        else{
+                                            continue;
+                                        }
+                                    }
+                                }
+                                console.log(myplane);
+                                res.render('index', { title: 'Migo个人健身系统' ,user : navuser,indexUser:indexUser,diarySort:diarySort,dynamic:dynamic,myplane : myplane, hotplane : hotplane });
+                            })
                         }
                         else{
-                            res.render('index', { title: 'Migo个人健身系统',indexUser:indexUser,diarySort:diarySort,dynamic:dynamic});
+                            res.render('index', { title: 'Migo个人健身系统',indexUser:indexUser,diarySort:diarySort,dynamic:dynamic, hotplane : hotplane});
                         }
-
                     })
-
-                })
+                }
 
             })
 
-      });
+        })
 
-  })
+    });
 
 
 });
@@ -111,10 +109,10 @@ router.post('/chart',function(req,res,next){
         };
     }
     res.send(flash(200,'success',{
-		x:x,
+        x:x,
         series:series
     }));
-    
+
 })
 
 

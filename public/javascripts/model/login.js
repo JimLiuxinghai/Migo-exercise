@@ -35,7 +35,6 @@ require(['jquery','util','domReady','jquery.cookie'],function($,util,domReady){
                         type : "POST",
                         data : userinfo,
                         success : function(data){
-                            console.log(data);
                             if(data == 'success'){
                                 $.cookie('username',userinfo.username);
                                 window.location.href = '/';
