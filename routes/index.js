@@ -25,6 +25,8 @@ router.get('/', function(req, res, next) {
                 indexUser.userTrianNum += 1;
             }
         }
+        /*健身热量排行*/
+
         /*首页日记发表*/
         Diary.find({state : '1'}).sort({ 'time' : -1 }).limit(5) .exec(function(err,content){
             var diary = [];

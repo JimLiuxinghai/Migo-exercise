@@ -10,10 +10,6 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
         }();
         //导航颜色
         $('.admin-nav').find('li:eq(0)').find('a').css('color','#4DB3A2');
-        //获取表格数据
-        var pieData = util.getData('/admin/getPie', 'POST', '');
-        console.log(pieData);
-        //complateCharts($(".people"),pieData.data)
     });
     //渲染图表
     function complateCharts(dom,data){
