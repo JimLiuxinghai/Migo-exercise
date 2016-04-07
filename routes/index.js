@@ -80,39 +80,73 @@ router.get('/', function(req, res, next) {
         })
 
     });
-
-
 });
 /*首页表格 */
 router.post('/chart',function(req,res,next){
+    var user = req.session.user;
     var type = req.body.type;
-    var x,series;
+
     if(type == 'day'){
-        x = ['01-01','01-02','01-03','01-04','01-05','01-06'];
-        series = {
-            name : "日健身数据",
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0]
-        };
+        var x,series;
+        var calorie = [];
+        var dayNow = moment().format("YYYY-MM-DD");
+        var dayArr = [];
+        dayArr.push(dayNow);
+        for(var i = 1; i < 7; i ++){
+            var time = moment.now() - 86400000*i;
+            var day = moment(time).format("YYYY-MM-DD");
+            dayArr.push(day);
+        }
+        x = dayArr.reverse();
+        User.findOne({name : user},function(err,content){
+            x.map(function(day){
+                var dayC = 0;
+                for(var i = 0; i < content.calorie.length; i ++){
+                    if(content.calorie[i].time == day){
+                        console.log(content.calorie[i].calorie)
+                        dayC += parseInt(content.calorie[i].calorie);
+                    }
+                    else{
+                        continue;
+                    }
+                }
+                calorie.push(dayC)
+            })
+            series = {
+                name : "日健身数据",
+                data: calorie
+            };
+            res.send(flash(200,'success',{
+                x:x,
+                series:series
+            }));
+        })
+
     }
     else if(type == "week"){
+        var x,series;
         x = ['10','11','12','13','14','15'];
         series = {
             name : "周健身数据",
             data: [499, 715, 1064, 300, 200, 358]
         };
+        res.send(flash(200,'success',{
+            x:x,
+            series:series
+        }));
     }
     else if(type == "month"){
-        x = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+        var x,series;
+        x = ['1月','2月','3月'];
         series = {
             name : "月健身数据",
-            data: [499, 715, 1064, 300, 200, 358]
+            data: [499, 715, 1064]
         };
+        res.send(flash(200,'success',{
+            x:x,
+            series:series
+        }));
     }
-    res.send(flash(200,'success',{
-        x:x,
-        series:series
-    }));
-
 })
 
 
