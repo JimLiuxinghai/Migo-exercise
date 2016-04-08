@@ -47,14 +47,14 @@ block content
             .tc.font16.border-b-1.ht30 健身排行榜(日)
               span.vicons.font16 &#xe71a;
             //排行榜中一个人
-            -var length = 7
-            -for(var i = 0; i < length; i ++){
+            -(yesCalorie.length > 10) ? yesCalorie.length=10 : yesCalorie.length=yesCalorie.length;
+            -for(var i = 0; i < yesCalorie.length; i ++){
               .pl10.pr10
                 .ht70.padding.overflow-h.border-b-1
-                  img(src="images/p1.jpg" width="45" height="45").img-circle.vertical-a-m
-                  span.font-blue.vertical-a-m.ml10 刘星海
-                  span.ml20 消耗热量：
-                  span.font16.font-red 1000卡路里
+                  img(src="images/user/#{yesCalorie[i].name}.png" width="45" height="45").img-circle.vertical-a-m
+                  span.font-blue.vertical-a-m.ml10.display-ib.w-110 #{yesCalorie[i].name}
+                  span 消耗热量：
+                  span.font16.font-red #{yesCalorie[i].calorie}
                   span.font16.fr No #{i+1}
               -}
         .col7.padding
@@ -85,7 +85,7 @@ block content
           ul.list-unstyled
             -(myplane.length > 4) ? myplane.length=4 : myplane.length=myplane.length;
             -for(var i = 0;i < myplane.length;i ++){
-            a(href="/dplane/:#{myplane[i]._id}")
+            a(href="/train/:#{myplane[i]._id}")
               li.padding.col6.li-scale.box-s-c5
                 div.overflow-h.ht140
                   img(src="/#{myplane[i].trainPic[0].pichref}").per100

@@ -59,6 +59,7 @@ router.post('/reg',function(req,res,next){
                     newuser.pass = pass;
                     newuser.userlogo = userlogo;
                     newuser.regTime = Date.now();
+                    newuser.yesCalorie = 0;
                     newuser.save(function(err) {
                         if (err) {
                             res.write("注册失败!");
