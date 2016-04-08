@@ -36,11 +36,8 @@ router.get('/', function(req, res, next) {
             }
 
         }
-        console.log(yesCalorie);
         /*健身热量排序*/
         yesCalorie = maopao(yesCalorie);
-        console.log(yesCalorie);
-
         /*首页日记发表*/
         Diary.find({state : '1'}).sort({ 'time' : -1 }).limit(5) .exec(function(err,content){
             var diary = [];
@@ -99,7 +96,6 @@ router.get('/', function(req, res, next) {
 /*首页表格 */
 router.post('/chart',function(req,res,next){
     var user = req.session.user;
-    console.log(user);
     var type = req.body.type;
     if(!user){
         res.send('no user');
