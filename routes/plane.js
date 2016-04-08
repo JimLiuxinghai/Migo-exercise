@@ -78,6 +78,12 @@ router.post('/getTrain',function(req,res,next){
                 return false;
             }
         }
+        User.findOne({name : user}, function(err,user){
+            user.mytrain.push({
+                name : id
+            })
+            user.save();
+        })
         content.trainUser.push({
             name : user
         })
@@ -97,6 +103,7 @@ router.get('/train/:id', function (req, res, next){
     };
     Plane.findOne({_id : id}, function(err, content){
         if(user) {
+            console.log(content);
             res.render('train',{title:"Migo个人健身系统--训练计划", user: navuser, plane : content});
         }
         else {

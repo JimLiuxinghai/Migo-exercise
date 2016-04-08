@@ -14,31 +14,107 @@ var router = express.Router();
 /*后台管理*/
 router.get('/',function(req,res,next){
     var user = req.session.user;
-    var pieData = {};
-    pieData.people = {
-        title : '会员情况',
-        series : [{
-            type: 'pie',
-            name: '会员情况',
-            data: [
-                ['未提交训练会员',   1],
-                ['提交训练会员',  1]
-            ]
-        }]
-    }
     if(true){
-        res.render('admin',{title:"Migo个人健身系统",pieData: JSON.stringify(pieData)})
+        res.render('admin',{title:"Migo个人健身系统"})
     }
     else{
         res.redirect(404)
     }
 })
+/*健身表格*/
+router.post('/getpie', function(req, res, next){
+    var pie = {
+        people : {
+            title : '会员情况',
+            series : [{
+                type: 'pie',
+                name: '会员情况',
+                data: []
+            }]
+        },
+        plane : {
+            title : '训练计划',
+            series : [{
+                type: 'pie',
+                name: '训练计划',
+                data: []
+            }]
+        },
+        diary : {
+            title : '日记情况',
+            series : [{
+                type: 'pie',
+                name: '日记情况',
+                data: []
+            }]
+        }
+    }
+    User.find(function(err, user){
+        var userTrianNum = 0;
+        for(var i = 0; i < user.length; i ++) {
+            if (user[i].mytrain[0] != undefined) {
+                userTrianNum += 1;
+            }
+        }
+        var notplane = user.length - userTrianNum;
+        console.log(notplane, userTrianNum)
+        pie.people.series[0].data.push(['未提交训练计划会员', notplane], ['已提交训练计划会员', userTrianNum])
+        /*健身日记*/
+        var checking = [],
+            checkpass = [],
+            checknopass = [];
+        Diary.find().sort({ 'time' : -1}).exec(function(err,content) {
+            if(err){
+                return;
+            }
+            else{
+                for(var i in content){
+                    if(content[i].state == "0"){
+                        checking.push(content[i])
+                    }
+                    else if(content[i].state == "1"){
+                        checkpass.push(content[i]);
+                    }
+                    else if(content[i].state == "2"){
+                        checknopass.push(content[i]);
+                    }
+                }
+                pie.diary.series[0].data.push(['待审核', checking.length], ['审核通过', checkpass.length], ['审核不通过', checknopass.length])
+            }
+            Plane.find(function(err,plane){
+                var primary = [];
+                var middle = [];
+                var high = [];
+                for(var k = 0; k < plane.length; k ++){
+                    if(plane[k].trainLevel == '初级'){
+                        primary.push(plane[k])
+                    }
+                    else if(plane[k].trainLevel == '中级'){
+                        middle.push(plane[k])
+                    }
+                    else if(plane[k].trainLevel == '高级'){
+                        high.push(plane[k])
+                    }
+                }
+                console.log(primary.length);
+                console.log(middle.length);
+                console.log(high.length);
+                pie.plane.series[0].data.push(['初级', primary.length], ['中级', middle.length], ['高级', high.length])
 
+                res.send(flash(200,'success',{
+                    msg : pie
+                }));
+            })
+
+        })
+
+    })
+
+})
 /*健身计划管理*/
 router.get('/plane',function(req,res,next){
     //var user = req.session.user;
     Plane.find(function(err,content){
-
         res.render('admin-plane',{title:"Migo个人健身系统",planeData : content});
     })
 })
@@ -135,7 +211,6 @@ router.get('/people',function(req,res,next){
 /*会员删除*/
 router.post('/deleteUser',function(req,res,next){
     var id = req.body.userId;
-    console.log(id);
     User.remove({_id : id},function(err,content){
         console.log(content);
         res.send(flash(200,'success',{
@@ -219,6 +294,7 @@ router.post('/deleteDynamic',function(req,res,next){
         }));
     })
 })
+
 /*判断是否为admin*/
 function isAdmin (user){
     if(user == 'admin'){

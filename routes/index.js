@@ -12,8 +12,8 @@ router.get('/', function(req, res, next) {
     var user = req.session.user;
     var myplane = [];
     var yesCalorie = [];
-    //var yesterday = moment(moment().now - 86400000).format('YYYY-MM-DD');
-    var yesterday = moment(moment().now).format('YYYY-MM-DD');
+    var yesterday = moment(moment().now - 86400000).format('YYYY-MM-DD');
+    //var yesterday = moment(moment().now).format('YYYY-MM-DD');
     //获取提交训练人数
     User.find(function(err,content){
         var indexUser = {
@@ -144,6 +144,7 @@ router.post('/chart',function(req,res,next){
         }
         else if(type == "week"){
             var x,series;
+
             x = ['10','11','12','13','14','15'];
             series = {
                 name : "周健身数据",

@@ -16,7 +16,7 @@ include  adminnav.jade
                             span.font-6 #{userContent[i].newtime}
                           .col6.l-ht40
                             span 参加训练数量 ：
-                            span.font-orange 10
+                            span.font-orange #{userContent[i].mytrain.length}
                           .col2.l-ht40
                             span.vicons.font-red.font20.cursor-p.delete &#xe760;
                               input(type='hidden' value='#{userContent[i]._id}')

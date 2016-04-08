@@ -10,6 +10,12 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
         }();
         //导航颜色
         $('.admin-nav').find('li:eq(0)').find('a').css('color','#4DB3A2');
+        var pieData = util.getData('/admin/getpie', 'POST', {type : 'pie'});
+
+        console.log(pieData.data.msg.plane)
+        complateCharts($(".people"), pieData.data.msg.people)
+        complateCharts($(".plane"), pieData.data.msg.plane)
+        complateCharts($(".diary"), pieData.data.msg.diary)
     });
     //渲染图表
     function complateCharts(dom,data){
@@ -37,7 +43,7 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
                     }
                 }
             },
-            series: [data.series]
+            series: data.series
         }
         //图表展示
         dom.highcharts(highOption);

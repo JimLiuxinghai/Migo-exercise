@@ -56,7 +56,7 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
                 '<input type="hidden" name="plane'+i+'">'+
                 '</div>'+
                 '<div class="col12">'+
-                '<input class="form-control" type="text" placeholder="图片描述" id="plane'+i+'" />'+
+                '<input class="form-control" type="text" placeholder="图片描述" name="plane'+i+'" />'+
                 '</div>'+
                 '<div class="col2">'+
                 '<input type="button" value="上传" name="plane'+i +'" class="btn btn-info ml20">'+
