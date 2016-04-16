@@ -32,9 +32,9 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use("/", express.static(path.join(__dirname, "web", "public")))
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false ,'limit':'10000000kb'}));
+/*ajax大小限制*/
+app.use(bodyParser.urlencoded({ extended: false ,'limit':'100000000kb'}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: 'jimliu',
