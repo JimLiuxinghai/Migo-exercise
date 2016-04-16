@@ -1,7 +1,11 @@
 {
   "name": "Migo-exercise",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "4.1.1",
+    "npm": "2.1.x"
+  },
   "scripts": {
     "start": "node ./bin/www"
   },
