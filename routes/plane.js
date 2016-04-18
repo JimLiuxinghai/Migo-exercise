@@ -134,6 +134,7 @@ router.post('/overTrain', function(req, res, next){
             else{
                 for(var i = 0; i < userCalorie.length; i ++){
                     if(userCalorie[i].time == now){
+                        console.log(userCalorie[i].time)
                         userCalorie[i].calorie += calorie;
                         console.log(userCalorie[i].calorie)
                     }

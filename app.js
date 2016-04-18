@@ -85,7 +85,10 @@ app.post('/deletDynamic',usercenter);
 app.use('/admin',admin);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  var err = {
+      message:'not found',
+      error: "404"
+  }
   err.status = 404;
   next(err);
 });
