@@ -17,7 +17,7 @@ router.get('/',function(req,res,next){
         res.render('admin',{title:"Migo个人健身系统"})
     }
     else{
-        res.redirict('404')
+        res.render('404')
     }
     
 })
