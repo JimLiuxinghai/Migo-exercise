@@ -13,12 +13,13 @@ var router = express.Router();
 
 /*后台管理*/
 router.get('/',function(req,res,next){
-    if(user){
-        res.render('admin',{title:"Migo个人健身系统"})
+    var user = req.session.user;
+    if(isAdmin(req.session.user) == false){
+        res.redirect('404')
     }
-    else{
-        res.render('404')
-    }
+
+    res.render('admin',{title:"Migo个人健身系统"})
+
     
 })
 /*健身表格*/
@@ -308,7 +309,7 @@ router.post('/deleteDynamic',function(req,res,next){
 /*判断是否为admin*/
 function isAdmin (user){
     if(user){
-        if(user != 'admin'){
+        if(user == 'admin'){
             return true;
         }
         else{
