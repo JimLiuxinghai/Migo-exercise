@@ -1,7 +1,7 @@
 /**
  * Created by jimliu on 2016/1/22.
  */
-require(['jquery','highcharts','util','swiper','domReady'],function($,highcharts,util,swiper,domReady){
+require(['jquery','highcharts','util','swiper','domReady'],function($,highcharts,util,Swiper,domReady){
     domReady(function(){
         $(function(){
             //渲染图表
@@ -69,7 +69,9 @@ require(['jquery','highcharts','util','swiper','domReady'],function($,highcharts
                 slidesPerView: 1,
                 paginationClickable: true,
                 spaceBetween: 30,
-                loop: true
+                loop: true,
+                autoplay: 2500,
+                autoplayDisableOnInteraction: false
             });
         })
     })

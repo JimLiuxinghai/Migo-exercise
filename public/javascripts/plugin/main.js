@@ -10,7 +10,7 @@ require.config(
             "domReady" : 'domReady',
             "jquery.cookie" : "jquery.cookie.js",
             "highcharts" : "highcharts",
-            "swiper": "swiper.jquery.umd.min"
+            "swiper": "swiper"
         },
         shim : {
             "jquery": {
