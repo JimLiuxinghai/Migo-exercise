@@ -1,7 +1,7 @@
 /**
  * Created by jimliu on 2016/1/22.
  */
-require(['jquery','highcharts','util','domReady'],function($,highcharts,util,domReady){
+require(['jquery','highcharts','util','swiper','domReady'],function($,highcharts,util,swiper,domReady){
     domReady(function(){
         $(function(){
             //渲染图表
@@ -62,34 +62,15 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
                 })
             }();
             //图片轮播
-            var carousel = function(){
-                var index = 0;
-                $(".next").click(function(){
-                    index += 1;
-                    if(index > 2){
-                        index = 0;
-                    }
-                    $(".carousel").fadeOut();
-                    $(".carousel:eq("+index+")").fadeIn();
-                });
-                $(".prev").click(function(){
-                    index -= 1;
-                    if(index < 0){
-                        index = 2;
-                    }
-                    $(".carousel").fadeOut();
-                    $(".carousel:eq("+index+")").fadeIn();
-                });
-                setInterval(function(){
-                    index += 1;
-                    if(index > 2){
-                        index = 0;
-                    }
-                    $(".carousel").fadeOut();
-                    $(".carousel:eq("+index+")").fadeIn();
-                },3000);
-
-            }();
+            var swiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-pagination',
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                slidesPerView: 1,
+                paginationClickable: true,
+                spaceBetween: 30,
+                loop: true
+            });
         })
     })
 
