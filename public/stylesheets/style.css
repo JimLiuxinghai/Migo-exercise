@@ -106,3 +106,8 @@ body,button{font-family: hou; overflow-x: hidden;}
 .big-delete i{
   transition: font-size .2s ease-in .1s
 }
+.swiper-slide {
+    width: 100%;
+    float: left;
+
+}

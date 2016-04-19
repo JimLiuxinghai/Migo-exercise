@@ -18,7 +18,7 @@ var userSchema = new Schema1({
     ],
     yesCalorie : Number,
     signature : String,
-	mytrain:[]
+	mytrain:[{name: String}]
 });
 var User = mongoose.model('User', userSchema);
 //倒出模型

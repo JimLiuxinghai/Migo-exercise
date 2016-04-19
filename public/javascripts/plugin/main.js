@@ -9,7 +9,8 @@ require.config(
             "util" : "util",
             "domReady" : 'domReady',
             "jquery.cookie" : "jquery.cookie.js",
-            "highcharts" : "highcharts"
+            "highcharts" : "highcharts",
+            "swiper": "swiper.jquery.umd.min"
         },
         shim : {
             "jquery": {
@@ -30,7 +31,10 @@ require.config(
                 exports: "Highcharts",
                 deps: ["jquery"]
             },
-            'simditor' : ['jquery']
+            'swiper' : {
+                exports: "swiper",
+                deps: ["jquery"]
+            }
         }
     }
 )

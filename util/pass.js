@@ -1,34 +1,25 @@
 /**
- * Created by jimliu on 2016/2/5.
+ * mcrupto模块提供加密功能，主要用户密码加密。
+ * @module mcrypto
  */
 var crypto = require('crypto');
-
-var len = 128;
-
-var iterations = 12000;
-
-/**
- * Hashes a password with optional `salt`, otherwise
- * generate a salt for `pass` and invoke `fn(err, salt, hash)`.
- *
- * @param {String} password to hash
- * @param {String} optional salt
- * @param {Function} callback
- * @api public
- */
-
-exports.hash = function (pwd, salt, fn) {
-    if (3 == arguments.length) {
-        crypto.pbkdf2(pwd, salt, iterations, len, fn);
-    } else {
-        fn = salt;
-        crypto.randomBytes(len, function(err, salt){
-            if (err) return fn(err);
-            salt = salt.toString('base64');
-            crypto.pbkdf2(pwd, salt, iterations, len, function(err, hash){
-                if (err) return fn(err);
-                fn(null, salt, hash);
-            });
-        });
+module.exports = {
+    //创建随机密码
+    createPassword: function() {
+        var pswAdd = ['5M', 'xH', 'D5', 'sJ', 'oH', 'cM'];
+        var n = Math.round(Math.random() * 6),
+            newPsw = '';
+        n = n > 5 ? 5 : n;
+        newPsw = Math.round(Math.random() * 10)
+            + pswAdd[n] + Math.round(Math.random() * 10)
+            + pswAdd[n] + Math.round((Math.random() * 10) * (Math.random() * 10));
+        return newPsw;
+    },
+    //md5加密密码
+    md5Password: function(password) {
+        var md5 = crypto.createHash('md5'),
+            salt = '(!%$7gv*)#bggh9';
+        return md5.update(password + salt).digest('hex');
     }
+
 };
