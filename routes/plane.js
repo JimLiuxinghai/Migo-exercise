@@ -10,6 +10,7 @@ var Dynamic = require('../db/dynamic');
 var moment = require('moment');
 var router = express.Router();
 
+
 /*训练计划*/
 router.get('/plane',function(req,res,next){
     var user = req.session.user;

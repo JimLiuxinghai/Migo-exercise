@@ -96,11 +96,11 @@ router.get('/', function(req, res, next) {
 /*首页表格 */
 router.post('/chart',function(req,res,next){
     var user = req.session.user;
-    var type = req.body.type;
     if(!user){
         res.send('no user');
     }
     else{
+        var type = req.body.type;
         if(type == 'day'){
             var x,series;
             var calorie = [];

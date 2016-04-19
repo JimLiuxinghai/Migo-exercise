@@ -10,6 +10,7 @@ var moment = require('moment');
 var fs = require('fs');
 var flash = require('../util/flash.js');
 var router = express.Router();
+var smushit = require('node-smushit');
 
 /*后台管理*/
 router.get('/',function(req,res,next){
@@ -171,6 +172,7 @@ router.post('/addPlanePic',function (req,res,next) {
             }));
         }
         else{
+            smushit.smushit(filepath);
             Plane.findOne({trainName : id},function (err,content){
                 content.trainPic.push({
                     picDes : picDes,
