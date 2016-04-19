@@ -3,7 +3,7 @@ var express = require('express');
 var User = require('../db/user');
 var router = express.Router();
 var fs = require('fs');
-var hash = require('../util/pass').hash;
+var mcrypto = require('../util/pass');
 /*登录注册*/
 router.get('/login',function(req,res,next){
     res.render('login',{title:"Migo个人健身系统--登录"});
@@ -19,7 +19,7 @@ router.post('/login',function(req,res,next){
     
     User.findOne({name : user},function(err,content){
         if(content != null){
-            if(content.pass == pass){
+            if(content.pass == mcrypto.md5Password(pass)){
                 req.session.user = user;
                 res.write("success");
                 res.end();
@@ -56,7 +56,7 @@ router.post('/reg',function(req,res,next){
                     //数据存储
                     var newuser = new User(User);
                     newuser.name = user;
-                    newuser.pass = pass;
+                    newuser.pass = mcrypto.md5Password(pass);
                     newuser.userlogo = userlogo;
                     newuser.regTime = Date.now();
                     newuser.yesCalorie = 0;

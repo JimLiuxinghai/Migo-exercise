@@ -8,7 +8,6 @@ var Diary = require('../db/diary');
 var Plane = require('../db/plane');
 var Dynamic = require('../db/dynamic');
 var moment = require('moment');
-var hash = require('../util/pass').hash;
 var router = express.Router();
 
 /*训练计划*/
@@ -78,11 +77,11 @@ router.post('/getTrain',function(req,res,next){
                 return false;
             }
         }
-        User.findOne({name : user}, function(err,user){
-            user.mytrain.push({
+        User.findOne({name : user}, function(err,userCon){
+            userCon.mytrain.push({
                 name : id
             })
-            user.save();
+            userCon.save();
         })
         content.trainUser.push({
             name : user
