@@ -24,7 +24,10 @@ router.get('/',function(req,res,next){
 })
 /*健身表格*/
 router.post('/getpie', function(req, res, next){
-    isAdmin(req.session.user);
+    var user = req.session.user;
+    if(isAdmin(req.session.user) == false){
+        res.redirect('404')
+    }
     var pie = {
         people : {
             title : '会员情况',
@@ -115,14 +118,20 @@ router.post('/getpie', function(req, res, next){
 })
 /*健身计划管理*/
 router.get('/plane',function(req,res,next){
-    isAdmin(req.session.user);
+    var user = req.session.user;
+    if(isAdmin(req.session.user) == false){
+        res.redirect('404')
+    }
     Plane.find(function(err,content){
         res.render('admin-plane',{title:"Migo个人健身系统",planeData : content});
     })
 })
 /*添加健身计划*/
 router.post('/addplane',function(req,res,next){
-    isAdmin(req.session.user);
+    var user = req.session.user;
+    if(isAdmin(req.session.user) == false){
+        res.redirect('404')
+    }
     Plane.findOne({trainName : req.body.trainName},function (err,content){
         if(content != null){
             res.send(flash(500,'fail',{
@@ -156,7 +165,10 @@ router.post('/addplane',function(req,res,next){
 })
 /*添加训练图片*/
 router.post('/addPlanePic',function (req,res,next) {
-    isAdmin(req.session.user);
+    var user = req.session.user;
+    if(isAdmin(req.session.user) == false){
+        res.redirect('404')
+    }
     var id = req.body.id;
     var name = req.body.name;
     var picDes = req.body.picDes;
@@ -187,7 +199,10 @@ router.post('/addPlanePic',function (req,res,next) {
 })
 /*健身计划删除*/
 router.post('/deletePlane', function (req, res, next) {
-    isAdmin(req.session.user);
+    var user = req.session.user;
+    if(isAdmin(req.session.user) == false){
+        res.redirect('404')
+    }
     var id = req.body.id;
     console.log(id)
     Plane.remove({_id : id},function(err,content){
@@ -198,7 +213,10 @@ router.post('/deletePlane', function (req, res, next) {
 })
 /*会员管理*/
 router.get('/people',function(req,res,next){
-    isAdmin(req.session.user);
+    var user = req.session.user;
+    if(isAdmin(req.session.user) == false){
+        res.redirect('404')
+    }
     var user = req.session.user;
     User.find().exec(function(err,content) {
         if (err) {
@@ -216,7 +234,10 @@ router.get('/people',function(req,res,next){
 })
 /*会员删除*/
 router.post('/deleteUser',function(req,res,next){
-    isAdmin(req.session.user);
+    var user = req.session.user;
+    if(isAdmin(req.session.user) == false){
+        res.redirect('404')
+    }
     var id = req.body.userId;
     User.remove({_id : id},function(err,content){
         console.log(content);
@@ -227,7 +248,10 @@ router.post('/deleteUser',function(req,res,next){
 })
 /*日记管理*/
 router.get('/diary',function(req,res,next){
-    isAdmin(req.session.user);
+    var user = req.session.user;
+    if(isAdmin(req.session.user) == false){
+        res.redirect('404')
+    }
     var user = req.session.user;
     var checking = [],
         checkpass = [],
@@ -256,7 +280,10 @@ router.get('/diary',function(req,res,next){
 })
 /*日记审核*/
 router.post('/checkDiary',function (req,res,next) {
-    isAdmin(req.session.user);
+    var user = req.session.user;
+    if(isAdmin(req.session.user) == false){
+        res.redirect('404')
+    }
     var id = req.body.id;
     var status = req.body.status;
     console.log(id,status)
@@ -276,7 +303,10 @@ router.post('/checkDiary',function (req,res,next) {
 })
 /*动态管理*/
 router.get('/dynamic',function(req,res,next){
-    isAdmin(req.session.user);
+    var user = req.session.user;
+    if(isAdmin(req.session.user) == false){
+        res.redirect('404')
+    }
     var user = req.session.user;
     var dynamic = [];
     Dynamic.find().sort({ 'time' : -1 }).exec(function(err,content) {
@@ -296,7 +326,10 @@ router.get('/dynamic',function(req,res,next){
 })
 /*动态删除*/
 router.post('/deleteDynamic',function(req,res,next){
-    isAdmin(req.session.user);
+    var user = req.session.user;
+    if(isAdmin(req.session.user) == false){
+        res.redirect('404')
+    }
     var id = req.body.dynamicId;
     Dynamic.remove({_id : id},function(err,content){
         console.log(content);
