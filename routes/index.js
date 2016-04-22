@@ -140,28 +140,93 @@ router.post('/chart',function(req,res,next){
         }
         else if(type == "week"){
             var x,series;
+            var calorie = [];
+            var dayNow = moment().format("YYYY-MM-DD");
+            var prevMs = moment.now() - 86400000*7;
+            var weekNow = [];
+            var weekPrev = [];
+            var colarieNow = 0;
+            var colariePrev = 0;
+            weekNow.push(dayNow);
+            for(var i = 1; i < 7; i ++){
+                var time = moment.now() - 86400000*i;
+                var day = moment(time).format("YYYY-MM-DD");
+                weekNow.push(day);
+            }
+            weekPrev.push(moment(prevMs).format('YYYY-MM-DD'));
+            for(var j = 1; j < 7; j ++){
+                var time = prevMs - 86400000*j;
+                var day = moment(time).format("YYYY-MM-DD");
+                weekPrev.push(day);
+            }
+            User.findOne({name : user},function(err,content){
+                weekNow.map(function(day){
+                    for(var i = 0; i < content.calorie.length; i ++){
+                        if(content.calorie[i].time == day){
+                            colarieNow  = colarieNow + parseInt(content.calorie[i].calorie);
+                        }
+                        else{
+                            continue;
+                        }
+                    }
 
-            x = ['10','11','12','13','14','15'];
-            series = {
-                name : "周健身数据",
-                data: [499, 715, 1064, 300, 200, 358]
-            };
-            res.send(flash(200,'success',{
-                x:x,
-                series:series
-            }));
+                })
+                calorie.push(colarieNow)
+                weekPrev.map(function(day){
+                    for(var j = 0; j < content.calorie.length; j ++){
+                        if(content.calorie[j].time == day){
+                            colariePrev  = colariePrev + parseInt(content.calorie[j].calorie);
+                        }
+                        else{
+                            continue;
+                        }
+                    }
+
+                })
+                calorie.push(colariePrev)
+                series = {
+                    name : "周健身数据",
+                    data: calorie.reverse()
+                };
+                var prevString = weekPrev[6] +" - " + weekPrev[0];
+                x = ['上上周' , '上周' , '本周']
+                res.send(flash(200,'success',{
+                    x:x,
+                    series:series
+                }));
+            })
         }
         else if(type == "month"){
             var x,series;
-            x = ['1月','2月','3月'];
-            series = {
-                name : "月健身数据",
-                data: [499, 715, 1064]
-            };
-            res.send(flash(200,'success',{
-                x:x,
-                series:series
-            }));
+            var calorie = [];
+            var monthCal = 0;
+            var monthPrevCal = 0;
+            console.log(111)
+            var monthNow =moment().month();
+            var timePrev = moment.now() - 86400000*30;
+            console.log(timePrev)
+            var monthPrev = moment().month(timePrev);
+            User.findOne({name : user},function(err,content){
+                for(var i = 0; i < content.length; i ++){
+                    if(moment().month(content.calorie[i].time) == monthNow){
+                        monthCal = monthCal + parseInt(content.calorie[i].calorie);
+                    }
+                    else if(moment().month(content.calorie[i].time) == monthPrev){
+                        monthPrevCal = monthPrevCal + parseInt(content.calorie[i].calorie);
+                    }
+                }
+                calorie = [monthPrevCal, monthCal]
+                x = [monthPrev,monthNow];
+                series = {
+                    name : "月健身数据",
+                    data: calorie
+                };
+                res.send(flash(200,'success',{
+                    x:x,
+                    series:series
+                }));
+                })
+            
         }
     }
 })
