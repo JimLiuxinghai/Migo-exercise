@@ -4,6 +4,18 @@
 require(['jquery','highcharts','util','swiper','domReady'],function($,highcharts,util,Swiper,domReady){
     domReady(function(){
         $(function(){
+            //图片轮播
+            var swiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-pagination',
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                slidesPerView: 1,
+                paginationClickable: true,
+                spaceBetween: 30,
+                loop: true,
+                autoplay: 2500,
+                autoplayDisableOnInteraction: false
+            });
             //渲染图表
             var complateCharts = function(data){
                 //highcharts配置文件
@@ -45,6 +57,7 @@ require(['jquery','highcharts','util','swiper','domReady'],function($,highcharts
 
 
             };
+
             //加载页面表格
             var initChart = function(){
                 //页面初次加载
@@ -61,18 +74,7 @@ require(['jquery','highcharts','util','swiper','domReady'],function($,highcharts
 
                 })
             }();
-            //图片轮播
-            var swiper = new Swiper('.swiper-container', {
-                pagination: '.swiper-pagination',
-                nextButton: '.swiper-button-next',
-                prevButton: '.swiper-button-prev',
-                slidesPerView: 1,
-                paginationClickable: true,
-                spaceBetween: 30,
-                loop: true,
-                autoplay: 2500,
-                autoplayDisableOnInteraction: false
-            });
+
         })
     })
 
