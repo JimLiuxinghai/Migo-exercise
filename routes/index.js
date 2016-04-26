@@ -205,17 +205,17 @@ router.post('/chart',function(req,res,next){
             var monthNow =moment().month();
             var timePrev = moment.now() - 86400000*30;
             console.log(timePrev)
-            var monthPrev = moment().month(timePrev);
+            var monthPrev = moment(timePrev).month();
             User.findOne({name : user},function(err,content){
-                for(var i = 0; i < content.length; i ++){
-                    if(moment().month(content.calorie[i].time) == monthNow){
+                for(var i = 0; i < content.calorie.length; i ++){
+                    if(moment(content.calorie[i].time).month() == monthNow){
                         monthCal = monthCal + parseInt(content.calorie[i].calorie);
                     }
-                    else if(moment().month(content.calorie[i].time) == monthPrev){
+                    else if(moment(content.calorie[i].time).month() == monthPrev){
                         monthPrevCal = monthPrevCal + parseInt(content.calorie[i].calorie);
                     }
                 }
-                calorie = [monthPrevCal, monthCal]
+                calorie = [monthPrevCal+'月', monthCal+'月']
                 x = [monthPrev,monthNow];
                 series = {
                     name : "月健身数据",
@@ -235,9 +235,9 @@ function maopao(arra){
 
     var temp;
 
-    for(var i=0;i<arra.length;i++){ //比较多少趟，从第一趟开始
+    for(var i=0;i<arra.length;i++){ 
 
-        for(var j=0;j<arra.length-i-1;j++){ //每一趟比较多少次数
+        for(var j=0;j<arra.length-i-1;j++){ 
 
             if(arra[j].calorie < arra[j+1].calorie){
                 temp=arra[j];
