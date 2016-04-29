@@ -37,9 +37,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
+    rolling: true,
     secret: 'jimliu',
-    store: store,
-    cookie:{maxAge:604800}
+    store: store
 }));
 
 //路由
