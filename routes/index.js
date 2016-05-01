@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
     var user = req.session.user;
     var myplane = [];
     var yesCalorie = [];
-    var yesterday = moment(moment().now - 86400000).format('YYYY-MM-DD');
+    var yesterday = moment().format('YYYY-MM-DD');
     //var yesterday = moment(moment().now).format('YYYY-MM-DD');
     //获取提交训练人数
     User.find(function(err,content){
@@ -36,8 +36,10 @@ router.get('/', function(req, res, next) {
             }
 
         }
+        console.log(yesCalorie)
         /*健身热量排序*/
         yesCalorie = maopao(yesCalorie);
+        console.log(yesCalorie)
         /*首页日记发表*/
         Diary.find({state : '1'}).sort({ 'time' : -1 }).limit(5) .exec(function(err,content){
             var diary = [];
