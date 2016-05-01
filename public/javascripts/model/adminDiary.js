@@ -48,6 +48,7 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
         });
         //返回日记列表
         $(".back").click(function(){
+            $(".check-btn").hide();
             $(".diaryTitle").html("");
             $(".diaryTime").html("");
             $(".diaryText").html("");
