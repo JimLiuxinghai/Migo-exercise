@@ -9,5 +9,4 @@ fork本项目后
 
 启动： npm run start
 
-目前完成静态页面开发和注册登录功能
-地址：http://jimliumigo.heroku.com
+项目地址：http://jimliumigo.heroku.com

@@ -29,10 +29,16 @@ block content
                             span.mr10 健身日记
                             span.font12 #{diaryData.length}
                 //健身报表
-                .col18.pl30.display-n.chart
+                .col18.pl30.chart
                     .border-b-1.font16.l-ht30.ht40 我的健身报表
+                    .mt10.overflow-h
+                        .ml-auto.mr-auto.ht500.kChart.overflow-h
+                        .tc
+                            span(name="day").btn.btn-info.mr10.time 日
+                            span(name="week").btn.btn-info.mr10.time 周
+                            span(name="month").btn.btn-info.mr10.time 月
                 //健身计划
-                .col18.pl30.plane
+                .col18.pl30.plane.display-n
                     .border-b-1.font16.l-ht30.ht40 我的健身计划
                     .mt10.overflow-h
                         -for(var i = 0;i < myplane.length; i++){

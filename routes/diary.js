@@ -125,6 +125,7 @@ router.post('/dpub',function(req,res,next){
                 newdiary.diaryText = text;
                 newdiary.diaryTitle = title;
                 newdiary.img = title;
+                newdiary.trendAssist = 0;
                 newdiary.time = time;
                 newdiary.state = '0';
                 newdiary.save(function(err){

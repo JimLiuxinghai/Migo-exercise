@@ -206,8 +206,8 @@ router.post('/deletePlane', function (req, res, next) {
         res.redirect('404')
     }
     var id = req.body.id;
-    console.log(id)
     Plane.remove({_id : id},function(err,content){
+
         res.send(flash(200,'success',{
             msg : "删除成功"
         }));

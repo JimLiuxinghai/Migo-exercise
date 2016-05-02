@@ -218,7 +218,7 @@ router.post('/chart',function(req,res,next){
                     }
                 }
                 calorie = [monthPrevCal+'月', monthCal+'月']
-                x = [monthPrev,monthNow];
+                x = [monthPrev+'月',monthNow+'月'];
                 series = {
                     name : "月健身数据",
                     data: calorie
