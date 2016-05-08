@@ -32,30 +32,31 @@ block content
                             span.ml10 男
                             input(type="radio" value="woman" name="sex").vertical-a-m.ml10
                             span.ml10 女
+                            input(value="#{userData.sex}" name="hidden" type="hidden")
                     .row.mt30.font14
                         .col2.offset3
                             .justify.pt6 年龄
                         .col8
                             span.mr10  :
-                            input.per90.border-special.pl5.ht24.form-control(name="age")
+                            input.per90.border-special.pl5.ht24.form-control(name="age" value="#{userData.age}")
                     .row.mt30.font14
                         .col2.offset3
                             .justify.pt6 身高
                         .col8
                             span.mr10  :
-                            input.per90.border-special.pl5.ht24.form-control(name="height" placeholder="cm")
+                            input.per90.border-special.pl5.ht24.form-control(name="height" value="#{userData.height}" placeholder="cm")
                     .row.mt30.font14
                         .col2.offset3
                             .justify.pt6 体重
                         .col8
                             span.mr10  :
-                            input.per90.border-special.pl5.ht24.form-control(name="weight" placeholder="kg")
+                            input.per90.border-special.pl5.ht24.form-control(name="weight" value="#{userData.weight}" placeholder="kg")
                     .row.mt30.font14
                         .col2.offset3
                             .justify.pt16 个性签名
                         .col8
                             span.mr10.vertical-a-m  :
-                            textarea.per90.border-special.pl5.ht24.form-control.vertical-a-m(name="signature")
+                            textarea.per90.border-special.pl5.ht24.form-control.vertical-a-m(name="signature") #{userData.signature}
                     .row.mt10
                         .col10.offset8.errorMsg.font-red.display-n 错误信息
                     .row.mt30

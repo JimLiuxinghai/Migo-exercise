@@ -18,7 +18,15 @@ require(['jquery','util','domReady'],function($,util,domReady){
                 $(".errorMsg").addClass("display-n");
             });
             //添加表单信息
+            if($("input[name='hidden']").val() == "man") {
+               $("input[name='sex'][value=man]").attr("checked",true);
+            }
+            else if($("input[name='hidden']").val() == "woman") {
+                $("input[name='sex'][value=woman]").attr("checked",true);
+            }
+            else if($("input[name='hidden']").val() == "") {
 
+            }
 
 
         }();

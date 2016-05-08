@@ -9,12 +9,25 @@ var Dynamic = require('../db/dynamic');
 var router = express.Router();
 router.get('/setprofile',function(req,res,next){
     var user = req.session.user;
+    console.log(user)
     var navuser = {
         user : user,
         userlogo : 'images/user/'+user+'.png'
     }
     if(user){
-        res.render('setprofile', {title: "Migo个人健身系统--个人中心", user: navuser});
+        User.findOne({name: user}, function(err, content) {
+            var userData = {
+                sex: content.sex || "",
+                age: content.age || "",
+                height: content.height || "",
+                weight: content.weight || "",
+                signature: content.signature || ""
+            }
+            console.log(userData.signature)
+            res.render('setprofile', {title: "Migo个人健身系统--个人中心", user: navuser, userData: userData});
+
+        })
+
 
 
     }
@@ -32,6 +45,7 @@ router.post('/saveData',function(req,res,next){
     var weight = req.body.weight;
     var signature = req.body.signature;
     var BMI = height/weight;
+    console.log(user)
     User.update({'name' : user,'sex':sex,'age':age,'height':height,'weight':weight,'signature':signature,'BMI':BMI},
         function(err,content){
             if(err){
