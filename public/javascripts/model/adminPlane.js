@@ -47,28 +47,28 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
             })
 
         })
+        var i = 1;
         //添加图片
         var addConPic = function () {
-            var i = 1;
-            var picdom = '<div class="row">'+
-                '<div class="col6 offset3">'+
-                '<input type="file" accept="image/*" id="plane'+i+'" name="plane'+i+'" />'+
-                '<input type="hidden" name="plane'+i+'">'+
-                '</div>'+
-                '<div class="col12">'+
-                '<input class="form-control" type="text" placeholder="图片描述" name="plane'+i+'" />'+
-                '</div>'+
-                '<div class="col2">'+
-                '<input type="button" value="上传" name="plane'+i +'" class="btn btn-info ml20">'+
-                '</div>'+
-                '</div>';
             $(".addpic").click(function(){
+                var picdom = '<div class="row">'+
+                    '<div class="col6 offset3">'+
+                    '<input type="file" accept="image/*" id="plane'+i+'" name="plane'+i+'" />'+
+                    '<input type="hidden" name="plane'+i+'">'+
+                    '</div>'+
+                    '<div class="col12">'+
+                    '<input class="form-control" type="text" placeholder="图片描述" name="plane'+i+'" />'+
+                    '</div>'+
+                    '<div class="col2">'+
+                    '<input type="button" value="上传" name="plane'+i +'" class="btn btn-info ml20">'+
+                    '</div>'+
+                    '</div>';
                 $(".onepic").append(picdom);
-                i++;
+                i = i + 1;
             });
+
             //上传图片 使用事件代理为btn绑定事件
             $(".onepic").delegate('.btn','click',function(){
-                debugger;
                 var id = $("#planeId").val();
                 var name = $(this).attr('name');
                 var file = document.getElementById(name).files[0];
@@ -76,7 +76,6 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
                 readAsDataURL(file,$('input[type="hidden"][name="'+name+'"]'));
                 //解决读取图片异步的问题
                 setTimeout(function(){
-                    debugger;
                     var pic = $('input[type="hidden"][name="'+name+'"]').val();
                     $.ajax({
                         url : '/admin/addPlanePic',
