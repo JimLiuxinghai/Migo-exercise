@@ -11,7 +11,7 @@ require(['jquery','util','domReady'],function($,util,domReady){
         }();
         //选取健身计划
         var planeData = {
-            pos : '全身',
+            pos : '全部',
             level : "全部"
         }
         $('.t-pos').find('span').click(function () {

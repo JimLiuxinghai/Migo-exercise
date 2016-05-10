@@ -32,17 +32,35 @@ router.get('/plane',function(req,res,next){
 router.post('/choosePlane', function(req, res, next){
     var pos = req.body.pos;
     var level = req.body.level;
-    if(!level){
-        Plane.find({trainPosition : pos}).exec(function(err,content) {
-            console.log(content)
-            res.send({plane : content})
-        });
+    if(level == "全部"){
+        if(pos == "全部") {
+            Plane.find(function(err,content) {
+                console.log(content)
+                res.send({plane : content})
+            });
+        }
+        else{
+            Plane.find({trainPosition : pos}).exec(function(err,content) {
+                console.log(content)
+                res.send({plane : content})
+            });
+        }
+
     }
     else{
-        Plane.find({trainPosition : pos,trainLevel : level}).exec(function(err,content) {
-            console.log(content)
-            res.send({plane : content})
-        });
+        if(pos == "全部") {
+            Plane.find({trainLevel : level}).exec(function(err,content) {
+                console.log(content)
+                res.send({plane : content})
+            });
+        }
+        else {
+            Plane.find({trainPosition : pos,trainLevel : level}).exec(function(err,content) {
+                console.log(content)
+                res.send({plane : content})
+            });
+        }
+
     }
 
 });

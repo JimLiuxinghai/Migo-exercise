@@ -23,7 +23,7 @@ require(['jquery','util','domReady'],function($,util,domReady){
                     }
                     else{
                         alert("你已经参加过该训练计划");
-                        window.location.href = "/train/:"+msg.data.msg
+                        window.location.href = "/train/:"+id
                     }
                 },
                 error : function () {
