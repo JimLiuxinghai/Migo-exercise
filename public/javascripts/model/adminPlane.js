@@ -31,20 +31,31 @@ require(['jquery','highcharts','util','domReady'],function($,highcharts,util,dom
         })
         //保存训练名称等
         $(".con-add").click(function () {
-            var planeData = $('form[name="plane"]').serializeObject();
-            $.ajax({
-                url : '/admin/addplane',
-                type : 'POST',
-                data : planeData,
-                success : function (msg) {
-                    if(msg.status.code == '200'){
-                        $("#planeId").val($('input[name="trainName"]').val());
-                        $(".plane").hide();
-                        $(".add-pic").fadeIn();
-                    }
+            var calorie = parseInt($('input[name="trainCalorie"]').val());
+            var num = /^[1-9]d*|0$/;
+            var isNum = num.test(calorie);
+            if(isNum) {
+                var planeData = $('form[name="plane"]').serializeObject();
+                $.ajax({
+                    url : '/admin/addplane',
+                    type : 'POST',
+                    data : planeData,
+                    success : function (msg) {
+                        if(msg.status.code == '200'){
+                            $("#planeId").val($('input[name="trainName"]').val());
+                            $(".plane").hide();
+                            $(".add-pic").fadeIn();
+                        }
 
-                }
-            })
+                    }
+                })
+            }
+            else {
+                alert("训练热量请输入正整数")
+                $('input[name="trainCalorie"]').val("");
+                $('input[name="trainCalorie"]').focus();
+                return false;
+            }
 
         })
         var i = 1;

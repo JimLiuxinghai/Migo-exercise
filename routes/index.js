@@ -191,7 +191,7 @@ router.post('/chart',function(req,res,next){
                     data: calorie.reverse()
                 };
                 var prevString = weekPrev[6] +" - " + weekPrev[0];
-                x = ['上上周' , '上周' , '本周']
+                x = ['上周' , '本周']
                 res.send(flash(200,'success',{
                     x:x,
                     series:series
@@ -203,10 +203,8 @@ router.post('/chart',function(req,res,next){
             var calorie = [];
             var monthCal = 0;
             var monthPrevCal = 0;
-            console.log(111)
             var monthNow =moment().month();
             var timePrev = moment.now() - 86400000*30;
-            console.log(timePrev)
             var monthPrev = moment(timePrev).month();
             User.findOne({name : user},function(err,content){
                 for(var i = 0; i < content.calorie.length; i ++){
@@ -217,8 +215,8 @@ router.post('/chart',function(req,res,next){
                         monthPrevCal = monthPrevCal + parseInt(content.calorie[i].calorie);
                     }
                 }
-                calorie = [monthPrevCal+'月', monthCal+'月']
-                x = [monthPrev+'月',monthNow+'月'];
+                calorie = [monthPrevCal, monthCal]
+                x = [monthPrev+1+'月',monthNow+1+'月'];
                 series = {
                     name : "月健身数据",
                     data: calorie
