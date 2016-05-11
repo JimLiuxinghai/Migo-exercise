@@ -9,9 +9,6 @@ fork本项目后
 
 启动： npm run start
 
-<<<<<<< HEAD
-项目地址：http://jimliumigo.heroku.com
-=======
 
-地址：http://jimliumigo.heroku.com
->>>>>>> jimliu
+项目地址：http://jimliumigo.heroku.com
+
