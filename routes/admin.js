@@ -241,6 +241,7 @@ router.post('/deleteUser',function(req,res,next){
         res.redirect('404')
     }
     var id = req.body.userId;
+
     User.remove({_id : id},function(err,content){
         console.log(content);
         res.send(flash(200,'success',{

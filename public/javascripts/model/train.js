@@ -13,6 +13,7 @@ require(['jquery','util','domReady'],function($,util,domReady){
         trainTime = trainTime*60;
         $(".begin").click(function(){
             var time = 5;
+            //var time = trainTime;
             var self = $(this);
             self.attr("disabled","disabled");
             var timer = setInterval(function () {

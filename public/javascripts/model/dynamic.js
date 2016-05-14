@@ -11,11 +11,19 @@ require(['jquery','util','domReady'],function($,util,domReady){
         //发表动态
         $(".publish").click(function(){
             if($(".dynamic").val() != ""){
-                var dData = {dynamic : $(".dynamic").val()};
-                var resData = util.getData('/pdynamic','POST',dData);
-                if(resData.status.code == '200'){
-                    window.location.href = "/dynamic";
+                if($(".dynamic").val().length > 140) {
+                    alert("输入动态应小于140字！")
+                    $(".dynamic").focus();
+                    return false;
                 }
+                else {
+                    var dData = {dynamic : $(".dynamic").val()};
+                    var resData = util.getData('/pdynamic','POST',dData);
+                    if(resData.status.code == '200'){
+                        window.location.href = "/dynamic";
+                    }
+                }
+
             }
         })
         //点赞
