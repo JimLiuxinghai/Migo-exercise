@@ -7,7 +7,7 @@
 
 2.npm
 
-3.全局安装express与babel
+3.全局安装express与gulp
 
 4.MongoDB
 
