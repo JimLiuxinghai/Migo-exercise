@@ -12,8 +12,8 @@ require(['jquery','util','domReady'],function($,util,domReady){
         //点击开始训练
         trainTime = trainTime*60;
         $(".begin").click(function(){
-            var time = 5;
-            //var time = trainTime;
+            //var time = 5;
+            var time = trainTime;
             var self = $(this);
             self.attr("disabled","disabled");
             var timer = setInterval(function () {

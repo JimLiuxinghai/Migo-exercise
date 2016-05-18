@@ -22,14 +22,6 @@ function compileLess(compress) {
 	return stream.pipe(gulp.dest("asset/css"))
 }
 
-gulp.task("less:development", function() {
-	return compileLess(false);
-});
-
-
-gulp.task("less", function() {
-	return compileLess(true);
-})
 
 function compileJs(compress) {
 	var stream = gulp.src("src/js/*.js");

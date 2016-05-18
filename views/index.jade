@@ -35,7 +35,7 @@ block content
             .mt16.ht8.bg-c.radius5.overflow-h
               .ht8.bg-green-4d.radius5(style="width:#{indexUser.userTrianNum/indexUser.userNum*100}%")
             .mt10
-              span 有#{indexUser.userTrianNum/indexUser.userNum*100}%人提交了训练
+              span 有#{(indexUser.userTrianNum/indexUser.userNum).toFixed(4)*100}%人提交了训练
           //健身动态
           .border.padding.radius5.mt10
             .border-b.l-ht30.font16 会员动态
