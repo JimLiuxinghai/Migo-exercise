@@ -24,7 +24,6 @@
     "mongoose": "~3.8.14",
     "morgan": "~1.6.1",
     "node-smushit": "^0.5.1",
-    "pm2": "^1.1.1",
     "serve-favicon": "~2.3.0",
     "session-mongoose": "~0.5.2",
     "gulp": "3.9.1"
@@ -35,6 +34,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
     "gulp-uglify": "^1.5.3",
-    "gulp-util": "^3.0.7"
+    "gulp-util": "^3.0.7",
+    "pm2": "^1.1.1"
   }
 }
