@@ -1,6 +1,6 @@
 {
   "Customer": {
-    "dbConfig": "mongodb://localhost/Migo",
+    "dbConfig": "mongodb://jimliu:123456@ds051625.mlab.com:51625/migo",
     "credit": {
       "initialLimit": 100,
       // Set low for development

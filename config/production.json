@@ -1,7 +1,7 @@
 
 {
   "Customer": {
-    "dbConfig": "mongodb://localhost/Migo",
+    "dbConfig": "mongodb://jimliu:123456@ds051625.mlab.com:51625/migo",
     "credit": {
       "initialDays": 300,
       "initialDays": 1
