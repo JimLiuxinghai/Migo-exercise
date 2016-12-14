@@ -59,18 +59,21 @@ router.post('/reg',function(req,res,next){
                 else{
                     //数据存储
                     var newuser = new User(User);
+                    console.log('存储前名字'+newuser)
                     newuser.name = user;
                     newuser.pass = mcrypto.md5Password(pass);
+                    console.log('存储前密码'+newuser.pass)
                     newuser.userlogo = userlogo;
                     newuser.regTime = Date.now();
                     newuser.yesCalorie = 0;
+                    console.log('存储www'+newuser)
                     newuser.save(function(err) {
                         if (err) {
                             res.write("注册失败!");
                             res.end();
                         }
                         req.session.user = user;
-                        console.log(req.session.user)
+                        console.log('注册成功' + req.session.user)
                         res.write("success");
                         res.end();
                     });
