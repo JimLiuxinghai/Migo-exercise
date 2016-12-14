@@ -17,9 +17,11 @@ router.get('/reg',function(req,res,next){
 router.post('/login',function(req,res,next){
     var user = req.body.username;
     var pass = req.body.password;
-    
+    console.log('user' + user);
+    console.log('pass' + pass)
     User.findOne({name : user},function(err,content){
         if(content != null){
+            console.log(content);
             if(content.pass == mcrypto.md5Password(pass)){
                 req.session.user = user;
                 res.write("success");
@@ -68,7 +70,7 @@ router.post('/reg',function(req,res,next){
                             res.end();
                         }
                         req.session.user = user;
-
+                        console.log(req.session.user)
                         res.write("success");
                         res.end();
                     });
