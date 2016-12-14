@@ -17,10 +17,10 @@ var admin = require('./routes/admin');
 var SessionStore = require("session-mongoose")(connect);
 var config = require('config');
 var dbConfig = config.get('Customer.dbConfig');
-var store = new SessionStore({
-    url:dbConfig,
-    ttl: 604800  //session 存储一周
-});
+// var store = new SessionStore({
+//     url:dbConfig,
+//     ttl: 604800  //session 存储一周
+// });
 var app = express();
 
 // view engine setup
@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     rolling: true,
     secret: 'jimliu',
-    store: store,
+    //store: store,
     cookie: {maxAge: 60*1000*60}
 }));
 
