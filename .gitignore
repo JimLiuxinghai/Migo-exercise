@@ -4,9 +4,13 @@ node_modules/*
 
 .idea/*
 
-public/images/*
+.idea
+
 
 .vscode/*
 
+.vscode
+
+public/images/public/*
 
 
