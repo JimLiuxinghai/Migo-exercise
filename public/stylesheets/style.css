@@ -1,7 +1,5 @@
  @font-face{
   font-family: hou;
-  src:url(font/FZ.TTF) format('truetype');
-
 }
 a:hover{color: #4DB3A2;}
 body,button{font-family: hou; overflow-x: hidden;}
