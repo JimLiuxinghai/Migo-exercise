@@ -17,12 +17,12 @@ require(['jquery','util','domReady','jquery.cookie'],function($,util,domReady){
         //表单验证
         var validate = function(){
             var errorMsg;
-            // if($("input").val()==""){
-            //     return errorMsg = "请将注册信息填写完整。"
-            // }
-            // else if($("input[name='password']").val() !=$("input[name='passwordAgain']").val()){
-            //     return errorMsg = "请保证两次密码输入一致。"
-            // }
+            if($("input").val()==""){
+                return errorMsg = "请将注册信息填写完整。"
+            }
+            else if($("input[name='password']").val() !=$("input[name='passwordAgain']").val()){
+                return errorMsg = "请保证两次密码输入一致。"
+            }
 
         }
         //注册
@@ -38,10 +38,8 @@ require(['jquery','util','domReady','jquery.cookie'],function($,util,domReady){
                         userlogo : 'jim.png'
                     };
                     var data = util.getData('/reg',"POST",regData);
-                    debugger;
-                    console.log(data);
                     if(data = "success"){
-                        //window.location.href = 'login';
+                        window.location.href = 'login';
                     }
                     else{
                         $(".errorMsg").html(data);
